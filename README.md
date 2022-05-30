@@ -66,12 +66,18 @@ Our Telegram bot will be designed in a manner such that it offers a fool-proof w
 Task  | Description | Handled by | Complete by
 ------------- | ------------- | -- | ---
 System Design   | Create a workable system and workflow | Chengyue, Sean | 15 May
-Familiarisation | Complete courses on JavaScript, Node.js, React, Python, etc. | Chengyue, Sean | 22 May 
+Familiarisation | Complete courses on JavaScript, Node.js, React, Python, ExpressJs etc. | Chengyue, Sean | 22 May 
 Implement Telegram bot  | Basic prompt/response flow | Sean | 22 May
+Familiarise with APIs and choosing proper platforms | Researched on the flow of website creation (Hosting, DNS, Database etc.) | Chengyue | 22 May
 Connect bot to database | Set up database and ensure successful connection | Sean | 23 May
+Connect ezWeb backend to database | Set up database and ensure successful connection |Chengyue 23 May
+Automate domain and DNS setup | Implement automated domain registering and DNS setup using GoDaddy's APIs | Chengyue 24 May
 Response capture | Capture url and website description into database | Sean | 25 May
+Automate simple site generation | Implement standard Wordpress site generation and connect site's server to domain | Chengyue | 26 mAY
 UX improvements | Swap from forward-slash commands to user-friendly inline buttons | Sean | 27 May
+Wrapping up of prototype | Connect the bot, the site, and the ezWeb backend. | Chengyue | 29 May
 Site-managemenet | Link each entry in database to unique user, allow for updates requests | Sean | 29 May 
+
 
 #### Milestone 2 - Prototyping (27 Jun) (In Progress)
 Task  | Description | Handled by | Date
@@ -101,7 +107,7 @@ User Testing | Allow selected real estate agents to build their websites using e
 
 
 ### Proof of Concept
-Our Telegram bot has been set up to receive website creation requests, and capture url/description data which is sent to our database. On the backend, we will be able to retrive this data and generate a simple website.
+Our Telegram bot has been set up to receive website creation requests, and capture url/description data which is sent to our database. On the backend, we will be able to retrive this data and generate a simple website on the given url.
 
 #### Website Creation
 To start, navigate to @ezWebTest_bot to start the bot.
