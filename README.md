@@ -81,11 +81,11 @@ Finalize Database | Switch to scalable database | Chengyue, Sean | 10 Jun
 One-page Template | Create a deployable one-page template | Chengyue | 12 Jun
 User Authentication | Authenticate users and link user data to their id | Sean |13 Jun
 URL Availability Check | Confirm URL availability with hosting platform | Sean | 15 Jun
+Update Requests | Ensure backend receives update requests and enact changes promptly | Chengyue | 16 Jun
 Integrate Relevant APIs | CrazyDomain domain set-up & Cloudways hosting API | Chengyue | 17 Jun
 Payment Capture | Prompt for payment to be made for website to be hosted | Sean | 21 Jun
 File Uploads | Allow for user to upload files via Telegram bot | Sean | 23 Jun
 Process Files | Backend to process uploaded files, followed by enacting updates | Chengyue | 25 Jun
-Update Requests | Ensure backend receives update requests and enact changes promptly | Chengyue, Sean | 26 Jun
 Documentation | All features implemented to be documented comprehensively | Chengyue, Sean | 27 Jun
 
 #### Milestone 3 - Extension (25 Jul) (To Be Confirmed)
