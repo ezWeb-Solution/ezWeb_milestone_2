@@ -60,7 +60,35 @@ Our Telegram bot will be designed in a manner such that it offers a fool-proof w
 2. The Telegram bot receives the request and forwards the request to our backend.
 3. The backend then retrieves the traffic information and sends it back to the Telegram bot, after which, the analytics data will be displayed to the user for their perusal.
 
-#### Full workflow
+### Proposed Website Design Elements
+Since our initial target audience are real estate agents, our site templates will be tailored to their needs. This will allow us to maximize customizability based on what we believe the target audience wants. We plan to interview local real estate agents to get their input on which elements of a website will be the most important to them. Currently, these are our proposed website design elements, which will serve as the skeleton for all our templates.
+
+#### Hero banners
+To begin, each site will have to be able to display a default hero banner where the user will be able to replace the hero banner with a photo of themselves. This is done in order to create a strong first impression for site visitors. According to web design industry standards, a well-designed hero banner helps to increase engagement and consequently, conversion rates, due to the fact that humans are highly visual in nature. 
+
+Example of a hero banner, taken from Oceana.org.
+<img src="https://user-images.githubusercontent.com/52826683/170986452-f5d738e3-8a4f-4c38-9769-4d0de73b0d2d.png" width="1000" height="400">
+
+#### Block displays
+Block displays should be used to neatly display a list of properties that the agent has successfully transacted. This manner of display will allow for visitors to be able to get a clear idea of the volume of transactions that the agent has processed, as well as the type of property transactions that the agent generally handles. The visual nature of block displays also serves to keep visitors engaged, which may then result in higher lead generation.
+
+#### 'About me' section
+An 'About me' section will be generated with a generic copywritten paragraph of what the agent strives to achieve and what they stand for. This section will help visitors to get to know the agent better, and will serve as a strong indicator of whether the agent will be suitable for the visitor/potential client.
+
+Example of an engaging 'About me' section design, retrieved from https://www.youtube.com/watch?v=DXSQ2cEVbAI&ab_channel=Onlinewebustaad.
+<img src="https://user-images.githubusercontent.com/52826683/170986863-77c88111-34bf-4003-b0a0-fba9605b6fd0.jpg" width="800" height="400">
+
+
+#### Testimonials 
+A testimonial section will be generated where agents can include testimonials provided by past clients. Having a testimonial has been shown to increase lead generation rates, and is thus a powerful tool that we will be taking advantage in order to optimize visitor engagement rates.
+
+Example of a well-designed testimonial section, retrieved from kissmetrics.io
+<img src="https://user-images.githubusercontent.com/52826683/170987558-05d4d2f1-6d2e-4689-b093-f3ab4c24cd2d.jpg" width="700" height="400">
+
+#### 'Contact me' section
+This section will arguably be the most important part of the website, where visitors are provided with a call-to-action. Visitors who are interested in consulting the agent can provide their contact details, which will then be sent to the email address of the agent. The agent will then be able to follow up on this new lead, thus potentially converting this lead to a new paying client.
+
+### Full workflow
 ![Workflow2](https://user-images.githubusercontent.com/52826683/170938710-5419e72c-cbbf-4113-b394-90356ea8d6f7.jpg)
 
 ### Timeline
