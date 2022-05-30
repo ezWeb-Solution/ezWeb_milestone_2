@@ -22,24 +22,8 @@ dispatcher = updater.dispatcher
 url = ''
 desc = ''
 current_state = ''
-#for updating
 target_row = ''
-# sa = gspread.service_account()
-# sh = sa.open('ezWeb database')
-# wks = sh.worksheet("Sheet1")
-# print("Rows: ", wks.row_count)
-# print("Cols: ", wks.col_count)
-# if wks.acell('C1').value is None:
-#     print("True!")
-# else:
-#     print(wks.acell('C1'))
-#     print("False")
-#access cell: wks.acell('A9').value or wks.cell(3, 4).value
-#if access multiple cells: wks.get('A7:E9'), wks.get_all_records())
-#wks.update('F2', ='UPPER(E2)', raw=False)
-#wks.delete_rows(25)
 
-# Functions to handle each command
 def start(update, context):
     buttons = [[InlineKeyboardButton("Create new website.", callback_data = "create_website")],
                [InlineKeyboardButton("Manage my websites.", callback_data = "manage_website")],
@@ -57,13 +41,11 @@ def caps(update, context):
     text_caps = ' '.join(context.args).upper()
     context.bot.send_message(chat_id=update.effective_chat.id, text=text_caps)
 
-
 def get_cat_fact(update, context):
     endpoint = "https://catfact.ninja/fact"
     response = requests.get(endpoint)
     fact = response.json()["fact"]
     context.bot.send_message(chat_id=update.effective_chat.id, text=fact, reply_markup=None)
-
 
 def create_url(update, context):
     global current_state
@@ -76,7 +58,6 @@ def create_url(update, context):
         state_changer(update, context, 'url_edit', current_state)
     else:
         context.bot.send_message(chat_id=update.effective_chat.id, text="Would be cool to visit that website someday!")
-
 
 def create_desc(update, context):
     if current_state == 'initialized':
@@ -185,9 +166,6 @@ def manage_website(update, context):
                             text="Certainly! Select a website to update.",
             reply_markup=InlineKeyboardMarkup(buttons))
 
-
-
-
 def inline_query(update, context):
     query = update.callback_query.data
     update.callback_query.answer()
@@ -229,7 +207,6 @@ def inline_query(update, context):
         global target_row
         target_row = ls[3]
 
-
 def reset(update, context):
     global current_state
     current_state = ''
@@ -261,7 +238,6 @@ def message_handler(update, context):
         context.bot.send_message(chat_id=update.effective_chat.id,
                                  text="I'm not sure what you're looking for.. please be more specific.")
 
-
 # Create and add command handlers
 start_handler = CommandHandler('start', start)
 dispatcher.add_handler(start_handler)
@@ -271,7 +247,6 @@ dispatcher.add_handler(catchall_handler)
 
 query_handler = CallbackQueryHandler(inline_query)
 dispatcher.add_handler(query_handler)
-
 
 updater.start_polling()
 updater.idle()
