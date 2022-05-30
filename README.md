@@ -1,4 +1,5 @@
-- [Milestone 1 Submission](#milestone-1-submission)
+# Milestone 1 Submission
+
   * [Team ezWeb](#team-ezweb)
   * [Motivation](#motivation)
     + [Examples of what non-technically inclined person may be up against when deciding to create their own website:](#examples-of-what-non-technically-inclined-person-may-be-up-against-when-deciding-to-create-their-own-website-)
@@ -27,8 +28,6 @@
     + [Proof of Concept](#proof-of-concept)
       - [Website Creation](#website-creation)
       - [Managing/Update Websites](#managing-update-websites)
-
-# Milestone 1 Submission
 
 ## Team ezWeb
 Team members: Li Chengyue & Sean Spencer Manik
