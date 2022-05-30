@@ -20,6 +20,8 @@ Almost every has had experience with messaging apps such as Telegram and Whatsap
 
 Most real estate agents are currently registered under PropertyGuru, and as such, they have a personal page created on PropertyGuru. The process of managing one’s personal page is not simple, and users have to pay a high fee to keep their personal pages up ($3,000 per 12 months for the Advance plan). In addition, users do not get their own domain name, such as perrysiow.com, and instead have their website registered as a subdomain of PropertyGuru.com, such as https://www.propertyguru.com.sg/agent/timothy-tan-431805.
 
+We also hope to provide users with real-time traffic analytics, which can allow them to accurately determine if the site is effective in helping them convert visitors into paying clients. This will then allow them to develop better personal branding strategies that will provide them with a valuable edge over competing agents.
+
 
 ## User Story
 
@@ -33,6 +35,28 @@ The features of our solution can be separated into three main components - the T
 
 ### Telegram bot
 Our Telegram bot will be designed in a manner such that it offers a fool-proof way for clients to set up, design, upload information, and manage their site through the form of automated conversation. 
+
 ![workflow](https://user-images.githubusercontent.com/52826683/170936274-f5ce2617-193f-41f0-a192-33469920eedf.jpg)
 #### Workflow of the Telegram bot
-Th
+1. The bot will first allow the client to choose whether he/she would like to create a new site, or manage their current websites.
+2. Upon choosing to create a new site, the bot will then take in the desired url of the user.
+3. The url will be checked for its availability. Upon confirming its availability, its respective hosting costs will be presented to the user for confirmation.
+4. After the url has been confirmed, the user is prompted to input their desired website description, upload their desired profile picture, and upload an excel file that contains information about their past transactions.
+5. The user will then be provided with a list of templates that they can choose from for their site.
+6. Once the relevant details has been confirmed, the user will be prompted to make a payment for the web hosting costs.
+7. After payment capture, the details will then be sent to our database, where our backend site-generator will retrieve these information to be used in the process of generating the site.
+8. The site will be expected to be generated in about 15-20 minutes, upon which the site will go live.
+9. Users can then interact with the bot whenever they want to manage and update the information on their websites through a simple conversation with the bot.
+
+#### Content Modification
+1. The user instructs the Telegram bot to delete or update existing content, or to upload new content to the site.
+2. The Telegram bot receives the request and the new content, then passes it to our database.
+3. Our backend then processes this data and updates the site accordingly.
+
+#### Website analytics
+1. The user instructs the Telegram bot to retrieve traffic information of the web page.
+2. The Telegram bot receives the request and forwards the request to our backend.
+3. The backend then retrieves the traffic information and sends it back to the Telegram bot, after which, the analytics data will be displayed to the user for their perusal.
+
+#### Full workflow
+![Workflow2](https://user-images.githubusercontent.com/52826683/170938710-5419e72c-cbbf-4113-b394-90356ea8d6f7.jpg)
