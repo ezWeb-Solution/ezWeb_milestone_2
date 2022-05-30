@@ -160,6 +160,9 @@ Site-management | Link each entry in database to unique user, allow for updates 
 #### Milestone 1 - Poster Submission 
 <img src="https://user-images.githubusercontent.com/52826683/171003935-5607d0ef-b251-477f-aae3-d7b960da2a98.png" width="500" height="775">
 
+#### Milestone 1 - Project Log
+<a href="https://docs.google.com/spreadsheets/d/1PExAhXqZ7PFh2cHDoLcatWTSk98zk-yEUatYOD4pTbw/edit?usp=sharing">Project Log</a>
+
 ### Milestone 2 - Prototyping (27 Jun) (In Progress)
 Task  | Description | Handled by | Date
 ------------- | ------------- | -- | ---
