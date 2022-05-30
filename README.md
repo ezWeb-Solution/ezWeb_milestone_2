@@ -88,6 +88,9 @@ Example of a well-designed testimonial section, retrieved from kissmetrics.io
 #### 'Contact me' section
 This section will arguably be the most important part of the website, where visitors are provided with a call-to-action. Visitors who are interested in consulting the agent can provide their contact details, which will then be sent to the email address of the agent. The agent will then be able to follow up on this new lead, thus potentially converting this lead to a new paying client.
 
+### Upload of New Listings Data
+As agents will want to upload information about their past transactions, it will be more efficient for them to perform the upload via an excel sheet, where they will be able to fill in information in an excel file formatted by us. Upon including all relevant data about their portfolio, the excel file can then be submitted to our Telegram bot, which will then send the file to our database, where we will be processing the data to be updated on the website.
+
 ### Full workflow
 ![Workflow2](https://user-images.githubusercontent.com/52826683/170938710-5419e72c-cbbf-4113-b394-90356ea8d6f7.jpg)
 
