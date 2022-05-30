@@ -118,6 +118,9 @@ Wrapping up of prototype | Connect the bot, the site, and the ezWeb backend. | C
 Site-management | Link each entry in database to unique user, allow for updates requests | Sean | 29 May 
 
 
+##### Milestone 1 - Poster Submission 
+<img src="https://user-images.githubusercontent.com/52826683/171003935-5607d0ef-b251-477f-aae3-d7b960da2a98.png" width="500" height="775">
+
 #### Milestone 2 - Prototyping (27 Jun) (In Progress)
 Task  | Description | Handled by | Date
 ------------- | ------------- | -- | ---
