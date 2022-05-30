@@ -136,7 +136,7 @@ def send_initialization_data(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="Done!")
     global current_state
     current_state = ''
-    requests.get(url='localhost:8080/generateSite', params='row')
+    requests.get(url='localhost:8080/generateSite', params=row)
     reset(update, context)
 
 def send_data(update, context):
