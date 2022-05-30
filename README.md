@@ -29,8 +29,6 @@
   * [Website Creation](#website-creation)
   * [Managing/Update Websites](#managing-update-websites)
 
-<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
-
 
 ## Team ezWeb
 Team members: Li Chengyue & Sean Spencer Manik
