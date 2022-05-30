@@ -1,6 +1,8 @@
 # Milestone 1 Submission
 
 ## Team ezWeb
+Team members: Li Chengyue & Sean Spencer Manik 
+Proposed level of achievement: Artemis
 
 ## Motivation
 A personal website can be crucial in allowing others to gauge the capability of an individual in their respective field. For example, a real estate agent may benefit from having a personal website that details all of his/her previous transactions. Being able to showcase their portfolios serves as a great way for them to instill confidence in potential clients, which may lead to them onboarding more clients.
