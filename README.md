@@ -128,6 +128,11 @@ Following which, the user will be prompted to confirm the description and url. U
 
 <img src="https://user-images.githubusercontent.com/52826683/170946061-678cab1c-9e28-4129-8832-ada21b081767.jpg" width="210" height="450">
 
+Site will then be created. (The following is a placeholder sample site that is created with the desired url of the user)
+
+![84b11a33-a165-48ef-b6d4-169e7cde196f](https://user-images.githubusercontent.com/52826683/170981704-822a363f-7159-4e83-a825-5f9ba39d80e6.jpg)
+
+
 #### Managing/Update Websites
 Users who want to update their websites can simply run a /start command on the bot to start the process.
 
