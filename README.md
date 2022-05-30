@@ -133,6 +133,7 @@ We will be providing a formatted excel sheet with pre-defined fields that users 
 <img src="https://user-images.githubusercontent.com/52826683/171004590-70ddf63f-0125-4f17-a9f4-6d87fa77aa14.png" width="500" height="775">
 
 ## Mentor Matching - Video Submission
+This video succintly describes why ezWeb is needed, how we plan to implement our solution. It also includes plans for the expansion of our solution to a wider target audience.
 https://user-images.githubusercontent.com/52826683/171005905-3aca0b53-4e0e-4094-8b5b-f35c773ad9eb.mp4
 
 
