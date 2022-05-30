@@ -1,3 +1,33 @@
+- [Milestone 1 Submission](#milestone-1-submission)
+  * [Team ezWeb](#team-ezweb)
+  * [Motivation](#motivation)
+    + [Examples of what non-technically inclined person may be up against when deciding to create their own website:](#examples-of-what-non-technically-inclined-person-may-be-up-against-when-deciding-to-create-their-own-website-)
+  * [Our Solution](#our-solution)
+  * [User Story](#user-story)
+  * [Features](#features)
+    + [Telegram bot](#telegram-bot)
+      - [Workflow of the Telegram bot](#workflow-of-the-telegram-bot)
+      - [Content Modification](#content-modification)
+      - [Website analytics](#website-analytics)
+    + [Proposed Website Design Elements](#proposed-website-design-elements)
+      - [Hero banners](#hero-banners)
+      - [Block displays](#block-displays)
+      - ['About me' section](#-about-me--section)
+      - [Testimonials](#testimonials)
+      - ['Contact me' section](#-contact-me--section)
+    + [Upload of New Listings Data](#upload-of-new-listings-data)
+    + [Current Workflow](#current-workflow)
+    + [Mentor Matching - Poster Submission](#mentor-matching---poster-submission)
+    + [Mentor Matching - Video Submission](#mentor-matching---video-submission)
+    + [Timeline](#timeline)
+      - [Milestone 1 - Ideation (30 May) (Completed)](#milestone-1---ideation--30-may---completed-)
+        * [Milestone 1 - Poster Submission](#milestone-1---poster-submission)
+      - [Milestone 2 - Prototyping (27 Jun) (In Progress)](#milestone-2---prototyping--27-jun---in-progress-)
+      - [Milestone 3 - Extension (25 Jul) (To Be Confirmed)](#milestone-3---extension--25-jul---to-be-confirmed-)
+    + [Proof of Concept](#proof-of-concept)
+      - [Website Creation](#website-creation)
+      - [Managing/Update Websites](#managing-update-websites)
+
 # Milestone 1 Submission
 
 ## Team ezWeb
@@ -98,6 +128,14 @@ We will be providing a formatted excel sheet with pre-defined fields that users 
 
 ### Current Workflow
 ![Workflow2](https://user-images.githubusercontent.com/52826683/170938710-5419e72c-cbbf-4113-b394-90356ea8d6f7.jpg)
+
+### Mentor Matching - Poster Submission
+<img src="https://user-images.githubusercontent.com/52826683/171004590-70ddf63f-0125-4f17-a9f4-6d87fa77aa14.png" width="500" height="775">
+
+### Mentor Matching - Video Submission
+https://user-images.githubusercontent.com/52826683/171005905-3aca0b53-4e0e-4094-8b5b-f35c773ad9eb.mp4
+
+
 
 ### Timeline
 #### Milestone 1 - Ideation (30 May) (Completed)
