@@ -5,16 +5,11 @@ from telegram import *
 import requests
 import gspread
 import os
-
-# Setting up our logger
 import logging
 
-
 bot_token = os.environ.get('ezWeb_bot_token')
-
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
-
 # polls
 updater = Updater(token=bot_token, use_context=True)
 dispatcher = updater.dispatcher
