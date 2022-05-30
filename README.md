@@ -92,6 +92,10 @@ This section will arguably be the most important part of the website, where visi
 ### Upload of New Listings Data
 As agents will want to upload information about their past transactions, it will be more efficient for them to perform the upload via an excel sheet, where they will be able to fill in information in an excel file formatted by us. Upon including all relevant data about their portfolio, the excel file can then be submitted to our Telegram bot, which will then send the file to our database, where we will be processing the data to be updated on the website.
 
+We will be providing a formatted excel sheet with pre-defined fields that users just have to fill in.
+![Screenshot 2022-05-30 203013](https://user-images.githubusercontent.com/52826683/170992791-518b697d-13e0-4cbd-90ad-470da28e9bbf.jpg)
+
+
 ### Current Workflow
 ![Workflow2](https://user-images.githubusercontent.com/52826683/170938710-5419e72c-cbbf-4113-b394-90356ea8d6f7.jpg)
 
