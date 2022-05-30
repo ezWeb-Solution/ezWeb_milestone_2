@@ -117,6 +117,7 @@ Site-management | Link each entry in database to unique user, allow for updates 
 #### Milestone 2 - Prototyping (27 Jun) (In Progress)
 Task  | Description | Handled by | Date
 ------------- | ------------- | -- | ---
+Cloud Deployment | Deploy Telegram bot and site-generator using cloud services (Currently running locally) | Chengyue, Sean | 5 Jun
 Base website Design | Decide on base website features | Chengyue, Sean | 10 Jun
 Finalize Database | Switch to scalable database | Chengyue, Sean | 10 Jun
 One-page Template | Create a deployable one-page template | Chengyue | 12 Jun
