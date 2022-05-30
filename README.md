@@ -67,6 +67,7 @@ Task  | Description | Handled by | Complete by
 ------------- | ------------- | -- | ---
 System Design   | Create a workable system and workflow | Chengyue, Sean | 15 May
 Familiarisation | Complete courses on JavaScript, Node.js, React, Python, ExpressJs etc. | Chengyue, Sean | 22 May 
+Familiarise with Telegram bot API | Researched on optimal ways to implement Telegram bot | Sean | 22 May
 Implement Telegram bot  | Basic prompt/response flow | Sean | 22 May
 Familiarise with APIs and choosing proper platforms | Researched on the flow of website creation (Hosting, DNS, Database etc.) | Chengyue | 22 May
 Connect bot to database | Set up database and ensure successful connection | Sean | 23 May
