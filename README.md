@@ -79,34 +79,35 @@ Our Telegram bot has been set up to receive website creation requests, and captu
 #### Website Creation
 To start, navigate to @ezWebTest_bot to start the bot.
 
-![1](https://user-images.githubusercontent.com/52826683/170946015-acc9b552-d9af-4001-817e-14578df2d96c.jpg)
+
+<img src="https://user-images.githubusercontent.com/52826683/170946015-acc9b552-d9af-4001-817e-14578df2d96c.jpg" width="210" height="450">
 
 Inline message options will then be provided to the user to create a website or manage their current websites.
 
-![2](https://user-images.githubusercontent.com/52826683/170946029-9b0f39e6-c5bd-4e71-b218-8bd0bfef70b5.jpg)
+<img src="https://user-images.githubusercontent.com/52826683/170946029-9b0f39e6-c5bd-4e71-b218-8bd0bfef70b5.jpg" width="210" height="450">
 
 After clicking on create a website, the user will be prompted for a desired url as well as a description for the website.
 
-![3](https://user-images.githubusercontent.com/52826683/170946053-261ceb20-7a87-4fcb-bcb5-68e75df4f461.jpg)
+<img src="https://user-images.githubusercontent.com/52826683/170946053-261ceb20-7a87-4fcb-bcb5-68e75df4f461.jpg" width="210" height="450">
 
 Following which, the user will be prompted to confirm the description and url. Upon confirmation, the data will be sent to our database, where the data will then be retrived for their site to be generated.
 
-![4 (2)](https://user-images.githubusercontent.com/52826683/170946061-678cab1c-9e28-4129-8832-ada21b081767.jpg)
+<img src="https://user-images.githubusercontent.com/52826683/170946061-678cab1c-9e28-4129-8832-ada21b081767.jpg" width="210" height="450">
 
 #### Managing/Update Websites
 Users who want to update their websites can simply run a /start command on the bot to start the process.
 
-![5](https://user-images.githubusercontent.com/52826683/170946073-4c6a7eaf-cf64-4396-b9bc-de97fd2846f2.jpg)
+<img src="https://user-images.githubusercontent.com/52826683/170946073-4c6a7eaf-cf64-4396-b9bc-de97fd2846f2.jpg" width="210" height="450">
 
 **Manage my websites** option is chosen, and data is retrieved from the database to display all websites registered to the user.
 
-![6](https://user-images.githubusercontent.com/52826683/170946082-c5ff5f8b-a3d3-4a64-964b-bc7aada60dda.jpg)
+<img src="https://user-images.githubusercontent.com/52826683/170946082-c5ff5f8b-a3d3-4a64-964b-bc7aada60dda.jpg" width="210" height="450">
 
 After picking the website to be updated, the current information of the site will be retrieved and shown to the user. The user will then be prompted on what changes they would like to make to the site. The user will then be asked to confirm their changes.
 
-![7](https://user-images.githubusercontent.com/52826683/170946092-6c879864-c05b-4172-845f-314009062493.jpg)
+<img src="https://user-images.githubusercontent.com/52826683/170946092-6c879864-c05b-4172-845f-314009062493.jpg" width="210" height="450">
 
 Upon confirmation, the new data will be sent to the database and updated. 
 
-![8](https://user-images.githubusercontent.com/52826683/170946106-dbc3ab40-f97f-46a3-982d-89b3925feb9d.jpg)
+<img src="https://user-images.githubusercontent.com/52826683/170946106-dbc3ab40-f97f-46a3-982d-89b3925feb9d.jpg" width="210" height="450">
 
