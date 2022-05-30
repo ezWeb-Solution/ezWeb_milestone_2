@@ -62,16 +62,43 @@ Our Telegram bot will be designed in a manner such that it offers a fool-proof w
 ![Workflow2](https://user-images.githubusercontent.com/52826683/170938710-5419e72c-cbbf-4113-b394-90356ea8d6f7.jpg)
 
 ### Timeline
-#### Milestone 1 (30 May)
-Task  | Description | Handled by | Date
+#### Milestone 1 - Ideation (30 May) (Completed)
+Task  | Description | Handled by | Complete by
 ------------- | ------------- | -- | ---
 System Design   | Create a workable system and workflow | Chengyue, Sean | 15 May
-Familiarisation | Complete courses on JavaScript, Node.js, React, Python, etc. | Chengyue, Sean |16-22 May 
+Familiarisation | Complete courses on JavaScript, Node.js, React, Python, etc. | Chengyue, Sean | 22 May 
 Implement Telegram bot  | Basic prompt/response flow | Sean | 22 May
 Connect bot to database | Set up database and ensure successful connection | Sean | 23 May
 Response capture | Capture url and website description into database | Sean | 25 May
 UX improvements | Swap from forward-slash commands to user-friendly inline buttons | Sean | 27 May
 Site-managemenet | Link each entry in database to unique user, allow for updates requests | Sean | 29 May 
+
+#### Milestone 2 - Prototyping (27 Jun) (In Progress)
+Task  | Description | Handled by | Date
+------------- | ------------- | -- | ---
+Base website Design | Decide on base website features | Chengyue, Sean | 10 Jun
+Finalize Database | Switch to scalable database | Chengyue, Sean | 10 Jun
+One-page Template | Create a deployable one-page template | Chengyue | 12 Jun
+User Authentication | Authenticate users and link user data to their id | Sean |13 Jun
+URL Availability Check | Confirm URL availability with hosting platform | Sean | 15 Jun
+Integrate Relevant APIs | CrazyDomain domain set-up & Cloudways hosting API | Chengyue | 17 Jun
+Payment Capture | Prompt for payment to be made for website to be hosted | Sean | 21 Jun
+File Uploads | Allow for user to upload files via Telegram bot | Sean | 23 Jun
+Process Files | Backend to process uploaded files, followed by enacting updates | Chengyue | 25 Jun
+Update Requests | Ensure backend receives update requests and enact changes promptly | Chengyue, Sean | 26 Jun
+Documentation | All features implemented to be documented comprehensively | Chengyue, Sean | 27 Jun
+
+#### Milestone 3 - Extension (25 Jul) (To Be Confirmed)
+Task  | Description | Handled by | Date
+------------- | ------------- | -- | ---
+Website Analytics Tracking | Implement website backend system to capture web traffic | Chengyue | 5 Jul
+Website Analytics Display | Provide analytics to users in an easy-to-digest manner on Telegram | Chengyue, Sean | 8 Jul
+More Templates | Deploy more templates for users to pick from | Chengyue, Sean | 15 Jul
+Insurance Agents Templates | Expand target audience to insurance agents | Chengyue, Sean | 20 Jul
+Expand Customizability | Allow users greater customizability to their site | Chengyue, Sean | 22 Jul
+User Testing | Allow selected real estate agents to build their websites using ezWeb | Chengyue, Sean | 24 Jul
+
+
 
 ### Proof of Concept
 Our Telegram bot has been set up to receive website creation requests, and capture url/description data which is sent to our database. On the backend, we will be able to retrive this data and generate a simple website.
