@@ -79,7 +79,7 @@ Response capture | Capture url and website description into database | Sean | 25
 Automate simple site generation | Implement standard Wordpress site generation and connect site's server to domain | Chengyue | 26 May
 UX improvements | Swap from forward-slash commands to user-friendly inline buttons | Sean | 27 May
 Wrapping up of prototype | Connect the bot, the site, and the ezWeb backend. | Chengyue | 29 May
-Site-managemenet | Link each entry in database to unique user, allow for updates requests | Sean | 29 May 
+Site-management | Link each entry in database to unique user, allow for updates requests | Sean | 29 May 
 
 
 #### Milestone 2 - Prototyping (27 Jun) (In Progress)
