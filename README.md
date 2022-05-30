@@ -1,33 +1,36 @@
-# Milestone 1 Submission
+# Team ezWeb - Milestone 1 Submission
 
-  * [Team ezWeb](#team-ezweb)
-  * [Motivation](#motivation)
-    + [Examples of what non-technically inclined person may be up against when deciding to create their own website:](#examples-of-what-non-technically-inclined-person-may-be-up-against-when-deciding-to-create-their-own-website-)
-  * [Our Solution](#our-solution)
-  * [User Story](#user-story)
-  * [Features](#features)
-    + [Telegram bot](#telegram-bot)
-      - [Workflow of the Telegram bot](#workflow-of-the-telegram-bot)
-      - [Content Modification](#content-modification)
-      - [Website analytics](#website-analytics)
-    + [Proposed Website Design Elements](#proposed-website-design-elements)
-      - [Hero banners](#hero-banners)
-      - [Block displays](#block-displays)
-      - ['About me' section](#-about-me--section)
-      - [Testimonials](#testimonials)
-      - ['Contact me' section](#-contact-me--section)
-    + [Upload of New Listings Data](#upload-of-new-listings-data)
-    + [Current Workflow](#current-workflow)
-    + [Mentor Matching - Poster Submission](#mentor-matching---poster-submission)
-    + [Mentor Matching - Video Submission](#mentor-matching---video-submission)
-    + [Timeline](#timeline)
-      - [Milestone 1 - Ideation (30 May) (Completed)](#milestone-1---ideation--30-may---completed-)
-        * [Milestone 1 - Poster Submission](#milestone-1---poster-submission)
-      - [Milestone 2 - Prototyping (27 Jun) (In Progress)](#milestone-2---prototyping--27-jun---in-progress-)
-      - [Milestone 3 - Extension (25 Jul) (To Be Confirmed)](#milestone-3---extension--25-jul---to-be-confirmed-)
-    + [Proof of Concept](#proof-of-concept)
-      - [Website Creation](#website-creation)
-      - [Managing/Update Websites](#managing-update-websites)
+- [Team ezWeb](#team-ezweb)
+- [Motivation](#motivation)
+  * [Examples of what non-technically inclined person may be up against when deciding to create their own website:](#examples-of-what-non-technically-inclined-person-may-be-up-against-when-deciding-to-create-their-own-website-)
+- [Our Solution](#our-solution)
+- [User Story](#user-story)
+- [Features](#features)
+  * [Telegram bot](#telegram-bot)
+    + [Workflow of the Telegram bot](#workflow-of-the-telegram-bot)
+    + [Content Modification](#content-modification)
+    + [Website analytics](#website-analytics)
+  * [Proposed Website Design Elements](#proposed-website-design-elements)
+    + [Hero banners](#hero-banners)
+    + [Block displays](#block-displays)
+    + ['About me' section](#-about-me--section)
+    + [Testimonials](#testimonials)
+    + ['Contact me' section](#-contact-me--section)
+  * [Upload of New Listings Data](#upload-of-new-listings-data)
+  * [Current Workflow](#current-workflow)
+- [Mentor Matching - Poster Submission](#mentor-matching---poster-submission)
+- [Mentor Matching - Video Submission](#mentor-matching---video-submission)
+- [Timeline](#timeline)
+  * [Milestone 1 - Ideation (30 May) (Completed)](#milestone-1---ideation--30-may---completed-)
+    + [Milestone 1 - Poster Submission](#milestone-1---poster-submission)
+  * [Milestone 2 - Prototyping (27 Jun) (In Progress)](#milestone-2---prototyping--27-jun---in-progress-)
+  * [Milestone 3 - Extension (25 Jul) (To Be Confirmed)](#milestone-3---extension--25-jul---to-be-confirmed-)
+- [Proof of Concept](#proof-of-concept)
+  * [Website Creation](#website-creation)
+  * [Managing/Update Websites](#managing-update-websites)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 
 ## Team ezWeb
 Team members: Li Chengyue & Sean Spencer Manik
@@ -128,16 +131,16 @@ We will be providing a formatted excel sheet with pre-defined fields that users 
 ### Current Workflow
 ![Workflow2](https://user-images.githubusercontent.com/52826683/170938710-5419e72c-cbbf-4113-b394-90356ea8d6f7.jpg)
 
-### Mentor Matching - Poster Submission
+## Mentor Matching - Poster Submission
 <img src="https://user-images.githubusercontent.com/52826683/171004590-70ddf63f-0125-4f17-a9f4-6d87fa77aa14.png" width="500" height="775">
 
-### Mentor Matching - Video Submission
+## Mentor Matching - Video Submission
 https://user-images.githubusercontent.com/52826683/171005905-3aca0b53-4e0e-4094-8b5b-f35c773ad9eb.mp4
 
 
 
-### Timeline
-#### Milestone 1 - Ideation (30 May) (Completed)
+## Timeline
+### Milestone 1 - Ideation (30 May) (Completed)
 Task  | Description | Handled by | Complete by
 ------------- | ------------- | -- | ---
 System Design   | Create a workable system and workflow | Chengyue, Sean | 15 May
@@ -155,10 +158,10 @@ Wrapping up of prototype | Connect the bot, the site, and the ezWeb backend. | C
 Site-management | Link each entry in database to unique user, allow for updates requests | Sean | 29 May 
 
 
-##### Milestone 1 - Poster Submission 
+#### Milestone 1 - Poster Submission 
 <img src="https://user-images.githubusercontent.com/52826683/171003935-5607d0ef-b251-477f-aae3-d7b960da2a98.png" width="500" height="775">
 
-#### Milestone 2 - Prototyping (27 Jun) (In Progress)
+### Milestone 2 - Prototyping (27 Jun) (In Progress)
 Task  | Description | Handled by | Date
 ------------- | ------------- | -- | ---
 Cloud Deployment | Deploy Telegram bot and site-generator using cloud services (Currently running locally) | Chengyue, Sean | 5 Jun
@@ -174,7 +177,7 @@ File Uploads | Allow for user to upload files via Telegram bot | Sean | 23 Jun
 Process Files | Backend to process uploaded files, followed by enacting updates | Chengyue | 25 Jun
 Documentation | All features implemented to be documented comprehensively | Chengyue, Sean | 27 Jun
 
-#### Milestone 3 - Extension (25 Jul) (To Be Confirmed)
+### Milestone 3 - Extension (25 Jul) (To Be Confirmed)
 Task  | Description | Handled by | Date
 ------------- | ------------- | -- | ---
 Website Analytics Tracking | Implement website backend system to capture web traffic | Chengyue | 5 Jul
@@ -186,10 +189,10 @@ User Testing | Allow selected real estate agents to build their websites using e
 
 
 
-### Proof of Concept
+## Proof of Concept
 Our Telegram bot has been set up to receive website creation requests, and capture url/description data which is sent to our database. On the backend, we will be able to retrive this data and generate a simple website on the given url.
 
-#### Website Creation
+### Website Creation
 To start, navigate to @ezWebTest_bot to start the bot.
 
 
@@ -212,7 +215,7 @@ Site will then be created. (The following is a placeholder sample site that is c
 ![84b11a33-a165-48ef-b6d4-169e7cde196f](https://user-images.githubusercontent.com/52826683/170981704-822a363f-7159-4e83-a825-5f9ba39d80e6.jpg)
 
 
-#### Managing/Update Websites
+### Managing/Update Websites
 Users who want to update their websites can simply run a /start command on the bot to start the process.
 
 <img src="https://user-images.githubusercontent.com/52826683/170946073-4c6a7eaf-cf64-4396-b9bc-de97fd2846f2.jpg" width="210" height="450">
