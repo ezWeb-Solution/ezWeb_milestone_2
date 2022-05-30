@@ -60,3 +60,18 @@ Our Telegram bot will be designed in a manner such that it offers a fool-proof w
 
 #### Full workflow
 ![Workflow2](https://user-images.githubusercontent.com/52826683/170938710-5419e72c-cbbf-4113-b394-90356ea8d6f7.jpg)
+
+### Timeline
+#### Milestone 1 (30 May)
+Task  | Description | Handled by | Date
+------------- | ------------- | -- | ---
+System Design   | Create a workable system and workflow | Chengyue, Sean | 15 May
+Familiarisation | Complete courses on JavaScript, Node.js, React, Python, etc. | Chengyue, Sean |16-22 May 
+Implement Telegram bot  | Basic prompt/response flow | Sean | 22 May
+Connect bot to database | Set up database and ensure successful connection | Sean | 23 May
+Response capture | Capture url and website description into database | Sean | 25 May
+UX improvements | Swap from forward-slash commands to user-friendly inline buttons | Sean | 27 May
+Site-managemenet | Link each entry in database to unique user, allow for updates requests | Sean | 29 May 
+
+#### Proof of concept:
+
