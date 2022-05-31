@@ -23,12 +23,13 @@
 - [Timeline](#timeline)
   * [Milestone 1 - Ideation (30 May) (Completed)](#milestone-1---ideation--30-may---completed-)
     + [Milestone 1 - Poster Submission](#milestone-1---poster-submission)
+    + [Milestone 1 - Project Log](#milestone-1---project-log)
+    + [Milestone 1 - Prototype Demo](#milestone-1---prototype-demo)
   * [Milestone 2 - Prototyping (27 Jun) (In Progress)](#milestone-2---prototyping--27-jun---in-progress-)
   * [Milestone 3 - Extension (25 Jul) (To Be Confirmed)](#milestone-3---extension--25-jul---to-be-confirmed-)
 - [Proof of Concept](#proof-of-concept)
   * [Website Creation](#website-creation)
   * [Managing/Update Websites](#managing-update-websites)
-
 
 ## Team ezWeb
 Team members: Li Chengyue & Sean Spencer Manik
@@ -162,6 +163,12 @@ Site-management | Link each entry in database to unique user, allow for updates 
 
 #### Milestone 1 - Project Log
 <a href="https://docs.google.com/spreadsheets/d/1PExAhXqZ7PFh2cHDoLcatWTSk98zk-yEUatYOD4pTbw/edit?usp=sharing">Project Log</a>
+
+#### Milestone 1 - Prototype Demo
+Click the following link to view our prototype demo. In this demo, we sent a request to create a new website through the telegram bot, which then sends the request's data to our database, where our backend retrieves the data to generate a simple site based on the given url.
+<a href="https://drive.google.com/file/d/1AVJie7noZrFCSSrcqmKfIJInRWCDBHRk/view"><img src="https://user-images.githubusercontent.com/52826683/171210891-5a38f92e-99ee-40e8-ae41-cf54c3de57fb.jpg">
+</a>
+
 
 ### Milestone 2 - Prototyping (27 Jun) (In Progress)
 Task  | Description | Handled by | Date
