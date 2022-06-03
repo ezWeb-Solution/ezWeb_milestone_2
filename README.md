@@ -1,3 +1,4 @@
+# PLEASE PM @cylellll IF YOU WISH TO TRY THE BOT
 # Team ezWeb - Milestone 1 Submission
 
 - [Team ezWeb](#team-ezweb)
