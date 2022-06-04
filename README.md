@@ -1,4 +1,4 @@
-# PLEASE PM @cylellll IF YOU WISH TO TRY THE BOT
+# PLEASE PM @cylellll IF YOU WISH TO TRY THE BOT, YOU WILL BE ABLE TO CREATE AND MANAGE A BLOG USING THE BOT IN REAL TIME :)
 # Team ezWeb - Milestone 1 Submission
 
 - [Team ezWeb](#team-ezweb)
