@@ -1,5 +1,5 @@
 # IMPORTANT!!! PLEASE PM @cylellll ON TELEGRAM IF YOU WISH TO TRY THE BOT, YOU WILL BE ABLE TO CREATE AND MANAGE A BLOG USING THE BOT IN REAL TIME :)
-# Team ezWeb - Milestone 1 Submission
+# Team ezWeb - Milestone 2 Submission
 
 - [Team ezWeb](#team-ezweb)
 - [Motivation](#motivation)
