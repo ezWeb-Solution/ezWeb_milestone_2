@@ -1,7 +1,7 @@
 # IMPORTANT!!! PLEASE PM @cylellll ON TELEGRAM IF YOU WISH TO TRY THE BOT, YOU WILL BE ABLE TO CREATE AND MANAGE A BLOG USING THE BOT IN REAL TIME :)
-# Team ezWeb - Milestone 2 Submission
+# Team ezWeb
 
-- [Team ezWeb - Milestone 2 Submission](#team-ezweb---milestone-2-submission)
+- [Team ezWeb](#team-ezweb)
   * [Team ezWeb](#team-ezweb)
   * [Motivation](#motivation)
     + [Examples of what non-technically inclined person may be up against when deciding to create their own website:](#examples-of-what-non-technically-inclined-person-may-be-up-against-when-deciding-to-create-their-own-website-)
