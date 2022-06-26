@@ -171,21 +171,22 @@ Click the following link to view our prototype demo. In this demo, we sent a req
 </a>
 
 
-### Milestone 2 - Prototyping (27 Jun) (In Progress)
+### Milestone 2 - Prototyping (27 Jun) (Completed)
 Task  | Description | Handled by | Date
 ------------- | ------------- | -- | ---
-Cloud Deployment | Deploy Telegram bot and site-generator using cloud services (Currently running locally) | Chengyue, Sean | 5 Jun
-Base website Design | Decide on base website features | Chengyue, Sean | 10 Jun
-Finalize Database | Switch to scalable database | Chengyue, Sean | 10 Jun
-One-page Template | Create a deployable one-page template | Chengyue | 12 Jun
-User Authentication | Authenticate users and link user data to their id | Sean |13 Jun
-URL Availability Check | Confirm URL availability with hosting platform | Sean | 15 Jun
-Update Requests | Ensure backend receives update requests and enact changes promptly | Chengyue | 16 Jun
-Integrate Relevant APIs | CrazyDomain domain set-up & Cloudways hosting API | Chengyue | 17 Jun
-Payment Capture | Prompt for payment to be made for website to be hosted | Sean | 21 Jun
-File Uploads | Allow for user to upload files via Telegram bot | Sean | 23 Jun
-Process Files | Backend to process uploaded files, followed by enacting updates | Chengyue | 25 Jun
-Documentation | All features implemented to be documented comprehensively | Chengyue, Sean | 27 Jun
+Finalize Website Features | Picked out main website feature to add functionality for | Chengyue, Sean | 5 Jun
+Integrate Telegram Payments | Integrate Stripe payments to allow users to make payment via bot | Sean | 7 Jun
+Enabled Payment Test Mode | Payments are set to test mode, allowing for test payments to be made | Sean | 10 Jun
+URL Availability Checker | Allowed availability of urls and price to be checked and returned | Chengyue, Sean | 11 Jun
+Added Menu to Telegram Bot | Added menu to Telegram bot for easy navigation | Sean | 12 Jun
+Data Structure Optimization | Completed Data Structures and Algorithms Course on Python | Sean | 14 Jun
+Added Posts Function | Users are now able to make posts on their site via Telegram bot | Chengyue, Sean | 15 Jun
+Enabled Photo Uploads | Telegram bot is now able to capture photo uploads made by users | Sean | 15 June
+Added Listings Function | Users are now able to create new listings on their site via Telegram bot | Chengyue, Sean | 20 Jun
+Improve User Experience | Prompt/Response flow improved to make interactions more user friendly | Sean | 22 Jun
+Added Agent Details | Users are now able to add agent details onto their site via Telegram Bot | Chengyue, Sean | 25 Jun
+Bot Testing | Bot testing to be done throughout the entirety of adding new functions | Chengyue, Sean | 27 Jun
+
 
 ### Milestone 3 - Extension (25 Jul) (To Be Confirmed)
 Task  | Description | Handled by | Date
