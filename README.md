@@ -2,7 +2,7 @@
 # Team ezWeb
 
 - [Team ezWeb](#team-ezweb)
-  * [Team ezWeb](#team-ezweb)
+  * [Team ezWeb](#team-ezweb-1)
   * [Motivation](#motivation)
     + [Examples of what non-technically inclined person may be up against when deciding to create their own website:](#examples-of-what-non-technically-inclined-person-may-be-up-against-when-deciding-to-create-their-own-website-)
   * [Our Solution](#our-solution)
