@@ -2,7 +2,7 @@
 # Team ezWeb
 
 - [Team ezWeb](#team-ezweb)
-  * [Team ezWeb](#team-ezweb-1)
+  * [Project Info](#project-info)
   * [Motivation](#motivation)
     + [Examples of what non-technically inclined person may be up against when deciding to create their own website:](#examples-of-what-non-technically-inclined-person-may-be-up-against-when-deciding-to-create-their-own-website-)
   * [Our Solution](#our-solution)
@@ -41,7 +41,7 @@
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
 
-## Team ezWeb
+## Project Info
 Team members: Li Chengyue & Sean Spencer Manik
 
 Proposed level of achievement: Artemis
