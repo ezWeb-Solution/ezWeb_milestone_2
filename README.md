@@ -225,8 +225,7 @@ Following which, the user will be prompted to confirm the description and url. U
 
 Site will then be created. (The following is a placeholder sample site that is created with the desired url of the user)
 
-![84b11a33-a165-48ef-b6d4-169e7cde196f](https://user-images.githubusercontent.com/52826683/170981704-822a363f-7159-4e83-a825-5f9ba39d80e6.jpg)
-
+![Screenshot 2022-06-26 233138](https://user-images.githubusercontent.com/52826683/175821725-bc4c690a-5094-4688-86f9-571d959ace1d.jpg)
 
 ### Managing/Update Websites
 Users who want to update their websites can simply run a /start command on the bot to start the process.
@@ -257,6 +256,7 @@ Through the Telegram bot, users can click on the 'Manage Websites' option to add
 - Email Address (Input string)
 - Name (Input string)
 
+
 These agent details are designed to allow for visitors to contact the agent easily if they are interested in paying for the services of the agent. The following is how the generated site will look like after the user has submitted their agent details.
 ![Agent Details](https://user-images.githubusercontent.com/52826683/175799578-20c1da13-9fef-49bd-81bf-7805e9e3f442.jpg)
 Link to test-generated site: https://wordpress-296143-2675827.cloudwaysapps.com/
@@ -271,6 +271,8 @@ Through the Telegram bot, users can click on the 'Manage Websites' option to add
 - Content (Input String)
 
 The following is an example of what a post may look like on the home page.
+
+
 ![Posts](https://user-images.githubusercontent.com/52826683/175799588-45a6cead-d4c1-4765-a765-73d0e95622df.jpg)
 Upon clicking into the post, the following is what visitors will see.
 ![Screenshot 2022-06-26 154718](https://user-images.githubusercontent.com/52826683/175804782-863dca83-21f7-4e03-a5bd-318b339f7ae1.jpg)
@@ -278,6 +280,7 @@ Link to test-generated listing: https://wordpress-296143-2675827.cloudwaysapps.c
 
 
 ### Listings
+
 Through the Telegram bot, users can click on the 'Manage Websites' option to add, delete, or edit(Work in progress) their listings. Currently, the following information is obtained from the user via the Telegram bot.
 - Title (Input string)
 - Property Details, such as property type, number of rooms, address, tenure, total area, floor, price, and number of storeys (Input string)
@@ -285,7 +288,10 @@ Through the Telegram bot, users can click on the 'Manage Websites' option to add
 - Featured photo (.jpg/.png upload)
 - Extra display photos (.jpg/.png upload)
 
+
 The following is how a listing may look like on the home page.
+
+
 ![Listings](https://user-images.githubusercontent.com/52826683/175799589-3cde12e2-25a8-42a0-bfd2-fe439d9eb435.jpg)
 After clicking into the listing, the user will be brought to the listing's page which will provide a much more comprehensive introduction to the property.
 ![Screenshot 2022-06-26 155204](https://user-images.githubusercontent.com/52826683/175804958-7df66aed-2a5f-45b0-b672-e01181000687.jpg)
