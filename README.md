@@ -191,8 +191,10 @@ Bot Testing | Bot testing to be done throughout the entirety of adding new funct
 ### Milestone 3 - Extension (25 Jul) (To Be Confirmed)
 Task  | Description | Handled by | Date
 ------------- | ------------- | -- | ---
-Website Analytics Tracking | Implement website backend system to capture web traffic | Chengyue | 5 Jul
-Website Analytics Display | Provide analytics to users in an easy-to-digest manner on Telegram | Chengyue, Sean | 8 Jul
+Add Edit Listings Function | Allow users to edit listings | Sean, Chengyue | 5 Jul
+Interview Real Estate Agents | Find out what the current pain points are, and what we have missed | 10 Jul
+Website Analytics Tracking | Implement website backend system to capture web traffic | Chengyue | 10 Jul
+Website Analytics Display | Provide analytics to users in an easy-to-digest manner on Telegram | Chengyue, Sean | 12 Jul
 More Templates | Deploy more templates for users to pick from | Chengyue, Sean | 15 Jul
 Insurance Agents Templates | Expand target audience to insurance agents | Chengyue, Sean | 20 Jul
 Expand Customizability | Allow users greater customizability to their site | Chengyue, Sean | 22 Jul
