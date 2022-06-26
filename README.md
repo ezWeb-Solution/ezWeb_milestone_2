@@ -243,3 +243,19 @@ Upon confirmation, the new data will be sent to the database and updated.
 
 <img src="https://user-images.githubusercontent.com/52826683/170946106-dbc3ab40-f97f-46a3-982d-89b3925feb9d.jpg" width="210" height="450">
 
+## Website Features (As of Milestone 2)
+As of milestone 2, we have added functionalities for agent details, posts, and listings to be displayed in an aesthetically pleasing and professional manner to site visitors. When visiting the links below, it is recommended for you to use a laptop to view the website as the site is not yet compatible with mobile phone devices.
+
+### Agent Details
+![Agent Details](https://user-images.githubusercontent.com/52826683/175799578-20c1da13-9fef-49bd-81bf-7805e9e3f442.jpg)
+### About Me
+
+![About Me](https://user-images.githubusercontent.com/52826683/175799584-414a1afb-5e2f-4097-9b4b-1f39e5b0577f.jpg)
+### Posts
+
+![Posts](https://user-images.githubusercontent.com/52826683/175799588-45a6cead-d4c1-4765-a765-73d0e95622df.jpg)
+### Listings
+![Listings](https://user-images.githubusercontent.com/52826683/175799589-3cde12e2-25a8-42a0-bfd2-fe439d9eb435.jpg)
+
+
+
