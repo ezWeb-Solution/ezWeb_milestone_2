@@ -247,6 +247,7 @@ Upon confirmation, the new data will be sent to the database and updated.
 As of milestone 2, we have added functionalities for agent details, posts, and listings to be displayed in an aesthetically pleasing and professional manner to site visitors. When visiting the links below, it is recommended for you to use a laptop to view the website as the site is not yet compatible with mobile phone devices.
 
 ### Agent Details
+Through the Telegram bot, users can click on the 'Manage Websites' option to add their agent details. Currently, the following information is obtained from the user via the Telegram bot.
 ![Agent Details](https://user-images.githubusercontent.com/52826683/175799578-20c1da13-9fef-49bd-81bf-7805e9e3f442.jpg)
 ### About Me
 
