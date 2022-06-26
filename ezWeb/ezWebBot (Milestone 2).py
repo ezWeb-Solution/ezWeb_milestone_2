@@ -8,9 +8,8 @@ from datetime import date
 # Setting up our logger
 import logging
 
-bot_token = "5100324528:AAGsyScQPbxhMFDZ-Qepyw9jRD1pZIXY9jc"
 
-# bot_token = os.environ.get('ezWeb_bot_token')
+bot_token = os.environ.get('ezWeb_bot_token')
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
