@@ -1,36 +1,46 @@
 # IMPORTANT!!! PLEASE PM @cylellll ON TELEGRAM IF YOU WISH TO TRY THE BOT, YOU WILL BE ABLE TO CREATE AND MANAGE A BLOG USING THE BOT IN REAL TIME :)
 # Team ezWeb - Milestone 2 Submission
 
-- [Team ezWeb](#team-ezweb)
-- [Motivation](#motivation)
-  * [Examples of what non-technically inclined person may be up against when deciding to create their own website:](#examples-of-what-non-technically-inclined-person-may-be-up-against-when-deciding-to-create-their-own-website-)
-- [Our Solution](#our-solution)
-- [User Story](#user-story)
-- [Features](#features)
-  * [Telegram bot](#telegram-bot)
-    + [Workflow of the Telegram bot](#workflow-of-the-telegram-bot)
-    + [Content Modification](#content-modification)
-    + [Website analytics](#website-analytics)
-  * [Proposed Website Design Elements](#proposed-website-design-elements)
-    + [Hero banners](#hero-banners)
-    + [Block displays](#block-displays)
-    + ['About me' section](#-about-me--section)
-    + [Testimonials](#testimonials)
-    + ['Contact me' section](#-contact-me--section)
-  * [Upload of New Listings Data](#upload-of-new-listings-data)
-  * [Current Workflow](#current-workflow)
-- [Mentor Matching - Poster Submission](#mentor-matching---poster-submission)
-- [Mentor Matching - Video Submission](#mentor-matching---video-submission)
-- [Timeline](#timeline)
-  * [Milestone 1 - Ideation (30 May) (Completed)](#milestone-1---ideation--30-may---completed-)
-    + [Milestone 1 - Poster Submission](#milestone-1---poster-submission)
-    + [Milestone 1 - Project Log](#milestone-1---project-log)
-    + [Milestone 1 - Prototype Demo](#milestone-1---prototype-demo)
-  * [Milestone 2 - Prototyping (27 Jun) (In Progress)](#milestone-2---prototyping--27-jun---in-progress-)
-  * [Milestone 3 - Extension (25 Jul) (To Be Confirmed)](#milestone-3---extension--25-jul---to-be-confirmed-)
-- [Proof of Concept](#proof-of-concept)
-  * [Website Creation](#website-creation)
-  * [Managing/Update Websites](#managing-update-websites)
+- [IMPORTANT!!! PLEASE PM @cylellll ON TELEGRAM IF YOU WISH TO TRY THE BOT, YOU WILL BE ABLE TO CREATE AND MANAGE A BLOG USING THE BOT IN REAL TIME :)](#important----please-pm--cylellll-on-telegram-if-you-wish-to-try-the-bot--you-will-be-able-to-create-and-manage-a-blog-using-the-bot-in-real-time---)
+- [Team ezWeb - Milestone 2 Submission](#team-ezweb---milestone-2-submission)
+  * [Team ezWeb](#team-ezweb)
+  * [Motivation](#motivation)
+    + [Examples of what non-technically inclined person may be up against when deciding to create their own website:](#examples-of-what-non-technically-inclined-person-may-be-up-against-when-deciding-to-create-their-own-website-)
+  * [Our Solution](#our-solution)
+  * [User Story](#user-story)
+  * [Features](#features)
+    + [Telegram bot](#telegram-bot)
+      - [Workflow of the Telegram bot](#workflow-of-the-telegram-bot)
+      - [Content Modification](#content-modification)
+      - [Website analytics](#website-analytics)
+    + [Proposed Website Design Elements](#proposed-website-design-elements)
+      - [Hero banners](#hero-banners)
+      - [Block displays](#block-displays)
+      - ['About me' section](#-about-me--section)
+      - [Testimonials](#testimonials)
+      - ['Contact me' section](#-contact-me--section)
+    + [Upload of New Listings Data](#upload-of-new-listings-data)
+    + [Current Workflow](#current-workflow)
+  * [Mentor Matching - Poster Submission](#mentor-matching---poster-submission)
+  * [Mentor Matching - Video Submission](#mentor-matching---video-submission)
+  * [Timeline](#timeline)
+    + [Milestone 1 - Ideation (30 May) (Completed)](#milestone-1---ideation--30-may---completed-)
+      - [Milestone 1 - Poster Submission](#milestone-1---poster-submission)
+      - [Milestone 1 - Project Log](#milestone-1---project-log)
+      - [Milestone 1 - Prototype Demo](#milestone-1---prototype-demo)
+    + [Milestone 2 - Prototyping (27 Jun) (Completed)](#milestone-2---prototyping--27-jun---completed-)
+    + [Milestone 3 - Extension (25 Jul) (To Be Confirmed)](#milestone-3---extension--25-jul---to-be-confirmed-)
+  * [Proof of Concept](#proof-of-concept)
+    + [Website Creation](#website-creation)
+    + [Managing/Update Websites](#managing-update-websites)
+  * [Website Features (As of Milestone 2)](#website-features--as-of-milestone-2-)
+    + [Agent Details](#agent-details)
+    + [About Me](#about-me)
+    + [Posts](#posts)
+    + [Listings](#listings)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 
 ## Team ezWeb
 Team members: Li Chengyue & Sean Spencer Manik
@@ -260,11 +270,13 @@ Through the Telegram bot, users can click on the 'Manage Websites' option to add
 These agent details are designed to allow for visitors to contact the agent easily if they are interested in paying for the services of the agent. The following is how the generated site will look like after the user has submitted their agent details.
 ![Agent Details](https://user-images.githubusercontent.com/52826683/175799578-20c1da13-9fef-49bd-81bf-7805e9e3f442.jpg)
 Link to test-generated site: https://wordpress-296143-2675827.cloudwaysapps.com/
-
+<br />
+<br />
 ### About Me
 Users are able to add their About Me section through providing a string of text to the Telegram bot. Which will serve as a way for visitors to get to know the agents on a more personal level. The following is an how the About Me section will look like.
 ![About Me](https://user-images.githubusercontent.com/52826683/175799584-414a1afb-5e2f-4097-9b4b-1f39e5b0577f.jpg)
-
+<br />
+<br />
 ### Posts
 Through the Telegram bot, users can click on the 'Manage Websites' option to add, delete, or edit their posts. Currently, the following information is obtained from the user via the Telegram bot.
 - Title (Input string)
@@ -277,8 +289,8 @@ The following is an example of what a post may look like on the home page.
 Upon clicking into the post, the following is what visitors will see.
 ![Screenshot 2022-06-26 154718](https://user-images.githubusercontent.com/52826683/175804782-863dca83-21f7-4e03-a5bd-318b339f7ae1.jpg)
 Link to test-generated listing: https://wordpress-296143-2675827.cloudwaysapps.com/hello-world/
-
-
+<br />
+<br />
 ### Listings
 
 Through the Telegram bot, users can click on the 'Manage Websites' option to add, delete, or edit(Work in progress) their listings. Currently, the following information is obtained from the user via the Telegram bot.
