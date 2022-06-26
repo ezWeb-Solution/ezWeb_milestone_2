@@ -248,15 +248,46 @@ As of milestone 2, we have added functionalities for agent details, posts, and l
 
 ### Agent Details
 Through the Telegram bot, users can click on the 'Manage Websites' option to add their agent details. Currently, the following information is obtained from the user via the Telegram bot.
+- Two agent pictures (.jpg/.png upload)
+- About Me (Input string)
+- Contact Details (Input string)
+- Agent Quote (Input string)
+- Email Address (Input string)
+- Name (Input string)
+
+These agent details are designed to allow for visitors to contact the agent easily if they are interested in paying for the services of the agent. The following is how the generated site will look like after the user has submitted their agent details.
 ![Agent Details](https://user-images.githubusercontent.com/52826683/175799578-20c1da13-9fef-49bd-81bf-7805e9e3f442.jpg)
+Link to test-generated site: https://wordpress-296143-2675827.cloudwaysapps.com/
+
 ### About Me
-
+Users are able to add their About Me section through providing a string of text to the Telegram bot. Which will serve as a way for visitors to get to know the agents on a more personal level. The following is an how the About Me section will look like.
 ![About Me](https://user-images.githubusercontent.com/52826683/175799584-414a1afb-5e2f-4097-9b4b-1f39e5b0577f.jpg)
+
 ### Posts
+Through the Telegram bot, users can click on the 'Manage Websites' option to add, delete, or edit their posts. Currently, the following information is obtained from the user via the Telegram bot.
+- Title (Input string)
+- Content (Input String)
 
+The following is an example of what a post may look like on the home page.
 ![Posts](https://user-images.githubusercontent.com/52826683/175799588-45a6cead-d4c1-4765-a765-73d0e95622df.jpg)
-### Listings
-![Listings](https://user-images.githubusercontent.com/52826683/175799589-3cde12e2-25a8-42a0-bfd2-fe439d9eb435.jpg)
+Upon clicking into the post, the following is what visitors will see.
+![Screenshot 2022-06-26 154718](https://user-images.githubusercontent.com/52826683/175804782-863dca83-21f7-4e03-a5bd-318b339f7ae1.jpg)
+Link to test-generated listing: https://wordpress-296143-2675827.cloudwaysapps.com/hello-world/
 
+
+### Listings
+Through the Telegram bot, users can click on the 'Manage Websites' option to add, delete, or edit(Work in progress) their listings. Currently, the following information is obtained from the user via the Telegram bot.
+- Title (Input string)
+- Property Details, such as property type, number of rooms, address, tenure, total area, floor, price, and number of storeys (Input string)
+- Description (Input string)
+- Featured photo (.jpg/.png upload)
+- Extra display photos (.jpg/.png upload)
+
+The following is how a listing may look like on the home page.
+![Listings](https://user-images.githubusercontent.com/52826683/175799589-3cde12e2-25a8-42a0-bfd2-fe439d9eb435.jpg)
+After clicking into the listing, the user will be brought to the listing's page which will provide a much more comprehensive introduction to the property.
+![Screenshot 2022-06-26 155204](https://user-images.githubusercontent.com/52826683/175804958-7df66aed-2a5f-45b0-b672-e01181000687.jpg)
+![Screenshot 2022-06-26 155212](https://user-images.githubusercontent.com/52826683/175804960-03b8a8c2-139f-4e51-bffa-d467226068ba.jpg)
+Link to test-generated listing: https://wordpress-296143-2675827.cloudwaysapps.com/listing/gg/
 
 
