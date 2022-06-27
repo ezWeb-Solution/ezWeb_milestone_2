@@ -17,15 +17,15 @@
   * [Proposed Website Design Elements](#proposed-website-design-elements)
     + [Hero banners](#hero-banners)
     + [Block displays](#block-displays)
-    + ['About me' section](#-about-me--section)
+    + [About me section](#about-me-section)
     + [Testimonials](#testimonials)
-    + ['Contact me' section](#-contact-me--section)
+    + [Contact me section](#contact-me-section)
   * [Upload of New Listings Data](#upload-of-new-listings-data)
   * [Current Workflow](#current-workflow)
 - [Mentor Matching - Poster Submission](#mentor-matching---poster-submission)
 - [Mentor Matching - Video Submission](#mentor-matching---video-submission)
 - [Timeline](#timeline)
-  * [Milestone 1 - Ideation (30 May) (Completed)](#milestone-1---ideation--30-may---completed-)
+  * [Milestone 1 - Ideation - 30 May - Completed](#milestone-1---ideation---30-may---completed)
     + [Milestone 1 - Poster Submission](#milestone-1---poster-submission)
     + [Milestone 1 - Project Log](#milestone-1---project-log)
     + [Milestone 1 - Prototype Demo](#milestone-1---prototype-demo)
@@ -38,7 +38,7 @@
       - [Feedback Received](#feedback-received)
         * [Unintuitive Navigation](#unintuitive-navigation)
         * [Unable to Test](#unable-to-test)
-  * [Milestone 2 - Prototyping (27 Jun) (Completed)](#milestone-2---prototyping--27-jun---completed-)
+  * [Milestone 2 - Prototyping - 27 Jun - Completed](#milestone-2---prototyping---27-jun---completed)
     + [Milestone 2 - Poster Submission](#milestone-2---poster-submission)
     + [Milestone 2 - Project Log](#milestone-2---project-log)
     + [Post Milestone 2 Reflections](#post-milestone-2-reflections)
@@ -48,7 +48,7 @@
         * [Edit Agent Details](#edit-agent-details)
         * [Agent Interviews](#agent-interviews)
       - [Feedback Received](#feedback-received-1)
-  * [Milestone 3 - Extension (25 Jul) (To Be Confirmed)](#milestone-3---extension--25-jul---to-be-confirmed-)
+  * [Milestone 3 - Extension - 25 Jul - To Be Confirmed](#milestone-3---extension---25-jul---to-be-confirmed)
 - [Software Engineering Practices](#software-engineering-practices)
   * [Incremental Code Development](#incremental-code-development)
   * [Weekly Code Review](#weekly-code-review)
@@ -57,24 +57,20 @@
   * [CI/CD](#ci-cd)
   * [Testing](#testing)
     + [Regression Testing](#regression-testing)
-    + [Unit Testing (Manual)](#unit-testing--manual-)
+    + [Unit Testing - Manual](#unit-testing---manual)
     + [Integration Testing](#integration-testing)
     + [User Testing](#user-testing)
 - [Working Prototype](#working-prototype)
   * [Website Creation](#website-creation)
   * [Update Website Description](#update-website-description)
   * [Add Agent Details](#add-agent-details)
-  * [Create Posts/Edit Posts/Delete Posts](#create-posts-edit-posts-delete-posts)
-  * [Create Listings/Edit Listings/Delete Listings](#create-listings-edit-listings-delete-listings)
-- [Website Features (As of Milestone 2)](#website-features--as-of-milestone-2-)
+  * [Create Posts - Edit Posts - Delete Posts](#create-posts---edit-posts---delete-posts)
+  * [Create Listings - Edit Listings - Delete Listings](#create-listings---edit-listings---delete-listings)
+- [Website Features - As of Milestone 2](#website-features---as-of-milestone-2)
   * [Agent Details](#agent-details)
   * [About Me](#about-me)
   * [Posts](#posts)
   * [Listings](#listings)
-
-<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
-
-
 
 
 # Project Info
@@ -159,7 +155,7 @@ Example of a hero banner, taken from Oceana.org.
 ### Block displays
 Block displays should be used to neatly display a list of properties that the agent has successfully transacted. This manner of display will allow for visitors to be able to get a clear idea of the volume of transactions that the agent has processed, as well as the type of property transactions that the agent generally handles. The visual nature of block displays also serves to keep visitors engaged, which may then result in higher lead generation.
 
-### 'About me' section
+### About me section
 An 'About me' section will be generated with a generic copywritten paragraph of what the agent strives to achieve and what they stand for. This section will help visitors to get to know the agent better, and will serve as a strong indicator of whether the agent will be suitable for the visitor/potential client.
 
 Example of an engaging 'About me' section design, retrieved from https://www.youtube.com/watch?v=DXSQ2cEVbAI&ab_channel=Onlinewebustaad.
@@ -172,7 +168,7 @@ A testimonial section will be generated where agents can include testimonials pr
 Example of a well-designed testimonial section, retrieved from kissmetrics.io
 <img src="https://user-images.githubusercontent.com/52826683/170987558-05d4d2f1-6d2e-4689-b093-f3ab4c24cd2d.jpg" width="700" height="400">
 
-### 'Contact me' section
+### Contact me section
 This section will arguably be the most important part of the website, where visitors are provided with a call-to-action. Visitors who are interested in consulting the agent can provide their contact details, which will then be sent to the email address of the agent. The agent will then be able to follow up on this new lead, thus potentially converting this lead to a new paying client.
 
 ## Upload of New Listings Data
@@ -193,7 +189,7 @@ This video succintly describes why ezWeb is needed, how we plan to implement our
 https://user-images.githubusercontent.com/52826683/171005905-3aca0b53-4e0e-4094-8b5b-f35c773ad9eb.mp4
 
 # Timeline
-## Milestone 1 - Ideation (30 May) (Completed)
+## Milestone 1 - Ideation - 30 May - Completed
 Task  | Description | Handled by | Complete by
 ------------- | ------------- | -- | ---
 System Design   | Create a workable system and workflow | Chengyue, Sean | 15 May
@@ -259,7 +255,7 @@ One of the feedback we received was that every time a user wants to use the bot,
 Currently, the bot is being run locally on our laptops, and thus we are not able to facilitate the testing of the bot. We plan to either run our bot on the cloud, or allow testers to specify a date and time where they would like to test the bot, after which we will keep the bot running on our end. 
 <br/>
 
-## Milestone 2 - Prototyping (27 Jun) (Completed)
+## Milestone 2 - Prototyping - 27 Jun - Completed
 Task  | Description | Handled by | Date
 ------------- | ------------- | -- | ---
 Finalize Website Features | Picked out main website feature to add functionality for | Chengyue, Sean | 5 Jun
@@ -315,7 +311,7 @@ We intended to interview actual real estate agents to get more feedback on wheth
 #### Feedback Received
 To be added...
 
-## Milestone 3 - Extension (25 Jul) (To Be Confirmed)
+## Milestone 3 - Extension - 25 Jul - To Be Confirmed
 Task  | Description | Handled by | Date
 ------------- | ------------- | -- | ---
 Add Edit Listings Function | Allow users to edit listings | Chengyue, Sean | 5 Jul
@@ -369,7 +365,7 @@ Agent Details | Incorrect item attributes resulted in bot freezing | 24 June
 Create Listing | Incorrect item attributes | 26 June
 Create Listing | Minor type error relating to how inline buttons were used | 26 June
 
-### Unit Testing (Manual)
+### Unit Testing - Manual
 Individual components that made up crucial parts of the final product were individually tested before deploying it as part of the main solution. This was to ensure that additional features can be integrated into the overall system smoothly.
 Individual Components Tested | Approach
 ----- | ------
@@ -463,7 +459,7 @@ Upon confirmation, the new data will be sent to the database and updated.
 
 ## Add Agent Details
 
-## Create Posts/Edit Posts/Delete Posts
+## Create Posts - Edit Posts - Delete Posts
 Users who want to create new posts or edit their current posts on their website can click on the menu button, and then choose the **Manage Websites** option. 
 
 <img src="https://user-images.githubusercontent.com/52826683/175896599-8149c1f7-358c-482b-ab5b-0a5ebf4fc2b0.jpg" width="275" height="450">
@@ -508,7 +504,7 @@ Link to test-generated listing: https://orbitaltest1.com.ezwebs.xyz/hi-i-am-will
 
 Post editing and deletion can be done following the bot's prompts after clicking on the 'Edit posts' or 'Delete posts' options instead of 'Create new post'.
 
-## Create Listings/Edit Listings/Delete Listings
+## Create Listings - Edit Listings - Delete Listings
 Users who want to create new posts or edit their current posts on their website can click on the menu button, and then choose the **Manage Websites** option. Data is then retrieved from our database to display all websites registered to the user. The user can then pick their desired website to create/edit/delete posts.
 
 <img src="https://user-images.githubusercontent.com/52826683/175898629-a9c2ac29-9954-44bf-ac8a-d10125aae5bc.jpg" width="275" height="450">
@@ -592,7 +588,7 @@ Link to test-generated listing: https://orbitaltest1.com.ezwebs.xyz/listing/blk-
 
 
 
-# Website Features (As of Milestone 2)
+# Website Features - As of Milestone 2
 As of milestone 2, we have added functionalities for agent details, posts, and listings to be displayed in an aesthetically pleasing and professional manner to site visitors. When visiting the links below, it is recommended for you to use a laptop to view the website as the site is not yet compatible with mobile phone devices.
 
 ## Agent Details
