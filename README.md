@@ -362,6 +362,19 @@ Create Listings | Tested separately to find out optimal prompt/response flow
 Delete Listings | Function could be tested separately from everything else via Telegram bot
 Add Agent Details | Tested separately to find out optimal prompt/response flow
 
+### Integration Testing
+Objective | Expected Result
+---- | ----
+Check link between 'Create Website' function and backend | Successful generation of website
+Check link between payments and Stripe transaction log | Respective payments successfully recorded 
+Check link between 'Manage Websites' request and database | Correct retrieval of list of websites
+Check link between 'Create Post' function and backend | Upload of posts reflected on site
+Check link between 'Edit Posts' request and database | Correct retrieval of list of posts 
+Check link between 'Edit Posts' function and backend | Targeted post updated
+Check link between 'Delete Posts' request and database | Correct retrieval of list of posts
+Check link between 'Delete Posts' function and backend | Targeted post deletion
+Check link between 'Create Listings' function and backend | Upload of new listing reflected on site
+Check link between 'Add Agent Details' function and backend | Upload of agent details reflected on site
 
 # Working Prototype
 Our Telegram bot has been set up to receive website creation requests, and capture url/description data which is sent to our database. On the backend, we will be able to retrive this data and generate a simple website on the given url.
