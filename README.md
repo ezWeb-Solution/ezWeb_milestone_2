@@ -25,7 +25,25 @@
     + [Milestone 1 - Poster Submission](#milestone-1---poster-submission)
     + [Milestone 1 - Project Log](#milestone-1---project-log)
     + [Milestone 1 - Prototype Demo](#milestone-1---prototype-demo)
+    + [Post Milestone 1 Reflections](#post-milestone-1-reflections)
+      - [Limitations and Struggles](#limitations-and-struggles)
+        * [Inline Buttons](#inline-buttons)
+        * [Photo Uploads](#photo-uploads)
+        * [Integrating Secure Payment Systems](#integrating-secure-payment-systems)
+        * [Design of Site](#design-of-site)
+      - [Feedback Received](#feedback-received)
+        * [Unintuitive Navigation](#unintuitive-navigation)
+        * [Unable to Test](#unable-to-test)
   * [Milestone 2 - Prototyping (27 Jun) (Completed)](#milestone-2---prototyping--27-jun---completed-)
+    + [Milestone 2 - Poster Submission](#milestone-2---poster-submission)
+    + [Milestone 2 - Project Log](#milestone-2---project-log)
+    + [Post Milestone 2 Reflections](#post-milestone-2-reflections)
+      - [Limitations and Struggles](#limitations-and-struggles-1)
+        * [Payment Testing](#payment-testing)
+        * [Edit Listings](#edit-listings)
+        * [Edit Agent Details](#edit-agent-details)
+        * [Agent Interviews](#agent-interviews)
+      - [Feedback Received](#feedback-received-1)
   * [Milestone 3 - Extension (25 Jul) (To Be Confirmed)](#milestone-3---extension--25-jul---to-be-confirmed-)
 - [Working Prototype](#working-prototype)
   * [Website Creation](#website-creation)
@@ -38,8 +56,6 @@
   * [About Me](#about-me)
   * [Posts](#posts)
   * [Listings](#listings)
-
-<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
 
 
