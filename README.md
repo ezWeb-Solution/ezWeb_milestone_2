@@ -5,6 +5,10 @@
   * [Examples of what non-technically inclined person may be up against when deciding to create their own website:](#examples-of-what-non-technically-inclined-person-may-be-up-against-when-deciding-to-create-their-own-website-)
   * [User Story](#user-story)
   * [Our Solution](#our-solution)
+- [Product-Market Fit Evaluation](#product-market-fit-evaluation)
+  * [Personal Investigation](#personal-investigation)
+  * [Conversations with real estate agents](#conversations-with-real-estate-agents)
+  * [Mentor Consultation](#mentor-consultation)
 - [Features](#features)
   * [Telegram bot](#telegram-bot)
     + [Workflow of the Telegram bot](#workflow-of-the-telegram-bot)
@@ -45,6 +49,17 @@
         * [Agent Interviews](#agent-interviews)
       - [Feedback Received](#feedback-received-1)
   * [Milestone 3 - Extension (25 Jul) (To Be Confirmed)](#milestone-3---extension--25-jul---to-be-confirmed-)
+- [Software Engineering Practices](#software-engineering-practices)
+  * [Incremental Code Development](#incremental-code-development)
+  * [Weekly Code Review](#weekly-code-review)
+  * [Separation of Concerns](#separation-of-concerns)
+  * [Collaboration Tools](#collaboration-tools)
+  * [CI/CD](#ci-cd)
+  * [Testing](#testing)
+    + [Regression Testing](#regression-testing)
+    + [Unit Testing (Manual)](#unit-testing--manual-)
+    + [Integration Testing](#integration-testing)
+    + [User Testing](#user-testing)
 - [Working Prototype](#working-prototype)
   * [Website Creation](#website-creation)
   * [Update Website Description](#update-website-description)
@@ -56,6 +71,8 @@
   * [About Me](#about-me)
   * [Posts](#posts)
   * [Listings](#listings)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
 
 
@@ -92,6 +109,15 @@ Most real estate agents are currently registered under PropertyGuru, and as such
 
 We also hope to provide users with real-time traffic analytics, which can allow them to accurately determine if the site is effective in helping them convert visitors into paying clients. This will then allow them to develop better personal branding strategies that will provide them with a valuable edge over competing agents.
 
+# Product-Market Fit Evaluation
+## Personal Investigation
+We have decided on this solution primarily due to our previous experiences. We have previously worked as freelance website designers and have set up personal websites for real estate agents, and we have found that there are a common set of features requested by real estate agents, and we realized that this area of demand could certainly be filled with a template site-builder. Moreover, given that most real estate agents have come to us, freelancers, for help with creating their website, we are confident that there is demand for such services and people are willing to pay for sites to be built for them. 
+
+## Conversations with real estate agents
+In addition, we approached relatives of ours who worked in the real estate industry as agents and asked about how common it was for real estate agents to have their own sites. From what we have gathered, a large proportion of higher performing real estate agents have personal sites, which can be attributed to them having stronger portfolios to display. However, we also found that there was a strong demand for new personal sites being created for new development listings (E.g. Property agents request for a separate site for customers to find out more and contact them for the upcoming Sengkang Grand development). From this, we concluded that we can potentially expand our target audience to include those who want development-exclusive sites.
+
+## Mentor Consultation
+We consulted our mentor with our idea regarding his views on the demand for our product. Through our prior investigation into the industry, we were able to gather sufficient anecdotal evidence to support our belief that there was a need for our product. Our mentor agreed that there may be a market for our product, and subsequently, we worked on identifying additional website features that real estate agents were interested in (done by scrutinizing existing real estate agent personal sites), which allowed us to settle on the main features of posts, listings, agent details, testimonials, and clients served.
 
 # Features
 The features of our solution can be separated into three main components - the Telegram bot, our database, and our backend site-generator.
@@ -165,8 +191,6 @@ We will be providing a formatted excel sheet with pre-defined fields that users 
 # Mentor Matching - Video Submission
 This video succintly describes why ezWeb is needed, how we plan to implement our solution. It also includes plans for the expansion of our solution to a wider target audience.
 https://user-images.githubusercontent.com/52826683/171005905-3aca0b53-4e0e-4094-8b5b-f35c773ad9eb.mp4
-
-
 
 # Timeline
 ## Milestone 1 - Ideation (30 May) (Completed)
@@ -570,8 +594,6 @@ Link to test-generated listing: https://orbitaltest1.com.ezwebs.xyz/listing/blk-
 
 # Website Features (As of Milestone 2)
 As of milestone 2, we have added functionalities for agent details, posts, and listings to be displayed in an aesthetically pleasing and professional manner to site visitors. When visiting the links below, it is recommended for you to use a laptop to view the website as the site is not yet compatible with mobile phone devices.
-
-We have decided on these main features of the website due to our prior experiences. We have previously worked as freelance website designers and have set up personal websites for real estate agents, and we have found that these are the main features that are usually requested for.
 
 ## Agent Details
 Through the Telegram bot, users can click on the 'Manage Websites' option to add their agent details. Currently, the following information is obtained from the user via the Telegram bot.
