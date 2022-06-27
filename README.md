@@ -268,7 +268,7 @@ Make real estate agent Wordpress template | Design and implement blog/listing ar
 Added Posts Function | Users are now able to make posts on their site via Telegram bot | Chengyue, Sean | 15 Jun
 Enabled Photo Uploads | Telegram bot is now able to capture photo uploads made by users | Sean | 15 June
 Complete PHP course | Necessary for modifying Wordpress internals | Chengyue | 20 Jun
-Implement Wordpress custom endpoints for CRUD of custom post types | Chengyue | 120 Jun
+Implement Wordpress custom endpoints | for CRUD of custom post types | Chengyue | 20 Jun
 Added Listings Function | Users are now able to create new listings on their site via Telegram bot | Chengyue, Sean | 20 Jun
 Improve User Experience | Prompt/Response flow improved to make interactions more user friendly | Sean | 22 Jun
 Added Agent Details | Users are now able to add agent details onto their site via Telegram Bot | Chengyue, Sean | 25 Jun
