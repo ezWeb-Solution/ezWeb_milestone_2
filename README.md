@@ -336,11 +336,58 @@ Upon confirmation, the new data will be sent to the database and updated.
 ## Add Agent Details
 
 ## Create Posts/Edit Posts/Delete Posts
-Useres who want to create new posts or edit their current posts on their website can click on the menu button, and then choose the **Manage Websites** option. Data is retrieved from the database to display all websites registered to the user.
+Users who want to create new posts or edit their current posts on their website can click on the menu button, and then choose the **Manage Websites** option. 
+<img src="https://user-images.githubusercontent.com/52826683/175896599-8149c1f7-358c-482b-ab5b-0a5ebf4fc2b0.jpg" width="210" height="450">
+<br/>
 
-After picking the website to be updated, the 
+Data is then retrieved from our database to display all websites registered to the user. The user can then pick their desired website to create/edit/delete posts.
+<img src="https://user-images.githubusercontent.com/52826683/175896926-99e1beda-b416-4300-80c1-1ee64c92e3b2.jpg" width="210" height="450">
+<br/>
+
+Following that, the user is presented with a list of actions that they can do to their website.
+<img src="https://user-images.githubusercontent.com/52826683/175897122-b2946077-389b-49f3-a47d-fe4e7de12dbf.jpg" width="210" height="450">
+<br/>
+
+Upon choosing the 'Create new post' option, the user is then prompted to type in a title for his/her new post, following which, they would be asked if they would like to either confirm the title, change the title, or stop creating a post.
+<img src="https://user-images.githubusercontent.com/52826683/175897348-27abe724-c673-4980-ba9b-6ed5a9eb1742.jpg" width="210" height="450">
+<br/>
+
+After confirming the title, the user is prompted to type in the content of his/her new post. Following which, they would be asked if they would like to either confirm the content, change the content, or stop creating a post.
+<img src="https://user-images.githubusercontent.com/52826683/175897557-7d79a2ff-840a-4a59-9402-e255620e9e47.jpg" width="210" height="450">
+<br/>
+
+After confirming the content, the user is asked to confirm the upload of the new post.
+<img src="https://user-images.githubusercontent.com/52826683/175897787-cebee6cf-8c8f-4f2d-b79f-51587ff429be.jpg" width="210" height="450">
+<br/>
+
+Following the confirmation of upload, the data is captured and processed in our backend, which leads to a post being generated on the user's site. After the post has been generated, a completion message is sent to the user. 
+<img src="https://user-images.githubusercontent.com/52826683/175897990-2b780ec4-2a48-4dae-be32-a3d7b698fe5c.jpg" width="210" height="450">
+<br/>
+
+The post is generated as seen below.
+![8](https://user-images.githubusercontent.com/52826683/175898102-bb163a69-4e84-4290-8ef0-f38b2d602695.jpg)
+
+Post editing and deletion can be done following the bot's prompts after clicking on the 'Edit posts' or 'Delete posts' options instead of 'Create new post'.
 
 ## Create Listings/Edit Listings/Delete Listings
+Users who want to create new posts or edit their current posts on their website can click on the menu button, and then choose the **Manage Websites** option. Data is then retrieved from our database to display all websites registered to the user. The user can then pick their desired website to create/edit/delete posts.
+<img src="https://user-images.githubusercontent.com/52826683/175898629-a9c2ac29-9954-44bf-ac8a-d10125aae5bc.jpg" width="210" height="450">
+<br/>
+
+Following that, the user is presented with a list of actions that they can do to their website.
+<img src="https://user-images.githubusercontent.com/52826683/175898774-ec7501bc-5898-405d-baca-f7c8b5a60d21.jpg" width="210" height="450">
+<br/>
+
+Upon choosing the 'Create new listing' option, the user is then prompted to type in a title description for his/her new listing, following which, they would be asked if they would like to either confirm the title description, or cancel the process of creating a new post.
+
+<img src="https://user-images.githubusercontent.com/52826683/175899010-ee727aea-a0f7-4492-8bcd-eac4f089b92c.jpg" width="210" height="450">
+<br/>
+<img src="https://user-images.githubusercontent.com/52826683/175898629-a9c2ac29-9954-44bf-ac8a-d10125aae5bc.jpg" width="210" height="450">
+<br/>
+<img src="https://user-images.githubusercontent.com/52826683/175898629-a9c2ac29-9954-44bf-ac8a-d10125aae5bc.jpg" width="210" height="450">
+<br/>
+<img src="https://user-images.githubusercontent.com/52826683/175898629-a9c2ac29-9954-44bf-ac8a-d10125aae5bc.jpg" width="210" height="450">
+<br/>
 
 
 # Website Features (As of Milestone 2)
