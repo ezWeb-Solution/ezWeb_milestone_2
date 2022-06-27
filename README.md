@@ -232,7 +232,7 @@ One of the feedback we received was that every time a user wants to use the bot,
 <br/>
 
 ##### Unable to Test
-Currently, the bot is being run locally on our laptops, and thus we are not able to facilitate testing of the bot. We plan to either run our bot on the cloud, or allow testers to specify a date and time where they would like to test the bot, after which we will keep the bot running on our end. 
+Currently, the bot is being run locally on our laptops, and thus we are not able to facilitate the testing of the bot. We plan to either run our bot on the cloud, or allow testers to specify a date and time where they would like to test the bot, after which we will keep the bot running on our end. 
 <br/>
 
 ## Milestone 2 - Prototyping (27 Jun) (Completed)
@@ -375,6 +375,23 @@ Check link between 'Delete Posts' request and database | Correct retrieval of li
 Check link between 'Delete Posts' function and backend | Targeted post deletion
 Check link between 'Create Listings' function and backend | Upload of new listing reflected on site
 Check link between 'Add Agent Details' function and backend | Upload of agent details reflected on site
+
+### User Testing
+Most of the user testing we have done were requests made to friends to test out our bot using their own Telegram accounts.
+Type of Testing | Outcome | Date
+--------------- | ---------------------------- | -----
+Create Website function| Invalid urls provided were being accepted | 5 June
+Create Website function | Smooth outcome | 14 June
+Test Payments | Nothing occured after test payment was made | 14 June
+Send Photo Data | Smooth outcome | 16 June
+Uninstructed (Random) Tests | Edit Post functions was not retrieving the right list of posts | 16 June
+Create Website | Smooth outcome | 26 June
+Create Listing | Smooth outcome | 26 June
+Create Post | Smooth outcome | 26 June
+Uninstructed (Random) Tests | Edit Listing function not working (Intended, work in progress) | 26 June
+Uninstructed (Random) Tests | Edit description function was not being properly processed (Work in progress) | 26 June
+
+*We have put in place a test flow and are planning to invite five testers to test our product between the following dates 29 June 2022 - 6 May 2022. 
 
 # Working Prototype
 Our Telegram bot has been set up to receive website creation requests, and capture url/description data which is sent to our database. On the backend, we will be able to retrive this data and generate a simple website on the given url.
