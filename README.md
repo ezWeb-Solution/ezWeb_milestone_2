@@ -391,6 +391,9 @@ The post is generated as seen below.
 
 ![8](https://user-images.githubusercontent.com/52826683/175898102-bb163a69-4e84-4290-8ef0-f38b2d602695.jpg)
 
+Link to test-generated listing: https://orbitaltest1.com.ezwebs.xyz/hi-i-am-william/
+
+
 Post editing and deletion can be done following the bot's prompts after clicking on the 'Edit posts' or 'Delete posts' options instead of 'Create new post'.
 
 ## Create Listings/Edit Listings/Delete Listings
@@ -471,6 +474,8 @@ A few seconds after the user has confirmed the upload of the new listing, the ne
 In addition, the address provided by the user is used to include a Google Maps display of where the property is located at. This feature would help site visitors to understand the surrounding environment of the property, which may influence their interest in the property.
 
 ![16](https://user-images.githubusercontent.com/52826683/175902411-c907f9d6-e757-480c-b08d-ac8cc8a53621.jpg)
+
+Link to test-generated listing: https://orbitaltest1.com.ezwebs.xyz/listing/blk-998-street-38/
 
 
 
