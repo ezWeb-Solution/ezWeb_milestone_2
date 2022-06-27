@@ -211,8 +211,10 @@ User Testing | Allow selected real estate agents to build their websites using e
 
 
 
-## Proof of Concept
+## Working Prototype
 Our Telegram bot has been set up to receive website creation requests, and capture url/description data which is sent to our database. On the backend, we will be able to retrive this data and generate a simple website on the given url.
+
+After the site has been created, users can use the Telegram bot to create/edit/delete posts and listings, as well as add agent details to their site. This entire process accommodates photo uploads as well, thus allowing for users to be able to manage their website comfortably within the confines of their Telegram app.
 
 ### Website Creation
 To start, navigate to @ezWebTest_bot to start the bot.
@@ -236,8 +238,8 @@ Site will then be created. (The following is a placeholder sample site that is c
 
 ![Screenshot 2022-06-26 233138](https://user-images.githubusercontent.com/52826683/175821725-bc4c690a-5094-4688-86f9-571d959ace1d.jpg)
 
-### Managing/Update Websites
-Users who want to update their websites can simply run a /start command on the bot to start the process.
+### Update Website Description
+Users who want to update their website description can simply run a /start command on the bot to start the process.
 
 <img src="https://user-images.githubusercontent.com/52826683/170946073-4c6a7eaf-cf64-4396-b9bc-de97fd2846f2.jpg" width="210" height="450">
 
@@ -252,6 +254,16 @@ After picking the website to be updated, the current information of the site wil
 Upon confirmation, the new data will be sent to the database and updated. 
 
 <img src="https://user-images.githubusercontent.com/52826683/170946106-dbc3ab40-f97f-46a3-982d-89b3925feb9d.jpg" width="210" height="450">
+
+### Add Agent Details
+
+### Create Posts/Edit Posts/Delete Posts
+Useres who want to create new posts or edit their current posts on their website can click on the menu button, and then choose the **Manage Websites** option. Data is retrieved from the database to display all websites registered to the user.
+
+After picking the website to be updated, the 
+
+### Create Listings/Edit Listings/Delete Listings
+
 
 ## Website Features (As of Milestone 2)
 As of milestone 2, we have added functionalities for agent details, posts, and listings to be displayed in an aesthetically pleasing and professional manner to site visitors. When visiting the links below, it is recommended for you to use a laptop to view the website as the site is not yet compatible with mobile phone devices.
