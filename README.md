@@ -175,7 +175,7 @@ Site-management | Link each entry in database to unique user, allow for updates 
 <img src="https://user-images.githubusercontent.com/52826683/171003935-5607d0ef-b251-477f-aae3-d7b960da2a98.png" width="500" height="775">
 
 ### Milestone 1 - Project Log
-<a href="https://docs.google.com/spreadsheets/d/1PExAhXqZ7PFh2cHDoLcatWTSk98zk-yEUatYOD4pTbw/edit?usp=sharing">Project Log</a>
+<a href="https://docs.google.com/spreadsheets/d/1PExAhXqZ7PFh2cHDoLcatWTSk98zk-yEUatYOD4pTbw/edit?usp=sharing">Milestone 1 Project Log (5 May - 29 May)</a>
 
 ### Milestone 1 - Prototype Demo
 Click the following link to view our prototype demo. In this demo, we sent a request to create a new website through the telegram bot, which then sends the request's data to our database, where our backend retrieves the data to generate a simple site based on the given url.
@@ -198,6 +198,17 @@ Added Listings Function | Users are now able to create new listings on their sit
 Improve User Experience | Prompt/Response flow improved to make interactions more user friendly | Sean | 22 Jun
 Added Agent Details | Users are now able to add agent details onto their site via Telegram Bot | Chengyue, Sean | 25 Jun
 Bot Testing | Bot testing to be done throughout the entirety of adding new functions | Chengyue, Sean | 27 Jun
+
+### Milestone 2 - Poster Submission
+As the poster is A1 sized, there are portions of the poster which you will have to zoom in to see. To download the full version of the poster, please click on the poster below.
+
+<a href="https://drive.google.com/file/d/1e3ISfPmgETlF9_XtLrfvaAnVLYS6M74P/view?usp=sharing">
+<img src="https://user-images.githubusercontent.com/52826683/175871671-eba2efe9-6d3d-4ffc-b39f-b40787c4c05a.png" width="500" height="775">
+</a>
+
+### Milestone 2 - Project Log
+<a href="https://docs.google.com/spreadsheets/d/1Jiu08K7gVhJW_78oDguFb-8-r4jeRqJlmby4ro-4XWc/edit#gid=0">Milestone 2 Project Log (30 May - 27 June)</a>
+
 
 
 ## Milestone 3 - Extension (25 Jul) (To Be Confirmed)
