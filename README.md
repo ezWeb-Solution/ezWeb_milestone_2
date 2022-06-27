@@ -345,6 +345,23 @@ Agent Details | Incorrect item attributes resulted in bot freezing | 24 June
 Create Listing | Incorrect item attributes | 26 June
 Create Listing | Minor type error relating to how inline buttons were used | 26 June
 
+### Unit Testing (Manual)
+Individual components that made up crucial parts of the final product were individually tested before deploying it as part of the main solution. This was to ensure that additional features can be integrated into the overall system smoothly.
+Individual Components Tested | Approach
+----- | ------
+Create Website | Function could be tested separately from everything else via Telegram bot
+Edit Website Description | Function could be tested separately from everything else via Telegram bot
+Create Posts | Individual testing was used to confirm that calls to endpoints were worked properly and could enact a successful change
+Edit Posts | Separate testing was used to identify optimal way of retrieving posts
+Delete Posts | Separate testing was used to identify optimal way of retrieving posts
+Inline buttons | Inline buttons as a new user interface element was tested separately to confirm its feasibility for use
+Payments | Payment protocol was implemented as a standalone function for successful payments to be simulated and tested
+Photo Capture | Photo capture function was implemented as a standalone function which allowed for photo capture and dissemination to be tested and familiarized with
+API Calls | Standalone POST/GET requests were made to newly made endpoints to ensure that data could be processed successfully
+Create Listings | Tested separately to find out optimal prompt/response flow
+Delete Listings | Function could be tested separately from everything else via Telegram bot
+Add Agent Details | Tested separately to find out optimal prompt/response flow
+
 
 # Working Prototype
 Our Telegram bot has been set up to receive website creation requests, and capture url/description data which is sent to our database. On the backend, we will be able to retrive this data and generate a simple website on the given url.
