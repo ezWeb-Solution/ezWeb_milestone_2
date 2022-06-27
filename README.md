@@ -304,6 +304,12 @@ Expand Customizability | Allow users greater customizability to their site | Che
 User Testing | Allow selected real estate agents to build their websites using ezWeb | Chengyue, Sean | 24 Jul
 
 
+# Collaboration Tools
+Our project can be split into two main sections, the Telegram bot frontend, and the WordPress backend. Each of us took charge of one main section each and had to find a way to work closely together to ensure smooth collaboration. In order to maintain a strong and consistent level of communication, we used collaborative tools such as Trello to keep track of tasks. We also communicated via messaging platforms to ensure that we were both on the same page when it came to implementing new functions together.
+
+Example of collaborative tool we used:
+![Screenshot 2022-06-27 202545](https://user-images.githubusercontent.com/52826683/175942298-98365cb5-8afb-433c-9fe2-a68a1234b781.jpg)
+
 
 # Working Prototype
 Our Telegram bot has been set up to receive website creation requests, and capture url/description data which is sent to our database. On the backend, we will be able to retrive this data and generate a simple website on the given url.
