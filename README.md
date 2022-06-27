@@ -303,8 +303,10 @@ Insurance Agents Templates | Expand target audience to insurance agents | Chengy
 Expand Customizability | Allow users greater customizability to their site | Chengyue, Sean | 22 Jul
 User Testing | Allow selected real estate agents to build their websites using ezWeb | Chengyue, Sean | 24 Jul
 
+# Software Engineering Practices
+During the process of implementing our solution, we have tried our best to ensure that good software engineering practices were being employed, so as to maximise what we have learnt during this process.
 
-# Collaboration Tools
+## Collaboration Tools
 Our project can be split into two main sections, the Telegram bot frontend, and the WordPress backend. Each of us took charge of one main section each and had to find a way to work closely together to ensure smooth collaboration. In order to maintain a strong and consistent level of communication, we used collaborative tools such as Trello to keep track of tasks. We also communicated via messaging platforms to ensure that we were both on the same page when it came to implementing new functions together.
 
 Example of collaborative tool we used:
