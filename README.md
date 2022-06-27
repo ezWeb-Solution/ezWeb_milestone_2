@@ -182,6 +182,41 @@ Click the following link to view our prototype demo. In this demo, we sent a req
 <a href="https://drive.google.com/file/d/1AVJie7noZrFCSSrcqmKfIJInRWCDBHRk/view"><img src="https://user-images.githubusercontent.com/52826683/171210891-5a38f92e-99ee-40e8-ae41-cf54c3de57fb.jpg">
 </a>
 
+### Post Milestone 1 Reflections
+#### Limitations and Struggles
+We initially wanted to add more basic features to the bot and the website, but faced numerous limitations in the process to do so, which we will be documenting in this section.
+<br/>
+
+##### Inline Buttons
+At first, our prompt/response flow was driven by text commands such as '/yes' or '/no', which served as a poor user experience. Fortunately, Telegram has provided well-documented alternative that uses inline buttons as a way to provide users with options to click on. This switch has drastically improved how the bot is interacted with, and we managed to reduce the total number of text commands to just three, with the rest of the bot's prompt/response flow being driven by inline buttons.
+
+Example of inline buttons in use:
+![manage_websites](https://user-images.githubusercontent.com/52826683/175877014-92722d43-c545-451b-bee2-9cc766a6e188.jpg)
+<br/>
+
+##### Photo Uploads
+Telegram bots are generally not designed to receive photo uploads from users, and as such, there were very few examples available online on how this could be done. We were unable to successfully implement a photo capture protocol for the bot in time, and will focus on implementing it as our main priority, due to its importance in our 'create listings' and 'add agent details' function.
+<br/>
+
+##### Integrating Secure Payment Systems
+Being able to successfully integrate a secure payment system will be crucial for our bot to evolve into a working and sustainable product. However, we lacked the confidence to be able to implement it in time for Milestone 1 as the documentation for it was not too comprehensive, and we needed much more time to experiment with it before implementing it into our bot.
+<br/>
+
+##### Design of Site
+As we focused on the successful generation of the site, we had little time to design the site. For that reason, the generated site looked amateurish and improving its design will be one of our main priorities moving forward.
+<br/>
+
+#### Feedback Received 
+We have received feedback from our submission in Milestone 1 and the areas of improvement mentioned will be stated below. We plan to take these feedback into heavy consideration and will integrate the excellent suggestions provided into our prototype.
+<br/>
+
+##### Unintuitive Navigation
+One of the feedback we received was that every time a user wants to use the bot, they would have to input '/start' in order to begin using the bot. It was suggested that we implemented a menu to improve user experience.
+<br/>
+
+##### Unable to Test
+Currently, the bot is being run locally on our laptops, and thus we are not able to facilitate testing of the bot. We plan to either run our bot on the cloud, or allow testers to specify a date and time where they would like to test the bot, after which we will keep the bot running on our end. 
+<br/>
 
 ## Milestone 2 - Prototyping (27 Jun) (Completed)
 Task  | Description | Handled by | Date
@@ -209,7 +244,35 @@ As the poster is A1 sized, there are portions of the poster which you will have 
 ### Milestone 2 - Project Log
 <a href="https://docs.google.com/spreadsheets/d/1Jiu08K7gVhJW_78oDguFb-8-r4jeRqJlmby4ro-4XWc/edit#gid=0">Milestone 2 Project Log (30 May - 27 June)</a>
 
+### Post Milestone 2 Reflections
+#### Limitations and Struggles
+We were able to add integrate most of the website's features with the Telegram bot, and have extensively tested the bot to fix bugs that appeared along the way. However, there are a few minor features that we have yet to implement as it was either not a priority, or we were unable to confidently implement it as of Milestone 2.
 
+##### Payment Testing
+Currently, we are only able to test the payments on a Test Mode. For now, it has worked well as we are able to detect and confirm successful payments on our payments provider, Stripe. However, we were unable to test the bot out of Test Mode as that would require us to make actual payments, of which Stripe would be taking a cut of. We are planning to test the bot once with real payments to ensure that it works well by the end of Milestone 3.
+
+##### Edit Listings
+After successfully implementing the create and delete listings function, the next step would have been to add the 'Edit Listings' function. However, there are too many parts of a single listing and we took some time to a concrete conclusion on how we would like the prompt/response flow to look like. There were two possibilities.
+1. Upon choosing the 'Edit Listing' option, the user would be prompted to provide a whole new set of details for the listing. This would be the much easier option, but would certainly not be as user friendly as we would have liked it to be.
+2. Upon choosing the 'Edit Listing' option, the user would be asked which part of the listing they would like to edit. Currently, there are a total of five fields as seen below that they would be allowed to choose from. However, within each field, there may be multiple subfields/photos which we will have to create separate API calls for updating. 
+- Title (Input string)
+- Property Details, such as property type, number of rooms, address, tenure, total area, floor, price, and number of storeys (Input string)
+- Description (Input string)
+- Featured photo (.jpg/.png upload)
+- Extra display photos (.jpg/.png upload)
+As of now, we are planning to go with option 2, but this will take quite a bit of time to implement and will implementing the 'Edit Listings' function as our top current priority.
+
+##### Edit Agent Details
+The 'Edit Agent Details' function suffered from the same problems as mentioned in the 'Edit Listings' section. There were too many fields that would have required an extensive amount of time to include and test, which was why we have decided to implement it at a later stage and direct our atttention to ensuring that key features of the product were able to function properly at this time.
+
+##### Agent Interviews
+We intended to interview actual real estate agents to get more feedback on whether our product served as a sufficiently powerful product-market fit. However, we decided against conducting interviews prematurely and have decided to interview real estate agents at a later stage once we have a product that they can test. This would allow us to:
+1. Receive feedback on whether our product fulfills their needs.
+2. Find out if the design of the website is comparable to industry standards.
+3. Receive suggestions on what other key features real estate agents would like to have integrated.
+
+#### Feedback Received
+To be added...
 
 ## Milestone 3 - Extension (25 Jul) (To Be Confirmed)
 Task  | Description | Handled by | Date
