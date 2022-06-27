@@ -191,6 +191,7 @@ We initially wanted to add more basic features to the bot and the website, but f
 At first, our prompt/response flow was driven by text commands such as '/yes' or '/no', which served as a poor user experience. Fortunately, Telegram has provided well-documented alternative that uses inline buttons as a way to provide users with options to click on. This switch has drastically improved how the bot is interacted with, and we managed to reduce the total number of text commands to just three, with the rest of the bot's prompt/response flow being driven by inline buttons.
 
 Example of inline buttons in use:
+
 ![manage_websites](https://user-images.githubusercontent.com/52826683/175877014-92722d43-c545-451b-bee2-9cc766a6e188.jpg)
 <br/>
 
@@ -277,8 +278,8 @@ To be added...
 ## Milestone 3 - Extension (25 Jul) (To Be Confirmed)
 Task  | Description | Handled by | Date
 ------------- | ------------- | -- | ---
-Add Edit Listings Function | Allow users to edit listings | Sean, Chengyue | 5 Jul
-Interview Real Estate Agents | Find out what the current pain points are, and what we have missed | 10 Jul
+Add Edit Listings Function | Allow users to edit listings | Chengyue, Sean | 5 Jul
+Interview Real Estate Agents | Find out what the current pain points are, and what we have missed | Chengyue, Sean|10 Jul
 Website Analytics Tracking | Implement website backend system to capture web traffic | Chengyue | 10 Jul
 Website Analytics Display | Provide analytics to users in an easy-to-digest manner on Telegram | Chengyue, Sean | 12 Jul
 More Templates | Deploy more templates for users to pick from | Chengyue, Sean | 15 Jul
