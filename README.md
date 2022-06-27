@@ -338,37 +338,37 @@ Upon confirmation, the new data will be sent to the database and updated.
 ## Create Posts/Edit Posts/Delete Posts
 Users who want to create new posts or edit their current posts on their website can click on the menu button, and then choose the **Manage Websites** option. 
 
-<img src="https://user-images.githubusercontent.com/52826683/175896599-8149c1f7-358c-482b-ab5b-0a5ebf4fc2b0.jpg" width="210" height="450">
+<img src="https://user-images.githubusercontent.com/52826683/175896599-8149c1f7-358c-482b-ab5b-0a5ebf4fc2b0.jpg" width="275" height="450">
 <br/>
 
 Data is then retrieved from our database to display all websites registered to the user. The user can then pick their desired website to create/edit/delete posts.
 
-<img src="https://user-images.githubusercontent.com/52826683/175896926-99e1beda-b416-4300-80c1-1ee64c92e3b2.jpg" width="210" height="450">
+<img src="https://user-images.githubusercontent.com/52826683/175896926-99e1beda-b416-4300-80c1-1ee64c92e3b2.jpg" width="275" height="450">
 <br/>
 
 Following that, the user is presented with a list of actions that they can do to their website.
 
-<img src="https://user-images.githubusercontent.com/52826683/175897122-b2946077-389b-49f3-a47d-fe4e7de12dbf.jpg" width="210" height="450">
+<img src="https://user-images.githubusercontent.com/52826683/175897122-b2946077-389b-49f3-a47d-fe4e7de12dbf.jpg" width="275" height="450">
 <br/>
 
 Upon choosing the 'Create new post' option, the user is then prompted to type in a title for his/her new post, following which, they would be asked if they would like to either confirm the title, change the title, or stop creating a post.
 
-<img src="https://user-images.githubusercontent.com/52826683/175897348-27abe724-c673-4980-ba9b-6ed5a9eb1742.jpg" width="210" height="450">
+<img src="https://user-images.githubusercontent.com/52826683/175897348-27abe724-c673-4980-ba9b-6ed5a9eb1742.jpg" width="275" height="450">
 <br/>
 
 After confirming the title, the user is prompted to type in the content of his/her new post. Following which, they would be asked if they would like to either confirm the content, change the content, or stop creating a post.
 
-<img src="https://user-images.githubusercontent.com/52826683/175897557-7d79a2ff-840a-4a59-9402-e255620e9e47.jpg" width="210" height="450">
+<img src="https://user-images.githubusercontent.com/52826683/175897557-7d79a2ff-840a-4a59-9402-e255620e9e47.jpg" width="275" height="450">
 <br/>
 
 After confirming the content, the user is asked to confirm the upload of the new post.
 
-<img src="https://user-images.githubusercontent.com/52826683/175897787-cebee6cf-8c8f-4f2d-b79f-51587ff429be.jpg" width="210" height="450">
+<img src="https://user-images.githubusercontent.com/52826683/175897787-cebee6cf-8c8f-4f2d-b79f-51587ff429be.jpg" width="275" height="450">
 <br/>
 
 Following the confirmation of upload, the data is captured and processed in our backend, which leads to a post being generated on the user's site. After the post has been generated, a completion message is sent to the user. 
 
-<img src="https://user-images.githubusercontent.com/52826683/175897990-2b780ec4-2a48-4dae-be32-a3d7b698fe5c.jpg" width="210" height="450">
+<img src="https://user-images.githubusercontent.com/52826683/175897990-2b780ec4-2a48-4dae-be32-a3d7b698fe5c.jpg" width="275" height="450">
 <br/>
 
 The post is generated as seen below.
@@ -380,26 +380,83 @@ Post editing and deletion can be done following the bot's prompts after clicking
 ## Create Listings/Edit Listings/Delete Listings
 Users who want to create new posts or edit their current posts on their website can click on the menu button, and then choose the **Manage Websites** option. Data is then retrieved from our database to display all websites registered to the user. The user can then pick their desired website to create/edit/delete posts.
 
-<img src="https://user-images.githubusercontent.com/52826683/175898629-a9c2ac29-9954-44bf-ac8a-d10125aae5bc.jpg" width="210" height="450">
+<img src="https://user-images.githubusercontent.com/52826683/175898629-a9c2ac29-9954-44bf-ac8a-d10125aae5bc.jpg" width="275" height="450">
 <br/>
 
 Following that, the user is presented with a list of actions that they can do to their website.
 
-<img src="https://user-images.githubusercontent.com/52826683/175898774-ec7501bc-5898-405d-baca-f7c8b5a60d21.jpg" width="210" height="450">
+<img src="https://user-images.githubusercontent.com/52826683/175898774-ec7501bc-5898-405d-baca-f7c8b5a60d21.jpg" width="275" height="450">
 <br/>
 
-Upon choosing the 'Create new listing' option, the user is then prompted to type in a title description for his/her new listing, following which, they would be asked if they would like to either confirm the title description, or cancel the process of creating a new post.
+Upon choosing the 'Create new listing' option, the user is then prompted to type in a title description for his/her new listing, following which, they would be asked if they would like to either confirm the title description and proceed with adding the property details, or cancel the process of creating a new post.
 
-<img src="https://user-images.githubusercontent.com/52826683/175899010-ee727aea-a0f7-4492-8bcd-eac4f089b92c.jpg" width="210" height="450">
+<img src="https://user-images.githubusercontent.com/52826683/175899010-ee727aea-a0f7-4492-8bcd-eac4f089b92c.jpg" width="275" height="450">
+<br/>
+
+After choosing to proceed with adding the property details, the user is presented with a template that we have prepared for them. 
+
+<img src="https://user-images.githubusercontent.com/52826683/175900148-c407226d-2aa8-48ec-9ae4-b11ae7464b5b.jpg" width="275" height="450">
+<br/>
+
+Upon typing in the property details, the bot captures the information and repeats it back to the user for confirmation. The user can now choose whether he is happy with the property details and to proceed to add a description, or choose to change the property details or stop the process of creating a listing.
+
+<img src="https://user-images.githubusercontent.com/52826683/175900417-c3d84b07-5cde-4023-b1d5-67b46e4122b6.jpg" width="275" height="450">
+<br/>
+
+After the user types in the property description, the next step would be to upload a featured photo for the listing.
+
+<img src="https://user-images.githubusercontent.com/52826683/175900591-2b4573ab-a0d3-4a2a-970f-8e967e80f91f.jpg" width="275" height="450">
+<br/>
+
+The user uploads his/her desired photo, and the bot captures this data and repeats it back to the user for confirmation.
+
+<img src="https://user-images.githubusercontent.com/52826683/175900859-dfc66b1a-87c7-4987-9190-90bc73ddd8bc.jpg" width="275" height="450">
+<br/>
+
+Once users are happy with their featured photo, they can proceed with adding extra photos of the listing.
+
+<img src="https://user-images.githubusercontent.com/52826683/175900870-fc461bf7-c70c-4a24-90df-3f2cbb2a2bcb.jpg" width="275" height="450">
+<br/>
+
+The bot prompts the user to send up to ten extra photos, with a manual command to signal that the user is done with adding extra photos.
+
+<img src="https://user-images.githubusercontent.com/52826683/175901166-3d497ff5-3065-4a57-8d77-657d6a818d55.jpg" width="275" height="450">
 <br/>
 
 
-<img src="https://user-images.githubusercontent.com/52826683/175898629-a9c2ac29-9954-44bf-ac8a-d10125aae5bc.jpg" width="210" height="450">
+The user uploads nine different photos as seen below.
+
+<img src="https://user-images.githubusercontent.com/52826683/175901420-e85ed9e9-b0a4-4f1a-9aa9-df6989548e35.jpg" width="275" height="450">
 <br/>
-<img src="https://user-images.githubusercontent.com/52826683/175898629-a9c2ac29-9954-44bf-ac8a-d10125aae5bc.jpg" width="210" height="450">
+
+The bot records the number of photos uploaded and reminds the user of the command that he/she can use to signal that they are done with uploading. After uploading nine photos, the tester sends the command.
+
+<img src="https://user-images.githubusercontent.com/52826683/175901712-094006e1-742e-46bb-8282-3130c9ffe780.jpg" width="275" height="450">
 <br/>
-<img src="https://user-images.githubusercontent.com/52826683/175898629-a9c2ac29-9954-44bf-ac8a-d10125aae5bc.jpg" width="210" height="450">
+
+The bot then repeats the photos sent by the user and is asked for confirmation.
+
+<img src="https://user-images.githubusercontent.com/52826683/175901777-6023f1b9-68b0-4c25-95e5-74b3d1846127.jpg" width="275" height="450">
 <br/>
+
+Finally, the user is prompted to confirm that they would like to upload this listing onto their website.
+
+<img src="https://user-images.githubusercontent.com/52826683/175901934-413cc49b-7b9e-4217-af19-622ae6fd41e0.jpg" width="275" height="450">
+<br/>
+
+Data is sent to our backend for processing, which then uses the data provided by the user to generate a new listing
+
+![14](https://user-images.githubusercontent.com/52826683/175902183-91fdad3c-20a6-4ee9-9019-614463baa4b0.jpg)
+
+A few seconds after the user has confirmed the upload of the new listing, the new listing has been generated as seen below.
+
+![15](https://user-images.githubusercontent.com/52826683/175902321-a1659418-d0c6-42da-9c8d-f41d13a043eb.jpg)
+
+In addition, the address provided by the user is used to include a Google Maps display of where the property is located at. This feature would help site visitors to understand the surrounding environment of the property, which may influence their interest in the property.
+
+![16](https://user-images.githubusercontent.com/52826683/175902411-c907f9d6-e757-480c-b08d-ac8cc8a53621.jpg)
+
+
 
 
 # Website Features (As of Milestone 2)
