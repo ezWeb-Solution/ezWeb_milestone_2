@@ -264,11 +264,15 @@ Enabled Payment Test Mode | Payments are set to test mode, allowing for test pay
 URL Availability Checker | Allowed availability of urls and price to be checked and returned | Chengyue, Sean | 11 Jun
 Added Menu to Telegram Bot | Added menu to Telegram bot for easy navigation | Sean | 12 Jun
 Data Structure Optimization | Completed Data Structures and Algorithms Course on Python | Sean | 14 Jun
+Make real estate agent Wordpress template | Design and implement blog/listing archieve, listing page, home page and menu| Chengyue | 15 Jun
 Added Posts Function | Users are now able to make posts on their site via Telegram bot | Chengyue, Sean | 15 Jun
 Enabled Photo Uploads | Telegram bot is now able to capture photo uploads made by users | Sean | 15 June
+Complete PHP course | Necessary for modifying Wordpress internals | Chengyue | 20 Jun
+Implement Wordpress custom endpoints for CRUD of custom post types | Chengyue | 120 Jun
 Added Listings Function | Users are now able to create new listings on their site via Telegram bot | Chengyue, Sean | 20 Jun
 Improve User Experience | Prompt/Response flow improved to make interactions more user friendly | Sean | 22 Jun
 Added Agent Details | Users are now able to add agent details onto their site via Telegram Bot | Chengyue, Sean | 25 Jun
+Enabled Photo Uploads | custom endpoints are made for uploading images | Chengyue | 25 Jun
 Bot Testing | Bot testing to be done throughout the entirety of adding new functions | Chengyue, Sean | 27 Jun
 
 ### Milestone 2 - Poster Submission
