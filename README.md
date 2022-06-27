@@ -323,6 +323,28 @@ Our project can be split into two main sections, the Telegram bot frontend, and 
 Example of collaborative tool we used:
 ![Screenshot 2022-06-27 202545](https://user-images.githubusercontent.com/52826683/175942298-98365cb5-8afb-433c-9fe2-a68a1234b781.jpg)
 
+## CI/CD
+We separately took a Github course on Codecademy in anticipation of Milestone 3 where more features will be implemented. This is because the project code base has become rather large and harder to maintain, whereby the benefits of CI/CD are apparent.
+
+## Testing
+### Regression Testing
+As we added numerous functions that required extensive code for the Telegram bot prompt/response flow, we frequently encountered unexpected bugs that arose during testing. Hence, we decided early on that Regression Testing was necessary for us so as to ensure that every bug was dealt with as soon as possible to ensure a smoother deployment of new features in the future. Thus far, testing has been done after every major functionality implementation, such as:
+New Feature  | Bugs Identified and Resolved | Date
+------------ | ------------- | -----
+URL Checker | Prices at 1,000,000x the actual value was returned | 13 June
+URL Checker | Data sent to backend via post request were of incompatible types | 13 June
+Test Payments | Non-optional description parameters were not provided for payment function call | 14 June
+Test Payments | Invalid price amount type | 14 June
+Test Payments | Test payments did not register properly | 14 June
+Test Payments | Site generating API was not called after payment succeess | 14 June
+Send Photo Data | URL sent via post request did not contain the image, image had to be downloaded separately | 16 June
+Send Photo Data | Persistent server error, problem was found to be a minor syntax error | 16 June
+Edit Posts | Change to how posts were retrieved resulted in bugs appearing in earlier functionalities | 18 June
+Edit Posts | When post content was too long, post could not be retrieved properly | 18 June
+Agent Details | Incorrect item attributes resulted in bot freezing | 24 June
+Create Listing | Incorrect item attributes | 26 June
+Create Listing | Minor type error relating to how inline buttons were used | 26 June
+
 
 # Working Prototype
 Our Telegram bot has been set up to receive website creation requests, and capture url/description data which is sent to our database. On the backend, we will be able to retrive this data and generate a simple website on the given url.
