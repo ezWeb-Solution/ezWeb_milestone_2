@@ -306,6 +306,17 @@ User Testing | Allow selected real estate agents to build their websites using e
 # Software Engineering Practices
 During the process of implementing our solution, we have tried our best to ensure that good software engineering practices were being employed, so as to maximise what we have learnt during this process.
 
+## Incremental Code Development
+We started from the most basic proof of concept which is to automate the registration of domain, set up DNS records, configure wordpress backend, and set up a hosting environment. On the frontend, we started by ensuring that responses provided by users were able to be captured successfully and sent. This allowed us to build up upon what we had and we were then able to slowly add in more features such as listings, posts, and home page customization.
+
+## Weekly Code Review
+Since we separated our responsibilities into primarily backend and frontend, we regularly reviewed each other's code, at least once per week, to ensure that we were maintaining compatibility in our code and were working towards the same goals. This was particularly important since our respective sections of our system had to regularly send and receive data to and from one another as part of the functionality of our product.
+
+## Separation of Concerns 
+Early on, we have identified that the ezWeb backend and Telegram bot could be separated into two distinct sections. By separating and defining the requirements of each section clearly, we were quickly able to build and deploy new functions and test them separately, without one section affecting the other. 
+
+In addition, the separation of concern principle was utilized within the Telegram bot effectively, which allowed functions to be used separately without affecting the others, thus drastically improving how we were able to identify and fix bugs that occured during testing. This also allowed us to add new functionality to our prototype without having to worry about the entire system being unexpectedly affected.
+
 ## Collaboration Tools
 Our project can be split into two main sections, the Telegram bot frontend, and the WordPress backend. Each of us took charge of one main section each and had to find a way to work closely together to ensure smooth collaboration. In order to maintain a strong and consistent level of communication, we used collaborative tools such as Trello to keep track of tasks. We also communicated via messaging platforms to ensure that we were both on the same page when it came to implementing new functions together.
 
@@ -490,6 +501,8 @@ Link to test-generated listing: https://orbitaltest1.com.ezwebs.xyz/listing/blk-
 
 # Website Features (As of Milestone 2)
 As of milestone 2, we have added functionalities for agent details, posts, and listings to be displayed in an aesthetically pleasing and professional manner to site visitors. When visiting the links below, it is recommended for you to use a laptop to view the website as the site is not yet compatible with mobile phone devices.
+
+We have decided on these main features of the website due to our prior experiences. We have previously worked as freelance website designers and have set up personal websites for real estate agents, and we have found that these are the main features that are usually requested for.
 
 ## Agent Details
 Through the Telegram bot, users can click on the 'Manage Websites' option to add their agent details. Currently, the following information is obtained from the user via the Telegram bot.
