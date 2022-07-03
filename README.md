@@ -182,7 +182,7 @@ We will be providing a formatted excel sheet with pre-defined fields that users 
 ![Workflow2](https://user-images.githubusercontent.com/52826683/170938710-5419e72c-cbbf-4113-b394-90356ea8d6f7.jpg)
 
 Currently we are using the following tech stack:
-Telegram bot - Python
+Telegram bot - Python <br>
 Payment - Stripe
 ezWeb database - Google Sheet (To be changed to Firebase shortly)
 ezWeb backend - Node.js / Express.js
