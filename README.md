@@ -1,4 +1,14 @@
 # IMPORTANT!!! PLEASE PM @cylellll ON TELEGRAM IF YOU WISH TO TRY THE BOT, YOU WILL BE ABLE TO CREATE AND MANAGE THE REAL ESTATE AGENT SITE USING THE BOT IN REAL TIME :)
+# Tech Stack
+<img src="https://user-images.githubusercontent.com/52826683/177026366-27647836-2b4e-4af6-ab7a-00ec5a67ecda.svg" width="50" height="50"> <img src="https://user-images.githubusercontent.com/52826683/177026373-c28403a4-71f9-43a3-93ef-549d20a9434e.svg" width="50" height="50">
+<img src="https://user-images.githubusercontent.com/52826683/177026374-f7dd91dd-27e0-4da8-9f25-524a0cf50e54.svg" width="50" height="50">
+<img src="https://user-images.githubusercontent.com/52826683/177026376-0d633253-9fc7-4423-b9e2-f3dd7d3ca6ee.svg" width="50" height="50">
+<img src="https://user-images.githubusercontent.com/52826683/177026378-d22e5cec-4923-4048-92b8-aaa670b7bd00.svg" width="50" height="50">
+<img src="https://user-images.githubusercontent.com/52826683/177026379-786e8b79-67f8-4383-baf5-4ff8c656d904.svg" width="50" height="50">
+<img src="https://user-images.githubusercontent.com/52826683/177026381-417f1eb2-8487-4103-9a8d-88351f62f176.svg" width="50" height="50">
+<img src="https://user-images.githubusercontent.com/52826683/177026382-870e0674-ca85-42ae-b08c-94812244e439.svg" width="50" height="50">
+<img src="https://user-images.githubusercontent.com/52826683/177026383-48634a68-82e6-42f2-bcb0-1242854b6152.svg" width="50" height="50">
+
 
 - [Project Info](#project-info)
 - [Motivation](#motivation)
