@@ -1,14 +1,30 @@
 # IMPORTANT!!! PLEASE PM @cylellll ON TELEGRAM IF YOU WISH TO TRY THE BOT, YOU WILL BE ABLE TO CREATE AND MANAGE THE REAL ESTATE AGENT SITE USING THE BOT IN REAL TIME :)
 # Tech Stack
-<img src="https://user-images.githubusercontent.com/52826683/177026366-27647836-2b4e-4af6-ab7a-00ec5a67ecda.svg" width="50" height="50"> <img src="https://user-images.githubusercontent.com/52826683/177026373-c28403a4-71f9-43a3-93ef-549d20a9434e.svg" width="50" height="50">
-<img src="https://user-images.githubusercontent.com/52826683/177026374-f7dd91dd-27e0-4da8-9f25-524a0cf50e54.svg" width="50" height="50">
-<img src="https://user-images.githubusercontent.com/52826683/177026376-0d633253-9fc7-4423-b9e2-f3dd7d3ca6ee.svg" width="50" height="50">
-<img src="https://user-images.githubusercontent.com/52826683/177026378-d22e5cec-4923-4048-92b8-aaa670b7bd00.svg" width="50" height="50">
+## Languages/Frameworks
+
+<img src="https://user-images.githubusercontent.com/52826683/177026366-27647836-2b4e-4af6-ab7a-00ec5a67ecda.svg" width="50" height="50"> <img src="https://user-images.githubusercontent.com/52826683/177026374-f7dd91dd-27e0-4da8-9f25-524a0cf50e54.svg" width="50" height="50">
 <img src="https://user-images.githubusercontent.com/52826683/177026379-786e8b79-67f8-4383-baf5-4ff8c656d904.svg" width="50" height="50">
 <img src="https://user-images.githubusercontent.com/52826683/177026381-417f1eb2-8487-4103-9a8d-88351f62f176.svg" width="50" height="50">
 <img src="https://user-images.githubusercontent.com/52826683/177026382-870e0674-ca85-42ae-b08c-94812244e439.svg" width="50" height="50">
 <img src="https://user-images.githubusercontent.com/52826683/177026383-48634a68-82e6-42f2-bcb0-1242854b6152.svg" width="50" height="50">
 
+Python | php | React | JavaScript | Json | Node.js
+
+## Services
+<img src="https://user-images.githubusercontent.com/52826683/177026376-0d633253-9fc7-4423-b9e2-f3dd7d3ca6ee.svg" width="50" height="50"> <img src="https://user-images.githubusercontent.com/52826683/177026378-d22e5cec-4923-4048-92b8-aaa670b7bd00.svg" width="50" height="50">
+<img src="https://user-images.githubusercontent.com/52826683/177026866-9c73093a-6a32-4435-a8fd-53e63fdadee6.svg" width="50" height="50">
+
+Stripe | WordPress | Telegram
+
+## Database
+<img src="https://user-images.githubusercontent.com/52826683/177026796-16336f25-d629-4756-9fa1-589e2ddce003.svg" width="50" height="50">
+
+Google Cloud
+
+## Server
+<img src="https://user-images.githubusercontent.com/52826683/177026373-c28403a4-71f9-43a3-93ef-549d20a9434e.svg" width="50" height="50">
+
+DigitalOcean 
 
 - [Project Info](#project-info)
 - [Motivation](#motivation)
@@ -190,16 +206,8 @@ We will be providing a formatted excel sheet with pre-defined fields that users 
 
 ## Current Workflow
 ![Workflow2](https://user-images.githubusercontent.com/52826683/170938710-5419e72c-cbbf-4113-b394-90356ea8d6f7.jpg)
-
-Currently we are using the following tech stack: <br>
-Telegram bot - Python <br>
-Payment - Stripe <br>
-ezWeb database - Google Sheet (To be changed to Firebase shortly) <br>
-ezWeb backend - Node.js / Express.js <br>
-Website - Wordpress / PHP / Javscript <br>
-Server - DigitalOcean Cloud <br>
  <br>
-Telegram bot serves as the user interface and collects user input -> Input is stored in ezWeb database & sent to ezWeb backend -> ezWeb backend processes the input and carry out necessary actions such as creation of website or CRUD operations for individual sites
+The Telegram bot serves as the user interface and collects user input -> Input is then stored in the ezWeb database & sent to ezWeb's backend -> ezWeb backend processes the input and carry out necessary actions such as creation of website or CRUD operations for individual sites
  <br>
 Illustrating this in the relationship below: <br>
 Telegram Bot <---> ezWeb Backend <---> ezWeb Server
@@ -438,8 +446,13 @@ Create Listing | Smooth outcome | 26 June
 Create Post | Smooth outcome | 26 June
 Uninstructed (Random) Tests | Edit Listing function not working (Intended, work in progress) | 26 June
 Uninstructed (Random) Tests | Edit description function was not being properly processed (Work in progress) | 26 June
+Full Test Flow | Cache of website had to be cleared server-side before updates could be reflected| 29 June
+Full Test Flow | Suggestion was made to make menu consistently appear instead of user having to make new prompts each time (Work in progress)| 29 June
+Full Test Flow | Photo sizes that were too big did not appear properly in the website's listings | 29 June
+Full Test Flow | User email and phone numbers were not checked for validity | 3 July
 
-*We have put in place a test flow and are planning to invite five testers to test our product between the following dates 29 June 2022 - 6 May 2022. 
+*We have put in place a test flow and are planning to invite five testers to test our product between the following dates 29 June 2022 - 6 July 2022. 
+Testers were invited to follow the following <a href="https://docs.google.com/document/d/1tOFN_HgKt18vInno4SUhX32b1R_6Hn2GOjgOjh1Qjpk/edit?usp=sharing">Test Flow</a>
 
 # Working Prototype
 Our Telegram bot has been set up to receive website creation requests, and capture url/description data which is sent to our database. On the backend, we will be able to retrive this data and generate a simple website on the given url.
