@@ -7,15 +7,15 @@
 <img src="https://user-images.githubusercontent.com/52826683/177026381-417f1eb2-8487-4103-9a8d-88351f62f176.svg" width="50" height="50">
 <img src="https://user-images.githubusercontent.com/52826683/177026382-870e0674-ca85-42ae-b08c-94812244e439.svg" width="50" height="50">
 <img src="https://user-images.githubusercontent.com/52826683/177026383-48634a68-82e6-42f2-bcb0-1242854b6152.svg" width="50" height="50">
-<img src="https://epsagon.com/wp-content/uploads/2021/05/logo-express-dot-js.jpg" width="50" height="50">
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/GoDaddy_Logo_-_The_GO.svg/1200px-GoDaddy_Logo_-_The_GO.svg.png" width="50" height="50"> <br>
+<img src="https://epsagon.com/wp-content/uploads/2021/05/logo-express-dot-js.jpg" width="50" height="50"> <br>
 Python | PHP | React | JavaScript | Json | Node.js | Express.js 
  
 ## Services
 <img src="https://user-images.githubusercontent.com/52826683/177026376-0d633253-9fc7-4423-b9e2-f3dd7d3ca6ee.svg" width="50" height="50"> <img src="https://user-images.githubusercontent.com/52826683/177026378-d22e5cec-4923-4048-92b8-aaa670b7bd00.svg" width="50" height="50">
 <img src="https://user-images.githubusercontent.com/52826683/177026866-9c73093a-6a32-4435-a8fd-53e63fdadee6.svg" width="50" height="50">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/GoDaddy_Logo_-_The_GO.svg/1200px-GoDaddy_Logo_-_The_GO.svg.png" width="50" height="50">
 
-Stripe | WordPress | Telegram
+Stripe | WordPress | Telegram | GoDaddy
 
 ## Database
 <img src="https://user-images.githubusercontent.com/52826683/177026796-16336f25-d629-4756-9fa1-589e2ddce003.svg" width="50" height="50">
