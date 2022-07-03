@@ -181,6 +181,20 @@ We will be providing a formatted excel sheet with pre-defined fields that users 
 ## Current Workflow
 ![Workflow2](https://user-images.githubusercontent.com/52826683/170938710-5419e72c-cbbf-4113-b394-90356ea8d6f7.jpg)
 
+Currently we are using the following tech stack:
+Telegram bot - Python
+Payment - Stripe
+ezWeb database - Google Sheet (To be changed to Firebase shortly)
+ezWeb backend - Node.js / Express.js
+Website - Wordpress / PHP / Javscript
+Server - DigitalOcean Cloud
+
+Telegram bot serves as the user interface and collects user input -> Input is stored in ezWeb database & sent to ezWeb backend -> ezWeb backend processes the input and carry out necessary actions such as creation of website or CRUD operations for individual sites
+
+Illustrating this in the relationship below:
+Telegram Bot <---> ezWeb Backend <---> ezWeb Server
+
+
 # Mentor Matching - Poster Submission
 <img src="https://user-images.githubusercontent.com/52826683/171004590-70ddf63f-0125-4f17-a9f4-6d87fa77aa14.png" width="500" height="775">
 
