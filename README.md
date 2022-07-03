@@ -7,9 +7,9 @@
 <img src="https://user-images.githubusercontent.com/52826683/177026381-417f1eb2-8487-4103-9a8d-88351f62f176.svg" width="50" height="50">
 <img src="https://user-images.githubusercontent.com/52826683/177026382-870e0674-ca85-42ae-b08c-94812244e439.svg" width="50" height="50">
 <img src="https://user-images.githubusercontent.com/52826683/177026383-48634a68-82e6-42f2-bcb0-1242854b6152.svg" width="50" height="50">
-
-Python | php | React | JavaScript | Json | Node.js
-
+<img src="https://miro.medium.com/max/800/1*9AbbVli10NreTXCpiVYEOQ.png" width="50" height="50">
+Python | PHP | React | JavaScript | Json | Node.js | Express.js 
+ 
 ## Services
 <img src="https://user-images.githubusercontent.com/52826683/177026376-0d633253-9fc7-4423-b9e2-f3dd7d3ca6ee.svg" width="50" height="50"> <img src="https://user-images.githubusercontent.com/52826683/177026378-d22e5cec-4923-4048-92b8-aaa670b7bd00.svg" width="50" height="50">
 <img src="https://user-images.githubusercontent.com/52826683/177026866-9c73093a-6a32-4435-a8fd-53e63fdadee6.svg" width="50" height="50">
@@ -24,7 +24,7 @@ Google Cloud
 ## Server
 <img src="https://user-images.githubusercontent.com/52826683/177026373-c28403a4-71f9-43a3-93ef-549d20a9434e.svg" width="50" height="50">
 
-DigitalOcean 
+DigitalOcean Cloud Server
 
 - [Project Info](#project-info)
 - [Motivation](#motivation)
