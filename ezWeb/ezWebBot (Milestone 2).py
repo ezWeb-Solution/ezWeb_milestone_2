@@ -1,3 +1,4 @@
+# Importing python-telegram-bot's library functions
 from telegram.ext import *
 from telegram import *
 import requests
@@ -67,40 +68,6 @@ def get_cat_fact(update, context):
     response = requests.get(endpoint)
     fact = response.json()["fact"]
     context.bot.send_message(chat_id=update.effective_chat.id, text=fact, reply_markup=None)
-
-def help_me(update, context):
-    to_send = """
-    Welcome! I'm the ezWeb bot, and I am designed to help you create beautiful websites and maintain them.
-    **Creating a website**
-    Click on the menu, and select the "Create website" option to get started. Or, type '/create_website' to begin creating your own site.
-    
-    **Managing your website**
-    Click on the menu, and select the "Manage_websites" option to edit your websites. Or, type 'manage_websites' to begin creating your own site.
-    
-    **FAQ
-    I don't see my site in the list of options after clicking on 'Manage Websites', what do I do?
-    __Click on 'Manage Websites', then choose the 'Reload websites' option. Your site should be shown now.
-    
-    What currency are payments made in?
-    __Payments are made in SGD.__
- 
-    What level of customisability can I expect from ezBot?
-    __You will be able to create, edit, and delete listings, posts, testimonials, clients, and services. In addition, you will be able to upload your contact details and photo to allow visitors to contact you.__
-    """
-
-def create_url(update, context):
-    global current_user
-    current_user[update.effective_chat.id] = {}
-    current_user[update.effective_chat.id]['state'] = 'url_creation'
-    if current_user[update.effective_chat.id]['state'] == 'initialized':
-        context.bot.send_message(chat_id=update.effective_chat.id,
-                                 text="What would your new url be? Type 'cancel' to cancel.")
-        state_changer(update, context, 'url_edit')
-    else:
-        current_user[update.effective_chat.id]['state'] = 'url_creation'
-        response = "Certainly! Please input your desired domain name: \n(Must end with .com/.sg, \nE.g. seanrealestate.com)"
-        context.bot.send_message(chat_id=update.effective_chat.id, text=response, reply_markup=None)
-        current_user[update.effective_chat.id]['state'] = 'url_creation'
 
 def url_confirmation(update, context):
     global current_user
@@ -316,7 +283,7 @@ def manage_posts(update, context):
 
 def manage_listings(update, context):
     buttons = [[InlineKeyboardButton("Create a new listing", callback_data="create_listing")],
-               [InlineKeyboardButton("Edit listings", callback_data="edit_listing")],
+               [InlineKeyboardButton("Edit listings", callback_data="edit_listings")],
                [InlineKeyboardButton("Delete listing", callback_data="delete_listing")],
                [InlineKeyboardButton("Manage another section of my website", callback_data="edit_website")],
                [InlineKeyboardButton("Stop managing " + current_user[update.effective_chat.id]['current_url'] + ".", callback_data="manage_website")]]
@@ -593,7 +560,7 @@ def create_property_details(update, context):
 
 def listing_details(update, property_details):
     global current_user
-    if current_user['state'] == 'create_property_details':
+    if current_user[update.effective_chat.id]['state'] == 'create_property_details':
         listing = current_user[update.effective_chat.id]['new_listing']
     else:
         listing = current_user[update.effective_chat.id]['current_listing']
@@ -710,8 +677,10 @@ def photo_receiver(update, context):
         current_user[update.effective_chat.id]['current_listing']['featured_photo_file_path'] = file_path
         current_user[update.effective_chat.id]['current_listing']['featured_photo_file_id'] = file_id
         context.bot.send_photo(chat_id=update.effective_chat.id,
-                            text="This is the photo received. Please confirm that this will be your new featured photo.",
-                            reply_markup=InlineKeyboardMarkup(buttons))
+                               photo=file_id)
+        context.bot.send_message(chat_id=update.effective_chat.id,
+                                 text="This is the photo received. Please confirm that you would like this to be your new featured photo.",
+                                 reply_markup=InlineKeyboardMarkup(buttons))
     elif current_user[update.effective_chat.id]['state'] == 'edit_listing_extra_photos':
         photo_file = update.message.photo[-1].get_file()
         to_add = current_user[update.effective_chat.id]['current_listing']['num_extra_photos']
@@ -828,7 +797,8 @@ def edit_listings(update, context):
     else:
         buttons.append([InlineKeyboardButton("I no longer want to edit my listings.", callback_data="cancel")])
         context.bot.send_message(chat_id=update.effective_chat.id,
-                                 text="Which one of your listings would you like to edit?")
+                                 text="Which one of your listings would you like to edit?",
+                                 reply_markup=InlineKeyboardMarkup(buttons))
 
 def choose_edit_listing(update, context):
     buttons = [[InlineKeyboardButton("Edit featured photo", callback_data="edit_listing_featured_photo")],
@@ -847,10 +817,10 @@ def edit_listing_featured_photo(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id,
                              text="Sure! Please upload a new featured photo for your listing. Otherwise, type 'cancel' to go back to the main menu.")
 
-def edit_listing_extra_photo(update, context):
+def edit_listing_extra_photos(update, context):
     global current_user
     current_user[update.effective_chat.id]['state'] = 'edit_listing_extra_photos'
-    current_user[update.effective_chat.id]['extra_photos'] = []
+    current_user[update.effective_chat.id]['current_listing']['extra_photos'] = []
     current_user[update.effective_chat.id]['current_listing']['num_extra_photos'] = 0
     context.bot.send_message(chat_id=update.effective_chat.id,
                              text="Please upload up to 10 extra photos, and type **done once you are done.")
@@ -876,6 +846,7 @@ def update_listing(update, context):
                              text="Sending data...This process may take up to thirty seconds...")
     state = current_user[update.effective_chat.id]['state']
     listing = current_user[update.effective_chat.id]['current_listing']
+    listing['websiteName'] = current_user[update.effective_chat.id]['current_url']
     if state == 'edit_listing_featured_photo':
         requests.post('http://localhost:8080/updateListingFeatured', json=listing)
     elif state == 'edit_listing_extra_photos':
@@ -1160,7 +1131,7 @@ def inline_query(update, context):
         create_property_details(update, context)
     elif "change_property_details" in query:
         create_property_details(update, context)
-    elif "listing_description" in query or "change_listing_desc" in query:
+    elif query == "listing_description" or "change_listing_desc" in query:
         listing_description(update, context)
     elif "upload_featured_photo" in query:
         upload_featured_photo(update, context)
@@ -1187,8 +1158,8 @@ def inline_query(update, context):
         context.bot.send_message(update.effective_chat.id, text="Please upload another featured photo.")
     elif "update_listing" in query:
         update_listing(update, context)
-    elif "edit_listing_extra_photo" in query:
-        edit_listing_extra_photo(update, context)
+    elif "edit_listing_extra_photos" in query:
+        edit_listing_extra_photos(update, context)
     elif "edit_listing_description" in query:
         edit_listing_description(update, context)
     elif "edit_listing_title" in query:
@@ -1199,7 +1170,7 @@ def inline_query(update, context):
         edit_listings(update, context)
     elif "listing_edit" in query:
         info = query.split('/')
-        current_user[update.effective_chat.id]['current_listings'] = current_user[update.effective_chat.id]['listings'][info[1]]
+        current_user[update.effective_chat.id]['current_listing'] = current_user[update.effective_chat.id]['listings'][info[1]]
         del current_user[update.effective_chat.id]['listings']
         choose_edit_listing(update, context)
 
@@ -1288,12 +1259,12 @@ def message_handler(update, context):
         if 'cancel' in update.message.text or 'Cancel' in update.message.text:
             other_edits(update, context)
     elif current_user[update.effective_chat.id]['state'] == 'listing_description':
-        current_user[update.effective_chat.id]['new_listing']['description'] = update.message.text
+        current_user[update.effective_chat.id]['current_listing']['description'] = update.message.text
         listing_description_confirmation(update, context)
     elif current_user[update.effective_chat.id]['state'] == 'upload_extra_photos':
         if '**done' in update.message.text:
             confirm_extra_photos(update, context)
-    elif current_user[update.effective]['state'] == 'edit_listing_featured_photo':
+    elif current_user[update.effective_chat.id]['state'] == 'edit_listing_featured_photo':
         if 'cancel' in update.message.text or 'Cancel' in update.message.text:
             other_edits(update, context)
     elif current_user[update.effective_chat.id]['state'] == 'edit_listing_extra_photos':
@@ -1381,3 +1352,4 @@ dispatcher.add_handler(query_handler)
 
 updater.start_polling()
 updater.idle()
+
