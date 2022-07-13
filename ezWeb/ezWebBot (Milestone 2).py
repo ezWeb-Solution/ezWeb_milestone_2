@@ -69,6 +69,44 @@ def get_cat_fact(update, context):
     fact = response.json()["fact"]
     context.bot.send_message(chat_id=update.effective_chat.id, text=fact, reply_markup=None)
 
+
+def help_me(update, context):
+    to_send = """
+    Welcome! I'm the ezWeb bot, and I am designed to help you create beautiful websites and maintain them.
+    **Creating a website**
+    Click on the menu, and select the "Create website" option to get started. Or, type '/create_website' to begin creating your own site.
+    
+    **Managing your website**
+    Click on the menu, and select the "Manage_websites" option to edit your websites. Or, type 'manage_websites' to begin creating your own site.
+    
+    **FAQ
+    I don't see my site in the list of options after clicking on 'Manage Websites', what do I do?
+    __Click on 'Manage Websites', then choose the 'Reload websites' option. Your site should be shown now.
+    
+    What currency are payments made in?
+    __Payments are made in SGD.__
+ 
+    What level of customisability can I expect from ezBot?
+    __You will be able to create, edit, and delete listings, posts, testimonials, clients, and services. In addition, you will be able to upload your contact details and photo to allow visitors to contact you.__
+    """
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text=to_send)
+
+def create_url(update, context):
+    global current_user
+    current_user[update.effective_chat.id] = {}
+    current_user[update.effective_chat.id]['state'] = 'url_creation'
+    if current_user[update.effective_chat.id]['state'] == 'initialized':
+        context.bot.send_message(chat_id=update.effective_chat.id,
+                                 text="What would your new url be? Type 'cancel' to cancel.")
+        state_changer(update, context, 'url_edit')
+    else:
+        current_user[update.effective_chat.id]['state'] = 'url_creation'
+        response = "Certainly! Please input your desired domain name: \n(Must end with .com/.sg, \nE.g. seanrealestate.com)"
+        context.bot.send_message(chat_id=update.effective_chat.id, text=response, reply_markup=None)
+        current_user[update.effective_chat.id]['state'] = 'url_creation'
+
+    
 def url_confirmation(update, context):
     global current_user
     to_check = requests.get('http://localhost:8080/checkURL', params={'urlToCheck': str(current_user[update.effective_chat.id]['url'])})
