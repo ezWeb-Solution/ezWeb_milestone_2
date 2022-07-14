@@ -1073,13 +1073,27 @@ def send_agent_details(update, context):
     requests.post('http://localhost:8080/updateSiteSetting', json=to_send)
     context.bot.send_message(chat_id=update.effective_chat.id,
                              text="Done!")
-
 def reset(update, context):
     global current_user
     del current_user[update.effective_chat.id]
     context.bot.send_message(chat_id=update.effective_chat.id, text="Alright! Let me know if you need anything else! :)")
 
+def isNotValidNumber(number):
+#Returns true is number is not valid
+    if len(number)!= 8:
+        return True
+    elif number[0] != 9 or number[0] != 8 or number[0] != 6:
+        return True
+    return False
 
+def isNotValidEmail(email):
+    #Returns true if email is not valid
+    regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+    if re.fullmatch(regex, email):
+        return False
+    else:
+        return True
+      
 def inline_query(update, context):
     query = update.callback_query.data
     update.callback_query.answer()
@@ -1342,7 +1356,7 @@ def message_handler(update, context):
         if '**cancel' in update.message.text:
             other_edits(update, context)
         info = update.message.text.split('\n')
-        if len(info) < 3:
+        if len(info) < 3 or isNotValidNumber(info[1]) or isNotValidEmail(info[2]):
             context.bot.send_message(chat_id=update.effective_chat.id,
                                      text="Invalid input, please try again, or type '**cancel' to cancel.")
         else:
