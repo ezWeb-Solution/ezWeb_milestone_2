@@ -290,10 +290,12 @@ def manage_website(update, context):
                                  text="Select a website to update.",
                                  reply_markup=InlineKeyboardMarkup(buttons))
 
+# exit
 def exit_bot(update, context):
     del current_user[update.effective_chat.id]
     context.bot.send_message(chat_id=update.effective_chat.id, text="Exiting now... Choose the 'Manage Websites' option if you'd like to continue editing your websites.")
 
+# restart
 def restart(update, context) :
     current_user[update.effective_chat.id] = {}
     context.bot.send_message(chat_id=update.effective_chat.id, text="Bot restarted!")
@@ -309,6 +311,7 @@ def website_edit(update, context):
                              text="Which part of your site would you like to edit?",
                              reply_markup=InlineKeyboardMarkup(buttons))
 
+#Split into posts/listings/details
 def manage_posts(update, context):
     buttons = [[InlineKeyboardButton("Create a new post", callback_data="create_post")],
                [InlineKeyboardButton("Edit posts", callback_data="edit_posts")],
