@@ -1345,10 +1345,12 @@ def message_handler(update, context):
             if len(property_details.split('\n')) != 9:
                 context.bot.send_message(chat_id=update.effective_chat.id,
                                          text="Invalid input, please try again, or type '**cancel' to stop creating a listing")
+            elif '$' not in property_details.split('\n')[8]:
+                context.bot.send_message(chat_id=update.effective_chat.id,
+                                         text="Please ensure that a valid dollar amount is used for the price of the property. E.g. ($1,000,000) \nPlease re-enter property details for this listing.")
             else:
                 listing_details(update, property_details)
                 confirm_edit_listing_property_details(update, context)
-
     elif current_user[update.effective_chat.id]['state'] == 'add_about_me':
         current_user[update.effective_chat.id]['agent_details']['about_me'] = update.message.text
         confirm_about_me(update, context)
