@@ -7,6 +7,8 @@ import os
 from datetime import date
 # Setting up our logger
 import logging
+import re
+
 
 bot_token = os.environ.get('ezWeb_bot_token')
 
@@ -69,7 +71,6 @@ def get_cat_fact(update, context):
     fact = response.json()["fact"]
     context.bot.send_message(chat_id=update.effective_chat.id, text=fact, reply_markup=None)
 
-
 def help_me(update, context):
     to_send = """
     Welcome! I'm the ezWeb bot, and I am designed to help you create beautiful websites and maintain them.
@@ -106,7 +107,6 @@ def create_url(update, context):
         context.bot.send_message(chat_id=update.effective_chat.id, text=response, reply_markup=None)
         current_user[update.effective_chat.id]['state'] = 'url_creation'
 
-    
 def url_confirmation(update, context):
     global current_user
     to_check = requests.get('http://localhost:8080/checkURL', params={'urlToCheck': str(current_user[update.effective_chat.id]['url'])})
@@ -290,12 +290,10 @@ def manage_website(update, context):
                                  text="Select a website to update.",
                                  reply_markup=InlineKeyboardMarkup(buttons))
 
-# exit
 def exit_bot(update, context):
     del current_user[update.effective_chat.id]
     context.bot.send_message(chat_id=update.effective_chat.id, text="Exiting now... Choose the 'Manage Websites' option if you'd like to continue editing your websites.")
 
-# restart
 def restart(update, context) :
     current_user[update.effective_chat.id] = {}
     context.bot.send_message(chat_id=update.effective_chat.id, text="Bot restarted!")
@@ -305,13 +303,13 @@ def website_edit(update, context):
     buttons = [[InlineKeyboardButton("My Posts", callback_data="manage_posts")],
                     [InlineKeyboardButton("My Listings", callback_data="manage_listings")],
                     [InlineKeyboardButton("Manage Agent Details", callback_data="manage_agent_details")],
+                    [InlineKeyboardButton("Manage Services", callback_data="manage_services")],
                     [InlineKeyboardButton("Edit Website Description", callback_data="manage_edit_desc")],
                     [InlineKeyboardButton("Exit/Pick another website to edit", callback_data="exit")]]
     context.bot.send_message(chat_id=update.effective_chat.id,
                              text="Which part of your site would you like to edit?",
                              reply_markup=InlineKeyboardMarkup(buttons))
 
-#Split into posts/listings/details
 def manage_posts(update, context):
     buttons = [[InlineKeyboardButton("Create a new post", callback_data="create_post")],
                [InlineKeyboardButton("Edit posts", callback_data="edit_posts")],
@@ -340,16 +338,86 @@ def manage_agent_details(update, context):
                              text="Choose a following action:",
                              reply_markup=InlineKeyboardMarkup(buttons))
 
+def manage_services(update, context):
+    buttons = [[InlineKeyboardButton("Edit Service #1", callback_data="edit_service_1")],
+               [InlineKeyboardButton("Edit Service #2", callback_data="edit_service_2")],
+               [InlineKeyboardButton("Edit Service #3", callback_data="edit_service_3")]
+               [InlineKeyboardButton("Get more info about the 'My Services' section.", callback_data="my_services_info")],
+               [InlineKeyboardButton("Manage another section of my website", callback_data="edit_website")],
+               [InlineKeyboardButton("Stop managing " + current_user[update.effective_Chat.id]['current_url'] + ".", callback_data="manage_website")]]
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text="Which of your three services would you like to edit?",
+                             reply_markup=InlineKeyboardMarkup(buttons))
+
 def other_edits(update, context):
     buttons = [[InlineKeyboardButton("My Posts", callback_data="manage_posts")],
                [InlineKeyboardButton("My Listings", callback_data="manage_listings")],
                [InlineKeyboardButton("Manage Agent Details", callback_data="manage_agent_details")],
+               [InlineKeyboardButton("Manage Services", callback_data="manage_services")],
                [InlineKeyboardButton("Edit Website Description", callback_data="manage_edit_desc")],
                [InlineKeyboardButton("Exit/Pick another website to edit", callback_data="exit")]]
     context.bot.send_message(chat_id=update.effective_chat.id,
                              text="Are there any other edits that you would like to make to " + current_user[update.effective_chat.id]['current_url'] + "?",
                              reply_markup=InlineKeyboardMarkup(buttons))
 
+def my_services_info(update, context):
+    to_send = """
+    The 'My Services' section allows you to list three different services that you offer for your clients.
+    
+    During the website generation process, this section has been auto-generated for you, and if you would like to edit them, you can pick the select them individually in the 'Edit My Services' option.
+    
+    The services are numbered #1 to #3 from left to right, in increasing order."""
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text=to_send)
+    other_edits(update, context)
+
+def edit_service_title(update, context):
+    global current_user
+    current_user[update.effective_chat.id]['state'] = 'edit_service_title'
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text="Please send your new service title.")
+
+
+def edit_service_title_confirmation(update, context):
+    buttons = [[InlineKeyboardButton("Confirm", callback_data="confirm_service_title")],
+               [InlineKeyboardButton("Resend service title", callback_data="re_edit_service_title")]]
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text="Please confirm that your new service title would be " + current_user[update.effective_chat.id]['current_service']['service_title'] + ".",
+                             reply_markup=InlineKeyboardMarkup(buttons))
+
+def edit_service_description(update, context):
+    global current_user
+    current_user[update.effective_chat.id]['state'] = 'edit_service_description'
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text="Please send your new service description.")
+
+def edit_service_description_confirmation(update, context):
+    buttons = [[InlineKeyboardButton("Confirm", callback_data="confirm_service_description")],
+               [InlineKeyboardButton("Resend service description", callback_data="re_edit_service_description")]]
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text="Please confirm that your new service title would be " + current_user[update.effective_chat.id]['current_service']['service_description'],
+                             reply_markup=InlineKeyboardMarkup(buttons))
+
+def confirm_send_service(update, context):
+    buttons = [[InlineKeyboardButton("Confirm", callback_data="confirm_send_service")],
+               [InlineKeyboardButton("I no longer want to edit my services.",  callback_data="cancel")]]
+    to_send = "Please confirm that your new service would have have the following details:\n\nTitle: " + current_user[update.effective_chat.id]['current_service']['service_title'] + "\n" + "Description: " + current_user[update.effective_chat.id]['current_service']['service_description']
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text=to_send,
+                             reply_markup=InlineKeyboardMarkup(buttons))
+
+def send_service_update(update, context):
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text="Confirmed... sending update...")
+    new_request = {'title': current_user[update.effective_chat.id]['current_service']['service_title'],
+                   'text': current_user[update.effective_chat.id]['current_service']['service_description'],
+                   'serviceNumber': current_user[update.efffective_chat.id]['current_service']['service_number'],
+                   'websiteName': current_user[update.effective_chat.id]['current_url'],
+                   }
+    r = requests.post('http://localhost:8080/editService', json=new_request)
+    context.bot.send_message(chat_id=update.effective_chat,
+                             text="Update sent successfully!")
+    other_edits(update, context)
 
 def create_post_title(update, context):
     global current_user
@@ -974,7 +1042,6 @@ def edit_listing_property_details(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id,
                              text=to_send)
 
-
 def confirm_edit_listing_property_details(update, context):
     buttons = [[InlineKeyboardButton("Confirm", callback_data="update_listing")],
                [InlineKeyboardButton("Send a new description", callback_data="edit_listing_property_details")],
@@ -1073,6 +1140,7 @@ def send_agent_details(update, context):
     requests.post('http://localhost:8080/updateSiteSetting', json=to_send)
     context.bot.send_message(chat_id=update.effective_chat.id,
                              text="Done!")
+
 def reset(update, context):
     global current_user
     del current_user[update.effective_chat.id]
@@ -1093,7 +1161,6 @@ def isNotValidEmail(email):
         return False
     else:
         return True
-      
 def inline_query(update, context):
     query = update.callback_query.data
     update.callback_query.answer()
@@ -1111,6 +1178,8 @@ def inline_query(update, context):
         exit_bot(update, context)
     elif "manage_website" in query:
         manage_website(update, context)
+    elif "edit_website" in query:
+        other_edits(update, context)
     elif "manage_edit_desc" in query:
         create_desc(update, context)
     elif "cat" in query:
@@ -1205,8 +1274,6 @@ def inline_query(update, context):
         delete_listings_confirmation(update, context)
     elif "confirm_listing_delete" in query:
         confirm_delete_listing(update, context)
-
-
     elif "edit_listing_featured_photo" in query:
         edit_listing_featured_photo(update, context)
     elif "re_edit_listing_featured_photo" in query:
@@ -1228,9 +1295,6 @@ def inline_query(update, context):
         current_user[update.effective_chat.id]['current_listing'] = current_user[update.effective_chat.id]['listings'][info[1]]
         del current_user[update.effective_chat.id]['listings']
         choose_edit_listing(update, context)
-
-
-
     elif "re_add_agent_details" in query:
         context.bot.send_message(chat_id=update.effective_chat.id, text="Please input a new 'About Me' description.")
     elif "add_agent_details" in query:
@@ -1257,6 +1321,26 @@ def inline_query(update, context):
         send_agent_details(update, context)
     elif "edit_agent_details" in query:
         context.bot.send_message(chat_id=update.effective_chat.id, text="Edited!")
+    elif query == "manage_services":
+        manage_services(update, context)
+    elif query == "my_services_info":
+        my_services_info(update, context)
+    elif "edit_service" in query:
+        info = query.split('_')
+        service_number = info[2]
+        current_user[update.effective_chat.id]['current_service'] = {}
+        current_user[update.effective_chat.id]['current_service']['service_number'] = service_number
+        edit_service_title(update, context)
+    elif "confirm_service_title" in query:
+        edit_service_description(update, context)
+    elif "re_edit_service_title" in query:
+        context.bot.send_message("Please type in a new service title, or type '**cancel' to cancel.")
+    elif "confirm_service_description" in query:
+        confirm_send_service(update, context)
+    elif "re_send_service_description" in query:
+        context.bot.send_message("Please type in a new service description, or type '**cancel' to cancel.")
+    elif "confirm_send_service" in query:
+        send_service_update(update, context)
 
 def message_handler(update, context):
     global current_user
@@ -1369,8 +1453,21 @@ def message_handler(update, context):
     elif current_user[update.effective_chat.id]['state'] == 'add_agent_quote':
         if '**cancel' in update.message.text:
             other_edits(update, context)
-        current_user[update.effective_chat.id]['agent_details']['quote'] = update.message.text
-        confirm_agent_quote(update, context)
+        else:
+            current_user[update.effective_chat.id]['agent_details']['quote'] = update.message.text
+            confirm_agent_quote(update, context)
+    elif current_user[update.effective_chat.id]['state'] == "edit_service_title":
+        if '**cancel' in update.message.text:
+            other_edits(update, context)
+        else:
+            current_user[update.effective_chat.id]['current_service']['service_title'] = update.message.text
+            edit_service_title_confirmation(update, context)
+    elif current_user[update.effective_chat.id]['state'] == "edit_service_description":
+        if '**cancel' in update.message.text:
+            other_edits(update, context)
+        else:
+            current_user[update.effective_chat.id]['current_service']['service_description'] = update.message.text
+            edit_service_description_confirmation(update, context)
     else:
         context.bot.send_message(chat_id=update.effective_chat.id,
                                  text="I'm not sure what you're looking for.. please be more specific.")
@@ -1409,4 +1506,3 @@ dispatcher.add_handler(query_handler)
 
 updater.start_polling()
 updater.idle()
-
