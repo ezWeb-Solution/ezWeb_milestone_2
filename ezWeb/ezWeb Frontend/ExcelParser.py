@@ -37,6 +37,8 @@ def validate_inputs(filename):
             return "Invalid Title added in row " + str(curr_row + 2)
         elif workbook['Description'].iloc[curr_row] != workbook['Description'].iloc[curr_row]:
             return "Invalid Description added in row " + str(curr_row + 2)
+        elif workbook['Property Type'].iloc[curr_row] != workbook['Property Type'].iloc[curr_row]:
+            return "Invalid Property Type added in row " + str(curr_row + 2)
         elif workbook['Price ($)'].iloc[curr_row].item() != workbook['Price ($)'].iloc[curr_row].item() or not validate_num(workbook['Price ($)'].iloc[curr_row].item()):
             return "Invalid Price added in row " + str(curr_row + 2)
         elif workbook['Year Built'].iloc[curr_row].item() != workbook['Year Built'].iloc[curr_row].item() or not validate_year_built(workbook['Year Built'].iloc[curr_row].item()):
@@ -102,14 +104,14 @@ def parse_excel_file(file_name):
         new_listing['title'] = workbook['Listing Title'].iloc[curr_row]
         new_listing['content'] = workbook['Description'].iloc[curr_row]
         new_listing['property_type'] = workbook['Property Type'].iloc[curr_row]
-        new_listing['year_built'] = workbook['Year Built'].iloc[curr_row]
-        new_listing['price'] = workbook['Price ($)'].iloc[curr_row]
+        new_listing['year_built'] = workbook['Year Built'].iloc[curr_row].item()
+        new_listing['price'] = workbook['Price ($)'].iloc[curr_row].item()
         new_listing['address'] = workbook['Address'].iloc[curr_row]
         new_listing['tenure'] = workbook['Tenure'].iloc[curr_row]
-        new_listing['number_of_rooms'] = workbook['Num. of Rooms'].iloc[curr_row]
-        new_listing['level'] = workbook['Num. of Floors'].iloc[curr_row]
-        new_listing['total_area'] = workbook['Total Area (sqft)'].iloc[curr_row]
-        new_listing['floor'] = workbook['Floor'].iloc[curr_row]
+        new_listing['number_of_rooms'] = workbook['Num. of Rooms'].iloc[curr_row].item()
+        new_listing['level'] = workbook['Num. of Floors'].iloc[curr_row].item()
+        new_listing['total_area'] = workbook['Total Area (sqft)'].iloc[curr_row].item()
+        new_listing['floor'] = workbook['Floor'].iloc[curr_row].item()
         new_listing['featured_photo_file_path'] = workbook['Featured Photo'].iloc[curr_row]
         other_photos = workbook['Other Photos'].iloc[curr_row]
         photos = other_photos.split('\n')
@@ -120,6 +122,5 @@ def parse_excel_file(file_name):
     return listings
 
 #create_excel_template(6)
-print(validate_inputs('6.xlsx'))
+print(validate_inputs('1001.xlsx'))
 #parse_excel_file('6.xlsx')
-
