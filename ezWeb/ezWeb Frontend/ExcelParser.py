@@ -1,10 +1,20 @@
+
 import time
 import pandas as pd
 import validators
 
+from urllib.request import urlopen
+
+# Use a hash to generate a file name.
+# df.index.name = 'ID'
+# df.to_excel('my_file.xlsx')
+
+# Open excel file and read
 def create_excel_template(num):
     file_name = str(num) + '.xlsx'
-    df = pd.DataFrame({ 'Property Type': ["Example"],
+    df = pd.DataFrame({ 'Listing Title': ["Example"],
+                        'Description': ["wer"],
+                        'Property Type': ["wer"],
                         'Year Built': [2000],
                         'Price ($)': [5000000],
                         'Address': ["Bukit Timah Drive 15"],
@@ -23,7 +33,11 @@ def validate_inputs(filename):
     total_rows = len(workbook.index)
     curr_row = 1
     while curr_row < total_rows:
-        if workbook['Price ($)'].iloc[curr_row].item() != workbook['Price ($)'].iloc[curr_row].item() or not validate_num(workbook['Price ($)'].iloc[curr_row].item()):
+        if workbook['Listing Title'].iloc[curr_row] != workbook['Listing Title'].iloc[curr_row]:
+            return "Invalid Title added in row " + str(curr_row + 2)
+        elif workbook['Description'].iloc[curr_row] != workbook['Description'].iloc[curr_row]:
+            return "Invalid Description added in row " + str(curr_row + 2)
+        elif workbook['Price ($)'].iloc[curr_row].item() != workbook['Price ($)'].iloc[curr_row].item() or not validate_num(workbook['Price ($)'].iloc[curr_row].item()):
             return "Invalid Price added in row " + str(curr_row + 2)
         elif workbook['Year Built'].iloc[curr_row].item() != workbook['Year Built'].iloc[curr_row].item() or not validate_year_built(workbook['Year Built'].iloc[curr_row].item()):
             return "Invalid Year added in row " + str(curr_row + 2)
@@ -77,32 +91,35 @@ def validate_url_image(url):
 
 def parse_excel_file(file_name):
     workbook = pd.read_excel(file_name, sheet_name="Sheet1")
-    res = validate_inputs(file_name)
-    if not res == "Valid":
-        print(res)
-        return res
     total_rows = len(workbook.index)
     total_rows -= 1
     listings = []
-    curr_row = 1
-    while curr_row < total_rows:
+    curr_row = 0
+    while curr_row + 1 < total_rows:
         print(workbook['Property Type'].iloc[curr_row])
         listings.append({})
         new_listing = listings[curr_row]
+        new_listing['title'] = workbook['Listing Title'].iloc[curr_row]
+        new_listing['content'] = workbook['Description'].iloc[curr_row]
         new_listing['property_type'] = workbook['Property Type'].iloc[curr_row]
         new_listing['year_built'] = workbook['Year Built'].iloc[curr_row]
         new_listing['price'] = workbook['Price ($)'].iloc[curr_row]
         new_listing['address'] = workbook['Address'].iloc[curr_row]
         new_listing['tenure'] = workbook['Tenure'].iloc[curr_row]
-        new_listing['num_rooms'] = workbook['Num. of Rooms'].iloc[curr_row]
-        new_listing['number_of_storeys'] = workbook['Num. of Floors'].iloc[curr_row]
+        new_listing['number_of_rooms'] = workbook['Num. of Rooms'].iloc[curr_row]
+        new_listing['level'] = workbook['Num. of Floors'].iloc[curr_row]
         new_listing['total_area'] = workbook['Total Area (sqft)'].iloc[curr_row]
         new_listing['floor'] = workbook['Floor'].iloc[curr_row]
-        new_listing['featured_photo'] = workbook['Featured Photo'].iloc[curr_row]
+        new_listing['featured_photo_file_path'] = workbook['Featured Photo'].iloc[curr_row]
         other_photos = workbook['Other Photos'].iloc[curr_row]
         photos = other_photos.split('\n')
-        new_listing['other_photos'] = []
+        new_listing['extra_photos'] = []
         for photo in photos:
-            new_listing['other_photos'].append(photo)
+            new_listing['extra_photos'].append(photo)
         curr_row += 1
-    return "parsed"
+    return listings
+
+#create_excel_template(6)
+print(validate_inputs('6.xlsx'))
+#parse_excel_file('6.xlsx')
+
