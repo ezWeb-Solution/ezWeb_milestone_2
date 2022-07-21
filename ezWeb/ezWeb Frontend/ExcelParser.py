@@ -1,56 +1,108 @@
-
 import time
 import pandas as pd
-# Open excel file and read
-workbook = pd.read_excel('sample-xlsx-file-for-testing.xlsx', sheet_name="Sheet1")
-workbook = pd.read_excel('sample-xlsx-file-for-testing.xlsx', sheet_name="Sheet2")
+import validators
 
-listings = []
-curr_row = 2
-while workbook['Property Name'].iloc[curr_row] is not None:
-    listings.append({})
-    new_listing = listings[curr_row - 2]
-    new_listing['property_type'] = workbook['Property Type'].iloc[curr_row]
-    new_listing['year_built'] = workbook['Year Built'].iloc[curr_row]
-    new_listing['price'] = workbook['Price'].iloc[curr_row]
-    new_listing['address'] = workbook['Address'].iloc[curr_row]
-    new_listing['tenure'] = workbook['Tenure'].iloc[curr_row]
-    new_listing['num_rooms'] = workbook['Num. of Rooms'].iloc[curr_row]
-    new_listing['number_of_storeys'] = workbook['Num. of Floors'].iloc[curr_row]
-    new_listing['total_area'] = workbook['Total Area (sqft)'].iloc[curr_row]
-    new_listing['floor'] = workbook['Floor'].iloc[curr_row]
-    new_listing['featured_photo'] = workbook['Featured Photo'].iloc[curr_row]
-    other_photos = workbook['Other Photos'].iloc[curr_row]
-    photos = other_photos.split('\n')
-    new_listing['other_photos'] = []
-    for photo in photos:
-        new_listing['other_photos'].append(photo)
-    curr_row += 1
-print(workbook['Property Name'].iloc[0])
+def create_excel_template(num):
+    file_name = str(num) + '.xlsx'
+    df = pd.DataFrame({ 'Property Type': ["Example"],
+                        'Year Built': [2000],
+                        'Price ($)': [5000000],
+                        'Address': ["Bukit Timah Drive 15"],
+                        'Tenure': ["Freehold"],
+                        'Num. of Rooms': [5],
+                        'Num. of Floors': [3],
+                        'Total Area (sqft)': [3000],
+                        'Floor': [6],
+                        'Featured Photo': ["https://ibb.co/wSq1XPr"],
+                        'Other Photos': ["https://ibb.co/wSq1XPr"]})
+    df.to_excel(file_name)
+    return file_name
 
-# Output
-for listing in listings:
-    ## Calls create listing and sends listing to the backend.
-    #create_new_listing(listing)
-    time.sleep(10)
-workbook.head()
+def validate_inputs(filename):
+    workbook = pd.read_excel(filename, sheet_name="Sheet1")
+    total_rows = len(workbook.index)
+    curr_row = 1
+    while curr_row < total_rows:
+        if workbook['Price ($)'].iloc[curr_row].item() != workbook['Price ($)'].iloc[curr_row].item() or not validate_num(workbook['Price ($)'].iloc[curr_row].item()):
+            return "Invalid Price added in row " + str(curr_row + 2)
+        elif workbook['Year Built'].iloc[curr_row].item() != workbook['Year Built'].iloc[curr_row].item() or not validate_year_built(workbook['Year Built'].iloc[curr_row].item()):
+            return "Invalid Year added in row " + str(curr_row + 2)
+        elif workbook['Total Area (sqft)'].iloc[curr_row].item() != workbook['Total Area (sqft)'].iloc[curr_row].item() or not validate_num(workbook['Total Area (sqft)'].iloc[curr_row].item()):
+            return "Invalid Total Area added in row " + str(curr_row + 2)
+        elif workbook['Num. of Rooms'].iloc[curr_row].item() != workbook['Num. of Rooms'].iloc[curr_row].item() or not validate_num(workbook['Num. of Rooms'].iloc[curr_row].item()):
+            return "Invalid Num. of Rooms added in row " + str(curr_row + 2)
+        elif workbook['Num. of Floors'].iloc[curr_row].item() != workbook['Num. of Floors'].iloc[curr_row].item() or not validate_num(workbook['Num. of Floors'].iloc[curr_row].item()):
+            return "Invalid Num. of Floors added in row " + str(curr_row + 2)
+        elif workbook['Floor'].iloc[curr_row].item() != workbook['Floor'].iloc[curr_row].item() or not validate_num(workbook['Floor'].iloc[curr_row].item()):
+            return "Invalid Floor added in row " + str(curr_row)
+        elif workbook['Featured Photo'].iloc[curr_row] != workbook['Featured Photo'].iloc[curr_row] or not validate_url_image(workbook['Featured Photo'].iloc[curr_row]):
+            return "Invalid Featured Photo link added in row " + str(curr_row + 2)
+        else:
+            other_photos = workbook['Other Photos'].iloc[curr_row]
+            if other_photos != other_photos:
+                return "Invalid Other Photos link added in row " + str(curr_row + 2)
+            photos = other_photos.split("\n")
+            num = 1
+            for photo in photos:
+                if not validate_url_image(photo):
+                    return "Invalid Other Photos link added in row " + str(curr_row + 2) + " at line " + str(num)
+                num += 1
+        curr_row += 1
+    return "Valid"
 
+def validate_year_built(year):
+    print("Validating year...")
+    if year <= 2050 and year >= 1900:
+        return True
+    return False
 
-# Create a new file
+def validate_num(num):
+    print("Validating num...")
+    if isinstance(num, (int, float, complex)):
+        return True
+    if isinstance(num, str):
+        if num.is_numeric():
+            return True
+    return False
 
-df = pd.DataFrame({ 'Property Type': [],
-                    'Year Built': [],
-                    'Price': [],
-                    'Address': [],
-                    'Tenure': [],
-                    'Num. of Rooms': [],
-                    'Num. of Floors': [],
-                    'Total Area (sqft)': [],
-                    'Floor': [],
-                    'Featured_Photo': [],
-                    'Other Photos': []})
+def is_url_image(image_url):
+    return image_url.startswith("https://ibb.co/")
 
-# Use a hash to generate a file name.
-df.index.name = 'ID'
-df.to_excel('my_file.xlsx')
+def check_url(url):
+    return validators.url(url)
 
+def validate_url_image(url):
+    print("Validating url/image")
+    return check_url(url) and is_url_image(url)
+
+def parse_excel_file(file_name):
+    workbook = pd.read_excel(file_name, sheet_name="Sheet1")
+    res = validate_inputs(file_name)
+    if not res == "Valid":
+        print(res)
+        return res
+    total_rows = len(workbook.index)
+    total_rows -= 1
+    listings = []
+    curr_row = 1
+    while curr_row < total_rows:
+        print(workbook['Property Type'].iloc[curr_row])
+        listings.append({})
+        new_listing = listings[curr_row]
+        new_listing['property_type'] = workbook['Property Type'].iloc[curr_row]
+        new_listing['year_built'] = workbook['Year Built'].iloc[curr_row]
+        new_listing['price'] = workbook['Price ($)'].iloc[curr_row]
+        new_listing['address'] = workbook['Address'].iloc[curr_row]
+        new_listing['tenure'] = workbook['Tenure'].iloc[curr_row]
+        new_listing['num_rooms'] = workbook['Num. of Rooms'].iloc[curr_row]
+        new_listing['number_of_storeys'] = workbook['Num. of Floors'].iloc[curr_row]
+        new_listing['total_area'] = workbook['Total Area (sqft)'].iloc[curr_row]
+        new_listing['floor'] = workbook['Floor'].iloc[curr_row]
+        new_listing['featured_photo'] = workbook['Featured Photo'].iloc[curr_row]
+        other_photos = workbook['Other Photos'].iloc[curr_row]
+        photos = other_photos.split('\n')
+        new_listing['other_photos'] = []
+        for photo in photos:
+            new_listing['other_photos'].append(photo)
+        curr_row += 1
+    return "parsed"
