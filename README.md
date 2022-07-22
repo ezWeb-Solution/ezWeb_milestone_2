@@ -348,17 +348,23 @@ We intended to interview actual real estate agents to get more feedback on wheth
 #### Feedback Received
 To be added...
 
-## Milestone 3 - Extension - 25 Jul - To Be Confirmed
+## Milestone 3 - Extension - 25 Jul - Completed
 Task  | Description | Handled by | Date
 ------------- | ------------- | -- | ---
-Add Edit Listings Function | Allow users to edit listings | Chengyue, Sean | 5 Jul
-Interview Real Estate Agents | Find out what the current pain points are, and what we have missed | Chengyue, Sean|10 Jul
-Website Analytics Tracking | Implement website backend system to capture web traffic | Chengyue | 10 Jul
-Website Analytics Display | Provide analytics to users in an easy-to-digest manner on Telegram | Chengyue, Sean | 12 Jul
-More Templates | Deploy more templates for users to pick from | Chengyue, Sean | 15 Jul
-Insurance Agents Templates | Expand target audience to insurance agents | Chengyue, Sean | 20 Jul
-Expand Customizability | Allow users greater customizability to their site | Chengyue, Sean | 22 Jul
-User Testing | Allow selected real estate agents to build their websites using ezWeb | Chengyue, Sean | 24 Jul
+Add Edit Listings Function | Allow users to edit listings | Chengyue, Sean | 6 Jul
+Price Display Bug Fix | Prices were incorrectly displayed | Chengyue, Sean | 7 Jul
+Improve Data Retrieval Logic | Data was now only requested for when necessary | Sean | 10 Jul
+Optimize Bot Speed | Data collection and storage was used to drastically improve user experience | Sean | 12 Jul
+Add Services Function | Allow users to edit Services section of their site | Chengyue, Sean | 14 Jul
+Add Testimonials Function | Allow users to edit Testimonials section of their site | Chengyue, Sean | 16 Jul
+User Input Validation | User input validation for agent email and phone number was added | Sean | 18 Jul
+Create Excel Template | Excel template for bulk listing upload created | Sean | 20 Jul
+Setup Excel Parser | Excel parser was created to retrieve relevant information from Excel Sheets | Sean | 20 Jul
+Setup Excel Input Validation | Validation was set up to ensure that users were passing in valid information | Sean | 22 Jul
+Setup Excel Parser Unit Tests | Unit tests were set up to ensure that validation was working properly | Sean | 20 Jul
+Allow Bulk Listings via Excel Sheet | Tested and deployed successfully | Chengyue, Sean | 23 Jul
+Interview Real Estate Agents | Find out what the current pain points are, and what we have missed | Chengyue, Sean | 24 Jul
+
 
 # Software Engineering Practices
 During the process of implementing our solution, we have tried our best to ensure that good software engineering practices were being employed, so as to maximise what we have learnt during this process.
