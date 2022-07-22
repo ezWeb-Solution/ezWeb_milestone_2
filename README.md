@@ -75,7 +75,7 @@ DigitalOcean Cloud Server
         * [Edit Agent Details](#edit-agent-details)
         * [Agent Interviews](#agent-interviews)
       - [Feedback Received](#feedback-received-1)
-  * [Milestone 3 - Extension - 25 Jul - To Be Confirmed](#milestone-3---extension---25-jul---to-be-confirmed)
+  * [Milestone 3 - Extension - 25 Jul - Completed](#milestone-3---extension---25-jul---to-be-confirmed)
 - [Software Engineering Practices](#software-engineering-practices)
   * [Incremental Code Development](#incremental-code-development)
   * [Weekly Code Review](#weekly-code-review)
@@ -353,12 +353,16 @@ Task  | Description | Handled by | Date
 ------------- | ------------- | -- | ---
 Add Edit Listings Function | Allow users to edit listings | Chengyue, Sean | 6 Jul
 Price Display Bug Fix | Prices were incorrectly displayed | Chengyue, Sean | 7 Jul
+Multiple Users | Bot could now support multiple users | Sean | 8 Jul
 Improve Data Retrieval Logic | Data was now only requested for when necessary | Sean | 10 Jul
+Overhaul Bot Data Capture Logic | Data was being stored in a way that supports multiple users | 10 Jul
 Optimize Bot Speed | Data collection and storage was used to drastically improve user experience | Sean | 12 Jul
 Add Services Function | Allow users to edit Services section of their site | Chengyue, Sean | 14 Jul
+Site Animations Improved | Aesthetically pleasing site animations were added to enhance UX | Chengyue | 15 Jul
 Add Testimonials Function | Allow users to edit Testimonials section of their site | Chengyue, Sean | 16 Jul
 User Input Validation | User input validation for agent email and phone number was added | Sean | 18 Jul
 Create Excel Template | Excel template for bulk listing upload created | Sean | 20 Jul
+Site Mobile Compatibility | Enabled mobile compatibility for agents' sites | Chengyue | 20 Jul
 Setup Excel Parser | Excel parser was created to retrieve relevant information from Excel Sheets | Sean | 20 Jul
 Setup Excel Input Validation | Validation was set up to ensure that users were passing in valid information | Sean | 22 Jul
 Setup Excel Parser Unit Tests | Unit tests were set up to ensure that validation was working properly | Sean | 20 Jul
