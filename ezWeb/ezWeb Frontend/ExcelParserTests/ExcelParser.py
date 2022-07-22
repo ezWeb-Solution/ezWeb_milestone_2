@@ -88,12 +88,10 @@ def is_url_image(image_url):
             return True
     return False
 
-def check_url(url):
-    return validators.url(url)
 
 def validate_url_image(url):
     #print("Validating url/image")
-    return check_url(url) and is_url_image(url)
+    return is_url_image(url)
 
 def parse_excel_file(file_name):
     workbook = pd.read_excel(file_name, sheet_name="Sheet1")
