@@ -7,7 +7,7 @@ import os
 from datetime import date
 # Setting up our logger
 import logging
-import re
+#import reopen
 from ExcelParser import *
 
 bot_token = os.environ.get('ezWeb_bot_token')
@@ -60,28 +60,30 @@ def file_downloader(update, context):
     if current_user.get(update.effective_chat.id) is None or current_user[update.effective_chat.id].get('state') is None:
         context.bot.send_message("Cool file! Although, I don't really know what to do with it.")
     elif current_user[update.effective_chat.id]['state'] == 'add_mass_listings':
-        context.bot.get_file(update.message.document).download()
+        context.bot.get_file(update.message.document).download(custom_path=current_user[update.effective_chat.id]['mass_listing_file'])
+        context.bot.send_message(chat_id=update.effective_chat.id,
+                                 text="File received...")
         mass_listing_checker(update, context)
-
 
 def help_me(update, context):
     to_send = """
     Welcome! I'm the ezWeb bot, and I am designed to help you create beautiful websites and maintain them.
-    **Creating a website**
+    
+    Creating a website:
     Click on the menu, and select the "Create website" option to get started. Or, type '/create_website' to begin creating your own site.
     
-    **Managing your website**
+    Managing your website:
     Click on the menu, and select the "Manage_websites" option to edit your websites. Or, type 'manage_websites' to begin creating your own site.
     
-    **FAQ
+    FAQ
     I don't see my site in the list of options after clicking on 'Manage Websites', what do I do?
-    __Click on 'Manage Websites', then choose the 'Reload websites' option. Your site should be shown now.
+    Click on 'Manage Websites', then choose the 'Reload websites' option. Your site should be shown now.
     
     What currency are payments made in?
-    __Payments are made in SGD.__
+    Payments are made in SGD.
  
     What level of customisability can I expect from ezBot?
-    __You will be able to create, edit, and delete listings, posts, testimonials, clients, and services. In addition, you will be able to upload your contact details and photo to allow visitors to contact you.__
+    You will be able to create, edit, and delete listings, posts, testimonials, clients, and services. In addition, you will be able to upload your contact details and photo to allow visitors to contact you.
     """
     context.bot.send_message(chat_id=update.effective_chat.id,
                              text=to_send)
@@ -139,6 +141,10 @@ def create_desc(update, context):
         state_changer(update, context, 'sending_desc')
     elif current_user[update.effective_chat.id]['state'] == 'manage_website':
         state_changer(update, context, 'update_desc')
+        context.bot.send_message(chat_id=update.effective_chat.id,
+                                 text="Retrieving website description..")
+        current_user[update.effective_chat.id]['website_desc'] = str(wks.acell('B' + str(current_user[update.effective_chat.id]['target_row'])).value)
+
         context.bot.send_message(chat_id=update.effective_chat.id,
                                  text=f"Your current description is: {current_user[update.effective_chat.id]['website_desc']}\nWhat would your new description be?")
     else:
@@ -293,8 +299,8 @@ def restart(update, context) :
 
 def website_edit(update, context):
     current_user[update.effective_chat.id]['state'] = 'manage_website'
-    buttons = [[InlineKeyboardButton("My Posts", callback_data="manage_posts")],
-                    [InlineKeyboardButton("My Listings", callback_data="manage_listings")],
+    buttons = [[InlineKeyboardButton("Manage My Posts", callback_data="manage_posts")],
+                    [InlineKeyboardButton("Manage My Listings", callback_data="manage_listings")],
                     [InlineKeyboardButton("Manage Agent Details", callback_data="manage_agent_details")],
                     [InlineKeyboardButton("Manage Services", callback_data="manage_services")],
                     [InlineKeyboardButton("Manage Testimonials", callback_data="manage_testimonials")],
@@ -316,7 +322,7 @@ def manage_posts(update, context):
 
 def manage_listings(update, context):
     buttons = [[InlineKeyboardButton("Create a new listing", callback_data="create_listing")],
-               [InlineKeyboardButton("Upload mass listings (via Excel file)", callback_data="mass_listing")]
+               [InlineKeyboardButton("Upload mass listings (via Excel file)", callback_data="mass_listing")],
                [InlineKeyboardButton("Edit listings", callback_data="edit_listings")],
                [InlineKeyboardButton("Delete listing", callback_data="delete_listing")],
                [InlineKeyboardButton("Manage another section of my website", callback_data="edit_website")],
@@ -345,8 +351,7 @@ def manage_services(update, context):
                              reply_markup=InlineKeyboardMarkup(buttons))
 
 def manage_testimonials(update, context):
-    buttons = [[InlineKeyboardButton("Add Testimonials", callback_data="edit_testimonials")],
-               [InlineKeyboardButton("Delete Testimonials", callback_data="delete_testimonials")],
+    buttons = [[InlineKeyboardButton("Edit Testimonials", callback_data="edit_testimonials")],
                [InlineKeyboardButton("Get more info about the 'My Testimonials' section.", callback_data="my_testimonials_info")]]
     context.bot.send_message(chat_id=update.effective_chat.id,
                              text="Choose a following action",
@@ -365,9 +370,7 @@ def my_testimonials_info(update, context):
 def choose_testimonial(update, context):
     buttons = [[InlineKeyboardButton("Edit Testimonial 1", callback_data="choose_testimonial/1")],
                [InlineKeyboardButton("Edit Testimonial 2", callback_data="choose_testimonial/2")],
-               [InlineKeyboardButton("Edit Testimonial 3", callback_data="choose_testimonial/3")],
-               [InlineKeyboardButton("Edit Testimonial 4", callback_data="choose_testimonial/4")],
-               [InlineKeyboardButton("Edit Testimonial 5", callback_data="choose_testimonial/5")]]
+               [InlineKeyboardButton("Edit Testimonial 3", callback_data="choose_testimonial/3")]]
     context.bot.send_message(chat_id=update.effective_chat.id,
                              text="Which one of your testimonials would you like to edit?",
                              reply_markup=InlineKeyboardMarkup(buttons))
@@ -389,7 +392,21 @@ def confirm_testimonial_name(update, context):
                [InlineKeyboardButton("Resend name", callback_data="re_send_testimonial_name")],
                [InlineKeyboardButton("Stop creating new testimonial", callback_data="website_edit")]]
     context.bot.send_message(chat_id=update.effective_chat.id,
-                             text="Please confirm that the testimonial name that you want to add is:\n\n " + current_user[update.effective_chat.id]['new_testimonial']['testimonial_name'],
+                             text="Please confirm that the testimonial name that you want to add is:\n\n" + current_user[update.effective_chat.id]['new_testimonial']['testimonial_name'],
+                             reply_markup=InlineKeyboardMarkup(buttons))
+
+def add_testimonial_designation(update, context):
+    global current_user
+    current_user[update.effective_chat.id]['state'] = 'add_testimonial_designation'
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text="Please add a designation for the person providing this testimonial.\n\nEg. Ex-Client, Real Estate Investor, CEO of ABC Company, Sales Executive, Buyer, Seller, etc.")
+
+def confirm_testimonial_designation(update, context):
+    buttons = [[InlineKeyboardButton("Confirm", callback_data="confirm_testimonial_designation")],
+               [InlineKeyboardButton("Resend designation", callback_data="re_send_testimonial_designation")],
+               [InlineKeyboardButton("Stop creating new testimonial", callback_data="website_edit")]]
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text="Please confirm that the testimonial name that you want to add is:\n\n" + current_user[update.effective_chat.id]['new_testimonial']['testimonial_name'],
                              reply_markup=InlineKeyboardMarkup(buttons))
 
 def add_testimonial_text(update, context):
@@ -400,10 +417,10 @@ def add_testimonial_text(update, context):
 
 def confirm_testimonial_text(update, context):
     buttons = [[InlineKeyboardButton("Confirm", callback_data="confirm_testimonial_text")],
-               [InlineKeyboardButton("Resent text", callback_data="re_send_testimonial_text")],
+               [InlineKeyboardButton("Resend text", callback_data="re_send_testimonial_text")],
                [InlineKeyboardButton("Stop creating new testimonial", callback_data="website_edit")]]
     context.bot.send_message(chat_id=update.effective_chat.id,
-                             text="Please confirm that the testimonial text that you want to add is:\n\n " + current_user[update.effective_chat.id]['new_testimonial']['testimonial_text'],
+                             text="Please confirm that the testimonial text that you want to add is:\n\n" + current_user[update.effective_chat.id]['new_testimonial']['testimonial_text'],
                              reply_markup=InlineKeyboardMarkup(buttons))
 
 def confirm_new_testimonial(update, context):
@@ -418,17 +435,21 @@ def send_new_testimonial(update, context):
                              text="Confirmed... sending update...")
     new_request = {'name': current_user[update.effective_chat.id]['new_testimonial']['testimonial_name'],
                    'text': current_user[update.effective_chat.id]['new_testimonial']['testimonial_text'],
-                   'photo': current_user[update.efffective_chat.id]['current_service']['testimonial_photo'],
-                   'websiteName': current_user[update.effective_chat.id]['current_url'],
+                   'photo_id': current_user[update.effective_chat.id]['new_testimonial']['testimonial_photo_file_path'],
+                   'photo_path': current_user[update.effective_chat.id]['new_testimonial']['testimonial_photo_file_id'],
+                   'testimonialNumber': current_user[update.effective_chat.id]['new_testimonial']['testimonial_number'],
+                   'title': current_user[update.effective_chat.id]['new_testimonial']['testimonial_designation'],
+                   'websiteName': current_user[update.effective_chat.id]['current_url']
                    }
     r = requests.post('http://localhost:8080/addTestimonial', json=new_request)
-    context.bot.send_message(chat_id=update.effective_chat,
+    del current_user[update.effective_chat.id]['new_testimonial']
+    context.bot.send_message(chat_id=update.effective_chat.id,
                              text="Update sent successfully!")
     other_edits(update, context)
 
 def other_edits(update, context):
-    buttons = [[InlineKeyboardButton("My Posts", callback_data="manage_posts")],
-               [InlineKeyboardButton("My Listings", callback_data="manage_listings")],
+    buttons = [[InlineKeyboardButton("Manage My Posts", callback_data="manage_posts")],
+               [InlineKeyboardButton("Manage My Listings", callback_data="manage_listings")],
                [InlineKeyboardButton("Manage Agent Details", callback_data="manage_agent_details")],
                [InlineKeyboardButton("Manage Services", callback_data="manage_services")],
                [InlineKeyboardButton("Edit Website Description", callback_data="manage_edit_desc")],
@@ -529,6 +550,12 @@ def create_post_content_confirmation(update, context):
                              text="The content of your new post will be " + current_user[update.effective_chat.id]['new_post']['post_content'] + ". Please confirm.",
                              reply_markup=InlineKeyboardMarkup(buttons))
 
+def create_post_photo(update, context):
+    global current_user
+    current_user[update.effective_chat.id]['state'] = 'create_post_photo'
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text="Please upload a photo for your post if you'd like. Otherwise, type '**skip' to skip adding a photo.")
+
 def send_post_confirmation(update, context):
     buttons = [[InlineKeyboardButton("Confirm post.", callback_data="confirm_post_submission")],
                [InlineKeyboardButton("I would like to change my title and content.", callback_data="create_post")],
@@ -544,18 +571,14 @@ def confirm_post(update, context):
     new_request = {'title': current_user[update.effective_chat.id]['new_post']['post_title'],
                    'content': current_user[update.effective_chat.id]['new_post']['post_content'],
                    'websiteName': current_user[update.effective_chat.id]['current_url'],
+                   'photo_file_id': current_user[update.effective_chat.id]['new_post']['post_photo_file_id'],
+                   'photo_file_path': current_user[update.effective_chat.id]['new_post']['post_photo_file_path']
                    }
     r = requests.post('http://localhost:8080/createPost', json=new_request)
     del current_user[update.effective_chat.id]['new_post']
     context.bot.send_message(chat_id=update.effective_chat.id, text="Done!")
     other_edits(update, context)
 
-def create_post_photo(update, context):
-    global current_user
-    current_user[update.effective_chat.id]['state'] = 'create_post_photo'
-    context.bot.send_message(chat_id=update.effective_chat.id,
-                             text="Please upload a photo for your post if you'd like. Otherwise, type '**skip' to skip adding a photo.")
-    
 def delete_post(update, context):
     global current_user
     current_user[update.effective_chat.id]['posts'] = {}
@@ -686,6 +709,8 @@ def mass_listing(update, context):
 
 def mass_listing_checker(update, context):
     global current_user
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text="Checking for valid inputs..")
     res = validate_inputs(current_user[update.effective_chat.id]['mass_listing_file'])
     if not res == "Valid":
         context.bot.send_message(chat_id=update.effective_chat.id,
@@ -698,13 +723,26 @@ def mass_listing_checker(update, context):
 
 def upload_mass_listing(update, context, listings):
     counter = 1
+    is_error = False
     for listing in listings:
         context.bot.send_message(chat_id=update.effective_chat.id,
-                                 text="Uploading listing #" + str(counter))
-        requests.post(url='http://localhost:8080/createListing',
+                                 text="Uploading listing #" + str(counter) + " Title: " + listing['title'])
+        listing['websiteName'] = current_user[update.effective_chat.id]['current_url']
+        res = requests.post(url='http://localhost:8080/createListing',
                       json=listing)
-        counter +=1
-    context.bot.send_message(chat_id=update.effective_chat.id,
+        if res.status_code == 404:
+            context.bot.send_message(chat_id=update.effective_chat.id,
+                                     text="Update failed... Common failure reasons include having the same listing titles for multiple listings.. Please try again.")
+            isError = True
+            break
+        else:
+            context.bot.send_message(chat_id=update.effective_chat.id,
+                                     text="Upload successful!")
+            counter +=1
+    if isError:
+        other_edits(update, context)
+    else:
+        context.bot.send_message(chat_id=update.effective_chat.id,
                              text="Done!")
 
 
@@ -896,4 +934,810 @@ def photo_receiver(update, context):
                                      text="Photo upload limit reached. Proceeding to confirm extra photos...")
             confirm_edit_listing_extra_photos(update, context)
         else:
-            cont
+            context.bot.send_message(chat_id=update.effective_chat.id,
+                                     text=str(current_user[update.effective_chat.id]['current_listing']['num_extra_photos']) + " photos added. Type '**done' if you are done. Otherwise, continue uploading extra photos of the property.")
+    elif current_user[update.effective_chat.id]['state'] == 'add_testimonial_photo':
+        buttons = [[InlineKeyboardButton("Confirm", callback_data="confirm_testimonial_photo")],
+                   [InlineKeyboardButton("Resend Testimonial Photo", callback_data="re_add_testimonial_photo")],
+                   [InlineKeyboardButton("I would like to stop adding a new testimonial.", callback_data="website_edit")]]
+        photo_file = update.message.photo[-1].get_file()
+        current_user[update.effective_chat.id]['new_testimonial']['testimonial_photo_file_path'] = photo_file['file_path']
+        current_user[update.effective_chat.id]['new_testimonial']['testimonial_photo_file_id'] = photo_file['file_id']
+        context.bot.send_photo(chat_id=update.effective_chat.id,
+                               photo=photo_file['file_id'])
+        context.bot.send_message(chat_id=update.effective_chat.id,
+                                 text="This is the photo received. Please confirm that this is the photo you would like to use for the person providing you with a testimonial.",
+                                 reply_markup=InlineKeyboardMarkup(buttons))
+    elif current_user[update.effective_chat.id]['state'] == 'create_post_photo':
+        buttons = [[InlineKeyboardButton("Confirm", callback_data="confirm_post_photo")],
+                   [InlineKeyboardButton("Resend Post Photo", callback_data="re_send_post_photo")],
+                   [InlineKeyboardButton("I would like to skip adding a photo.", callback_data="skip_adding_post_photo")]]
+        photo_file = update.message.photo[-1].get_file()
+        current_user[update.effective_chat.id]['new_post']['post_photo_file_path'] = photo_file['file_path']
+        current_user[update.effective_chat.id]['new_post']['post_photo_file_id'] = photo_file['file_id']
+        context.bot.send_photo(chat_id=update.effective_chat.id,
+                               photo=photo_file['file_id'])
+        context.bot.send_message(chat_id=update.effective_chat.id,
+                                 text="This is the photo received. Please confirm that this is the photo you would like to use for your post.",
+                                 reply_markup=InlineKeyboardMarkup(buttons))
+    else:
+        context.bot.send_message(chat_id=update.effective_chat.id,
+                                 text="Cool photo! Although..I'm not sure what to do with it..")
+
+def confirm_extra_photos(update, context):
+    buttons = [[InlineKeyboardButton("Yes, I would like to proceed.", callback_data='confirm_new_listing')],
+               [InlineKeyboardButton("No, I would like to re-upload the extra photos",
+                                     callback_data='send_extra_photos')],
+               [InlineKeyboardButton("I would like to stop creating a new listing", callback_data='cancel')]]
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text="Here are the extra photos uploaded.")
+    for i in range(current_user[update.effective_chat.id]['new_listing']['num_extra_photos']):
+        context.bot.send_photo(chat_id=update.effective_chat.id,
+                               photo=current_user[update.effective_chat.id]['new_listing']['extra_photos'][i]['file_id'])
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text="Are you happy with these photos?",
+                             reply_markup=InlineKeyboardMarkup(buttons))
+
+
+def confirm_new_listing(update, context):
+    buttons = [[InlineKeyboardButton("Confirm upload.", callback_data='confirm_listing_upload')],
+               [InlineKeyboardButton("Cancel upload.", callback_data='cancel')]]
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text="Please confirm that you would like to upload this new listing.",
+                             reply_markup=InlineKeyboardMarkup(buttons))
+
+
+def confirm_listing_upload(update, context):
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text="Uploading listing... please wait...")
+    requests.post(url='http://localhost:8080/createListing', json=current_user[update.effective_chat.id]['new_listing'])
+    del current_user[update.effective_chat.id]['new_listing']
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text="Done!")
+    other_edits(update, context)
+
+def delete_listings(update, context):
+    global current_user
+    current_user[update.effective_chat.id]['listings'] = {}
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                            text="Retrieving listings, please wait...")
+    items = requests.get(url='http://localhost:8080/retrieveListing', params={'websiteName': str(current_user[update.effective_chat.id]['current_url'])})
+    buttons = []
+    items = items.json()
+    for item in items:
+        new_item = {
+            'id': item['id'],
+            'title': item['title']
+        }
+        current_user[update.effective_chat.id]['listings'][str(item['id'])] = new_item
+        buttons.append([InlineKeyboardButton("Listing id# " + str(item['id']) + ": " + str(item['title']),
+                                             callback_data="listing_delete/" + str(item['id']))])
+    if len(buttons) == 0:
+        context.bot.send_message(chat_id=update.effective_chat.id,
+                                 text="You do not have any listings available right now. Type /start if there's anything else I can help you with.")
+        other_edits(update, context)
+    else:
+        buttons.append([InlineKeyboardButton("I no longer want to delete my listings.", callback_data='cancel')])
+        context.bot.send_message(chat_id=update.effective_chat.id,
+                                 text="Which of your listings do you want to delete?",
+                                 reply_markup=InlineKeyboardMarkup(buttons))
+
+def delete_listings_confirmation(update, context):
+    buttons = [[InlineKeyboardButton("Confirm deletion", callback_data='confirm_listing_delete')],
+               [InlineKeyboardButton("I no longer want to delete this listing.", callback_data='cancel')]]
+
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text="The listing you have chosen is: " + current_user[update.effective_chat.id]['current_listing']['title'] + "\n\n Please confirm that you want to delete this listing.",
+                             reply_markup=InlineKeyboardMarkup(buttons))
+
+def confirm_delete_listing(update, context):
+    new_request = {
+        'listingId': current_user[update.effective_chat.id]['current_listing']['id'],
+        'title': current_user[update.effective_chat.id]['current_listing']['title'],
+        'websiteName': current_user[update.effective_chat.id]['current_url']
+    }
+    requests.post('http://localhost:8080/deleteListing', json=new_request)
+    del current_user[update.effective_chat.id]['current_listing']
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text="Listing has successfully been deleted.")
+    other_edits(update, context)
+
+def edit_listings(update, context):
+    global current_user
+    buttons = []
+    to_check = requests.get(url='http://localhost:8080/retrieveListing', params={'websiteName': str(current_user[update.effective_chat.id]['current_url'])})
+    current_user[update.effective_chat.id]['listings'] = {}
+    for item in to_check.json():
+        listing = {
+            'id': str(item['id']),
+            'title': str(item['title'])
+        }
+        current_user[update.effective_chat.id]['listings'][str(item['id'])] = listing
+        buttons.append([InlineKeyboardButton("Listing id#" + str(item['id']) + ": " + str(item['title']),
+                                             callback_data="listing_edit/" + str(item['id']))])
+    if len(buttons) == 0:
+        context.bot.send_message(chat_id=update.effective_chat.id,
+                                 text="You do not have any listings right now :(")
+        other_edits(update, context)
+    else:
+        buttons.append([InlineKeyboardButton("I no longer want to edit my listings.", callback_data="cancel")])
+        context.bot.send_message(chat_id=update.effective_chat.id,
+                                 text="Which one of your listings would you like to edit?",
+                                 reply_markup=InlineKeyboardMarkup(buttons))
+
+def choose_edit_listing(update, context):
+    buttons = [[InlineKeyboardButton("Edit featured photo", callback_data="edit_listing_featured_photo")],
+               [InlineKeyboardButton("Edit extra photos", callback_data="edit_listing_extra_photos")],
+               [InlineKeyboardButton("Edit description", callback_data="edit_listing_description")],
+               [InlineKeyboardButton("Edit title", callback_data="edit_listing_title")],
+               [InlineKeyboardButton("Edit property details (Address, price, area, floor, etc.)", callback_data="edit_listing_property_details")]]
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text="How would you like to edit '" + current_user[update.effective_chat.id]['current_listing']['title'] + "'?",
+                             reply_markup=InlineKeyboardMarkup(buttons))
+
+
+def edit_listing_featured_photo(update, context):
+    global current_user
+    current_user[update.effective]['state'] = 'edit_listing_featured_photo'
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text="Sure! Please upload a new featured photo for your listing. Otherwise, type 'cancel' to go back to the main menu.")
+
+def edit_listing_extra_photos(update, context):
+    global current_user
+    current_user[update.effective_chat.id]['state'] = 'edit_listing_extra_photos'
+    current_user[update.effective_chat.id]['current_listing']['extra_photos'] = []
+    current_user[update.effective_chat.id]['current_listing']['num_extra_photos'] = 0
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text="Please upload up to 10 extra photos, and type **done once you are done.")
+
+
+def confirm_edit_listing_extra_photos(update, context):
+    buttons = [[InlineKeyboardButton("Confirm", callback_data="update_listing")],
+               [InlineKeyboardButton("Resend extra photos", callback_data="edit_listing_extra_photos")],
+               [InlineKeyboardButton("Stop editing this listing", callback_data="cancel")]]
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text="Here are the extra photos uploaded.")
+    for i in range(current_user[update.effective_chat.id]['new_listing']['num_extra_photos']):
+        context.bot.send_photo(chat_id=update.effective_chat.id,
+                               photo=current_user[update.effective_chat.id]['current_listing']['extra_photos'][i][
+                                   'file_id'])
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text="Are you happy with these photos?",
+                             reply_markup=InlineKeyboardMarkup(buttons))
+
+def update_listing(update, context):
+    global current_user
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text="Sending data...This process may take up to thirty seconds...")
+    state = current_user[update.effective_chat.id]['state']
+    listing = current_user[update.effective_chat.id]['current_listing']
+    listing['websiteName'] = current_user[update.effective_chat.id]['current_url']
+    if state == 'edit_listing_featured_photo':
+        requests.post('http://localhost:8080/updateListingFeatured', json=listing)
+    elif state == 'edit_listing_extra_photos':
+        requests.post('http://localhost:8080/updateListingGallery', json=listing)
+    elif state == 'edit_listing_description':
+        requests.post('http://localhost:8080/updateListingDescription', json=listing)
+    elif state == 'edit_listing_title':
+        requests.post('http://localhost:8080/updateListingTitle', json=listing)
+    elif state == 'edit_listing_property_details':
+        requests.post('http://localhost:8080/updateListingPropertyDetails', json=listing)
+    del current_user[update.effective_chat.id]['current_listing']
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text="Done!")
+
+def edit_listing_description(update, context):
+    global current_user
+    current_user[update.effective]['state'] = 'edit_listing_description'
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text="Please input a new description for " + current_user[update.effective_chat.id]['current_listing']['title'] + "\nOtherwise, type 'cancel' to cancel.")
+
+def confirm_edit_listing_description(update, context):
+    buttons = [[InlineKeyboardButton("Confirm", callback_data="update_listing")],
+               [InlineKeyboardButton("Send a new description", callback_data="edit_listing_description")],
+               [InlineKeyboardButton("Stop editing this listing", callback_data="cancel")]]
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text="Your new description is:\n\n" + current_user[update.effective_chat.id]['current_listing']['description'] + "\n\nPlease confirm.",
+                             reply_markup=InlineKeyboardMarkup(buttons))
+
+def edit_listing_title(update, context):
+    global current_user
+    current_user[update.effective]['state'] = 'edit_listing_title'
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text="Please input a new title for " + current_user[update.effective_chat.id]['current_listing']['title'] + "\nOtherwise, type 'cancel' to cancel.")
+
+def confirm_edit_listing_title(update, context):
+    buttons = [[InlineKeyboardButton("Confirm", callback_data="update_listing")],
+               [InlineKeyboardButton("Send a new description", callback_data="edit_listing_title")],
+               [InlineKeyboardButton("Stop editing this listing", callback_data="cancel")]]
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text="Your new title is:\n\n" + current_user[update.update.effective_chat.id]['current_listing']['title'] + "\n\nPlease confirm.",
+                             reply_markup=InlineKeyboardMarkup(buttons))
+
+def edit_listing_property_details(update, context):
+    global current_user
+    to_send = """
+        Please input your new property details in the following format:
+
+        *If unit is sold, please type 'Sold for ...' for Price.
+        *For fields that are not applicable, please type 'Not applicable'
+
+        Property type
+        Number of rooms
+        Year built
+        Address
+        Tenure
+        Total Area
+        Floor
+        Number of Storeys
+        Price
+
+        Example input #1:
+        Condominium
+        4 Rooms
+        2017
+        9 Kallang Pudding Rd, #14-18
+        Freehold
+        1400 sq ft
+        14th floor
+        2
+        $1,100,000
+
+        Example input #2:
+        Bungalow
+        6 Rooms
+        Not applicable
+        Braddell Heights Estate
+        Freehold
+        6000 sq ft
+        Not applicable
+        3
+        Sold for $15,000,000
+        """
+    current_user[update.effective]['state'] = "edit_listing_property_details"
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text=to_send)
+
+def confirm_edit_listing_property_details(update, context):
+    buttons = [[InlineKeyboardButton("Confirm", callback_data="update_listing")],
+               [InlineKeyboardButton("Send a new description", callback_data="edit_listing_property_details")],
+               [InlineKeyboardButton("Stop editing this listing", callback_data="cancel")]]
+
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text="Here are your new property details: \n\n" + current_user[update.effective_chat.id]['current_listing'][
+                                 'overall_info'] + "\n\nPlease confirm.",
+                             reply_markup=InlineKeyboardMarkup(buttons))
+
+def add_agent_pictures(update, context):
+    global current_user
+    current_user[update.effective_chat.id]['agent_details']['num_pictures'] = 0
+    current_user[update.effective_chat.id]['agent_details']['pictures'] = []
+    current_user[update.effective_chat.id]['state'] = "add_agent_pictures"
+    context.bot.send_message(chat_id=update.effective_chat.id, text="Certainly! Upload two pictures of yourself of size 480 x 480 with a transparent background.")
+
+def confirm_agent_pictures(update, context):
+    buttons = [[InlineKeyboardButton("Confirm and proceed", callback_data="confirm_agent_pictures")],
+               [InlineKeyboardButton("Upload new pictures", callback_data="re_add_agent_pictures")],
+               [InlineKeyboardButton("I'd like to add agent details another time.", callback_data='cancel')]]
+    for i in range(2):
+        context.bot.send_photo(chat_id=update.effective_chat.id,
+                               photo=current_user[update.effective_chat.id]['agent_details']['pictures'][i]['file_id'])
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text="Confirm upload?",
+                             reply_markup=InlineKeyboardMarkup(buttons))
+
+def add_about_me(update, context):
+    global current_user
+    current_user[update.effective_chat.id]['state'] = "add_about_me"
+    context.bot.send_message(chat_id=update.effective_chat.id, text="Let's add an 'About me' section to your site."
+                                                                    "\n\nFor example, [Your name] has a passion for real estate, and helping clients achieve [X goals]. "
+                                                                    "[He/she/they] have been a licensed Realtor for [number of years] and a top-performing agent at [your agency]. [Your name] has dedicated [number of years] helping clients buy and sell property with [insert sales statistics].")
+def confirm_about_me(update, context):
+    buttons = [[InlineKeyboardButton("Confirm and proceed.", callback_data='confirm_about_me')],
+               [InlineKeyboardButton("Enter new 'About Me' section.", callback_data='re_add_agent_details')],
+               [InlineKeyboardButton("I'd like to add agent details another time.", callback_data='cancel')]]
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text="The 'About Me' section that you have written is as follows:\n\n"
+                             + current_user[update.effective_chat.id]['agent_details']['about_me'] + "\n\n Please confirm.",
+                             reply_markup=InlineKeyboardMarkup(buttons))
+
+def add_contact_details(update, context):
+    global current_user
+    current_user[update.effective_chat.id]['state'] = "add_contact_details"
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text="Please type your name, phone number, and email address in the format provided below:"
+                                  "\n\nJoshua Lee\n98765432\njoshua@gmail.com")
+
+def confirm_contact_details(update, context):
+    buttons = [[InlineKeyboardButton("Confirm and proceed.", callback_data='confirm_contact_details')],
+               [InlineKeyboardButton("Enter new contact details", callback_data='re_add_contact_details')],
+               [InlineKeyboardButton("I'd like to add agent details another time.", callback_data='cancel')]]
+    text = "Your displayed name will be: " + current_user[update.effective_chat.id]['agent_details']['name'] + ",\n" + "Your displayed phone number will be: " + current_user[update.effective_chat.id]['agent_details']['number'] + ",\n" + "Your displayed email address will be: " + current_user[update.effective_chat.id]['agent_details']['email']
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text=text,
+                             reply_markup=InlineKeyboardMarkup(buttons))
+
+def add_agent_quote(update, context):
+    global current_user
+    current_user[update.effective_chat.id]['state'] = "add_agent_quote"
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text="Please input a quote that summarises your values and mission in the real estate industry.\n\n"
+                                  "Example: \nI am dedicated to ensuring an efficient and effective transaction for each of my clients,"
+                                  "with the goal of maximising their satisfaction and financial gain.")
+
+def confirm_agent_quote(update, context):
+    buttons = [[InlineKeyboardButton("Confirm and proceed.", callback_data='confirm_agent_quote')],
+               [InlineKeyboardButton("Enter new agent quote", callback_data='re_add_agent_quote')],
+               [InlineKeyboardButton("I'd like to cancel and add agent details another time instead.", callback_data='cancel')]]
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text="Your desired quote is: \n\n" + current_user[update.effective_chat.id]['agent_details']['quote'] + "\n\nPlease confirm.",
+                             reply_markup=InlineKeyboardMarkup(buttons))
+
+def confirm_agent_details(update, context):
+    buttons = [[InlineKeyboardButton("Confirm and upload", callback_data='confirm_agent_details')],
+               [InlineKeyboardButton("Cancel upload", callback_data='cancel')]]
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text="Please confirm that you would like to upload your agent details.",
+                             reply_markup=InlineKeyboardMarkup(buttons))
+
+def send_agent_details(update, context):
+    details = current_user[update.effective_chat.id]['agent_details']
+    to_send = {
+        'websiteName': current_user[update.effective_chat.id]['current_url'],
+        'agentPicture': details['pictures'],
+        'aboutMe': details['about_me'],
+        'agentNumber': details['number'],
+        'agentName': details['name'],
+        'agentEmail': details['email'],
+        'agentQuote': details['quote']
+    }
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text="Uploading details...")
+    requests.post('http://localhost:8080/updateSiteSetting', json=to_send)
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text="Done!")
+
+def reset(update, context):
+    global current_user
+    del current_user[update.effective_chat.id]
+    context.bot.send_message(chat_id=update.effective_chat.id, text="Alright! Let me know if you need anything else! :)")
+
+def isNotValidNumber(number):
+#Returns true is number is not valid
+    if len(number)!= 8:
+        return True
+    elif number[0] != 9 or number[0] != 8 or number[0] != 6:
+        return True
+    return False
+
+def isNotValidEmail(email):
+    #Returns true if email is not valid
+    regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+    if re.fullmatch(regex, email):
+        return False
+    else:
+        return True
+def inline_query(update, context):
+    query = update.callback_query.data
+    update.callback_query.answer()
+    context.bot.edit_message_reply_markup(
+        message_id=update.callback_query.message.message_id,
+        chat_id=update.callback_query.message.chat.id,
+        reply_markup=None)
+    global current_user
+    if "create_website" in query:
+        create_url(update, context)
+    elif "reload_websites" in query:
+        get_my_urls(update, context)
+        manage_website(update, context)
+    elif "exit" in query:
+        exit_bot(update, context)
+    elif "manage_website" in query:
+        manage_website(update, context)
+    elif "edit_website" in query:
+        other_edits(update, context)
+    elif "manage_edit_desc" in query:
+        create_desc(update, context)
+    elif "create_desc" in query:
+        create_desc(update, context)
+    elif "change_url" in query:
+        create_url(update, context)
+    elif "url_desc_confirmation" in query:
+        url_desc_confirmation(update, context)
+    elif "send_url_desc" in query:
+        # proceed to payment
+        payment(update, context)
+        context.bot.send_message(chat_id=update.effective_chat.id, text="Proceeding with payment...")
+        # send_initialization_data(update, context)
+    elif "edit_url" in query:
+        create_url(update, context)
+    elif "edit_desc" in query:
+        create_desc(update, context)
+    elif "cancel" in query:
+        other_edits(update, context)
+    elif "manage_update_confirm" in query:
+        send_data(update, context)
+    elif "manage_choose" in query:
+        context.bot.send_message(chat_id=update.effective_chat.id, text="Fetching data..")
+        ls = query.split("_")
+        current_user[update.effective_chat.id]['current_url'] = ls[2]
+        current_user[update.effective_chat.id]['target_row'] = ls[3]
+        website_edit(update, context)
+    elif "manage_posts" in query:
+        manage_posts(update, context)
+    elif "manage_listings" in query:
+        manage_listings(update, context)
+    elif "manage_agent_details" in query:
+        manage_agent_details(update, context)
+    elif "edit_desc" in query:
+        create_desc(update, context)
+    elif "create_post" in query or "change_post_title" in query:
+        create_post_title(update, context)
+    elif "confirm_post_title" in query or "change_post_content" in query:
+        create_post_content(update, context)
+    elif "confirm_post_content" in query:
+        create_post_photo(update, context)
+    elif query == "confirm_post_photo":
+        send_post_confirmation(update, context)
+    elif query == "re_send_post_photo":
+        context.bot.send_message(chat_id=update.effective_chat.id,
+                                 text="Please send another photo to be used for your post. Otherwise, type '**skip' to skip adding a photo.")
+    elif query == "skip_adding_post_photo":
+        current_user[update.effective_chat.id]['new_post']['post_photo_file_path'] = None
+        current_user[update.effective_chat.id]['new_post']['post_photo_file_id'] = None
+        send_post_confirmation(update, context)
+    elif "confirm_post_submission" in query:
+        confirm_post(update, context)
+    elif "edit_post_content" in query:
+        edit_post_content(update, context)
+    elif "edit_post_title" in query:
+        edit_post_title(update, context)
+    elif "edit_posts" in query:
+        edit_posts(update, context)
+    elif "delete_post" in query:
+        context.bot.send_message(chat_id=update.effective_chat.id, text="Retrieving data...")
+        delete_post(update, context)
+    elif "post_delete/" in query:
+        temp = query.split('/')
+        current_user[update.effective_chat.id]['current_post'] = current_user[update.effective_chat.id]['posts'][temp[1]]
+        del current_user[update.effective_chat.id]['posts']
+        delete_confirmation(update, context)
+    elif "confirm_post_deletion" in query:
+        confirm_delete(update, context)
+    elif "post_edit/" in query:
+        temp = query.split('/')
+        current_user[update.effective_chat.id]['current_post'] = current_user[update.effective_chat.id]['posts'][temp[1]]
+        del current_user[update.effective_chat.id]['posts']
+        edit_post_title_or_content(update, context)
+    elif "confirm_post_edit" in query:
+        confirm_edit(update, context)
+    elif "create_listing" in query:
+        create_listing(update, context)
+    elif query == "mass_listing":
+        mass_listing(update, context)
+    elif "confirm_listing_title" in query:
+        create_property_details(update, context)
+    elif "change_property_details" in query:
+        create_property_details(update, context)
+    elif query == "listing_description" or "change_listing_desc" in query:
+        listing_description(update, context)
+    elif "upload_featured_photo" in query:
+        upload_featured_photo(update, context)
+    elif "send_extra_photos" in query:
+        upload_extra_photos(update, context)
+    elif "confirm_new_listing" in query:
+        confirm_new_listing(update, context)
+    elif "confirm_listing_upload" in query:
+        confirm_listing_upload(update, context)
+    elif "delete_listing" in query:
+        delete_listings(update, context)
+    elif "listing_delete/" in query:
+        info = query.split('/')
+        current_user[update.effective_chat.id]['current_listing'] = current_user[update.effective_chat.id]['listings'][info[1]]
+        del current_user[update.effective_chat.id]['listings']
+        delete_listings_confirmation(update, context)
+    elif "confirm_listing_delete" in query:
+        confirm_delete_listing(update, context)
+    elif "edit_listing_featured_photo" in query:
+        edit_listing_featured_photo(update, context)
+    elif "re_edit_listing_featured_photo" in query:
+        context.bot.send_message(update.effective_chat.id, text="Please upload another featured photo.")
+    elif "update_listing" in query:
+        update_listing(update, context)
+    elif "edit_listing_extra_photos" in query:
+        edit_listing_extra_photos(update, context)
+    elif "edit_listing_description" in query:
+        edit_listing_description(update, context)
+    elif "edit_listing_title" in query:
+        edit_listing_title(update, context)
+    elif "edit_listing_property_details" in query:
+        edit_listing_property_details(update, context)
+    elif "edit_listings" in query:
+        edit_listings(update, context)
+    elif "listing_edit" in query:
+        info = query.split('/')
+        current_user[update.effective_chat.id]['current_listing'] = current_user[update.effective_chat.id]['listings'][info[1]]
+        del current_user[update.effective_chat.id]['listings']
+        choose_edit_listing(update, context)
+    elif "re_add_agent_details" in query:
+        context.bot.send_message(chat_id=update.effective_chat.id, text="Please input a new 'About Me' description.")
+    elif "add_agent_details" in query:
+        current_user[update.effective_chat.id]['agent_details'] = {}
+        add_agent_pictures(update, context)
+    elif "re_add_agent_pictures" in query:
+        ##add message
+        current_user[update.effective_chat.id]['agent_details']['num_pictures'] = 0
+        current_user[update.effective_chat.id]['agent_details']['pictures'] = []
+        context.bot.send_message(chat_id=update.effective_chat.id, text="Please upload two pictures of yourself with a transparent background and height-to-width ratio as close to 1:4 as possible.")
+    elif "confirm_agent_pictures" in query:
+        add_about_me(update, context)
+    elif "confirm_about_me" in query:
+        add_contact_details(update, context)
+    elif "re_add_contact_details" in query:
+        context.bot.send_message(chat_id=update.effective_chat.id, text="Please input your new contact information with the required format. Type '**cancel' to cancel.")
+    elif "confirm_contact_details" in query:
+        add_agent_quote(update, context)
+    elif "re_add_agent_quote" in query:
+        context.bot.send_message(chat_id=update.effective_chat.id, text="Please input your new desired agent quote. Alternatively, type '**cancel' to cancel.")
+    elif "confirm_agent_quote" in query:
+        confirm_agent_details(update,context)
+    elif "confirm_agent_details" in query:
+        send_agent_details(update, context)
+    elif "edit_agent_details" in query:
+        context.bot.send_message(chat_id=update.effective_chat.id, text="Edited!")
+    elif query == "manage_services":
+        manage_services(update, context)
+    elif query == "my_services_info":
+        my_services_info(update, context)
+    elif "edit_service" in query:
+        info = query.split('_')
+        service_number = info[2]
+        current_user[update.effective_chat.id]['current_service'] = {}
+        current_user[update.effective_chat.id]['current_service']['service_number'] = service_number
+        edit_service_title(update, context)
+    elif "confirm_service_title" in query:
+        edit_service_description(update, context)
+    elif "re_edit_service_title" in query:
+        context.bot.send_message("Please type in a new service title, or type '**cancel' to cancel.")
+    elif "confirm_service_description" in query:
+        confirm_send_service(update, context)
+    elif "re_send_service_description" in query:
+        context.bot.send_message("Please type in a new service description, or type '**cancel' to cancel.")
+    elif "confirm_send_service" in query:
+        send_service_update(update, context)
+    elif "manage_testimonials" in query:
+        manage_testimonials(update, context)
+    elif "confirm_testimonial_photo" in query:
+        add_testimonial_name(update, context)
+    elif "re_add_testimonial_photo" in query:
+        context.bot.send_message("Please send a profile photo for your testimonial, otherwise, type '**skip' to skip adding a photo.")
+    elif "edit_testimonials" in query:
+        choose_testimonial(update, context)
+    elif "choose_testimonial" in query:
+        current_user[update.effective_chat.id]['new_testimonial'] = {}
+        current_user[update.effective_chat.id]['new_testimonial']['testimonial_number'] = query.split("/")[1]
+        edit_testimonial(update, context)
+    elif query == "my_testimonials_info":
+        my_testimonials_info(update, context)
+    elif "confirm_testimonial_name" in query:
+        add_testimonial_designation(update, context)
+    elif "re_send_testimonial_name" in query:
+        context.bot.send_message("Please type in a new name, or type '**cancel' to cancel.")
+    elif query == "confirm_testimonial_designation":
+        add_testimonial_text(update, context)
+    elif query == "re_send_testimonial_designation":
+        context.bot.send_message("Please type in a new designation, or type '**cancel' to cancel.")
+    elif "confirm_testimonial_text" in query:
+        confirm_new_testimonial(update, context)
+    elif query == "re_send_testimonial_text":
+        context.bot.send_message("Please type in a new testimony provided by " + current_user[update.effective_chat.id]['new_testimonial']['testimonial_name'])
+    elif query == "confirm_send_new_testimonial":
+        send_new_testimonial(update, context)
+
+
+def message_handler(update, context):
+    global current_user
+    if current_user[update.effective_chat.id]['state'] == 'sending_desc' or current_user[update.effective_chat.id]['state'] == 'update_desc':
+        msg = update.message.text
+        context.bot.send_message(chat_id=update.effective_chat.id, text="One moment...")
+        current_user[update.effective_chat.id]['website_desc'] = msg
+        url_desc_confirmation(update, context)
+    elif current_user[update.effective_chat.id]['state'] == 'url_edit':
+        if '.com' in update.message.text or '.sg' in update.message.text:
+            # Must check if url is available
+            current_user[update.effective_chat.id]['url'] = update.message.text.lower()
+            url_confirmation(update, context)
+        else:
+            context.bot.send_message(chat_id=update.effective_chat.id, text="Invalid url, please input a new url.")
+    elif current_user[update.effective_chat.id]['state'] == 'url_creation':
+        print(update.message.text)
+        if '.com' in update.message.text or '.sg' in update.message.text:
+            current_user[update.effective_chat.id]['url'] = update.message.text.lower()
+            url_confirmation(update, context)
+        elif 'cancel' in update.message.text or 'Cancel' in update.message.text:
+            other_edits(update, context)
+        else:
+            context.bot.send_message(chat_id=update.effective_chat.id,
+                                     text="That is not a valid url. Please input a valid url, or type 'Cancel' to cancel.")
+    elif current_user[update.effective_chat.id]['state'] == 'create_post':
+        current_user[update.effective_chat.id]['new_post']['post_title'] = update.message.text
+        create_post_title_confirmation(update, context)
+    elif current_user[update.effective_chat.id]['state'] == 'create_post_content':
+        # global post_content
+        current_user[update.effective_chat.id]['new_post']['post_content'] = update.message.text
+        create_post_content_confirmation(update, context)
+    elif current_user[update.effective_chat.id]['state'] == "create_post_photo":
+        if '**skip' in update.message.text:
+            current_user[update.effective_chat.id]['new_post']['post_photo_file_path'] = None
+            current_user[update.effective_chat.id]['new_post']['post_photo_file_id'] = None
+            send_post_confirmation(update, context)
+    elif current_user[update.effective_chat.id]['state'] == 'edit_post_content' or current_user[update.effective_chat.id]['state'] == 'edit_post_title':
+        if 'cancel' in update.message.text or 'Cancel' in update.message.text:
+            other_edits(update, context)
+        if current_user[update.effective_chat.id]['state'] == 'edit_post_content':
+            current_user[update.effective_chat.id]['current_post']['content'] = update.message.text
+        else:
+            current_user[update.effective_chat.id]['current_post']['title'] = update.message.text
+        edit_post_content_confirmation(update, context)
+    elif current_user[update.effective_chat.id]['state'] == 'create_listing_title':
+        current_user[update.effective_chat.id]['new_listing']['title'] = update.message.text
+        listing_title_confirmation(update, context)
+    elif current_user[update.effective_chat.id]['state'] == 'create_property_details':
+        property_details = update.message.text
+        if '**cancel' in property_details:
+            other_edits(update, context)
+        if len(property_details.split('\n')) != 9:
+            context.bot.send_message(chat_id=update.effective_chat.id,
+                                     text="Invalid input, please try again, or type '**cancel' to stop creating a listing")
+        else:
+            listing_details(update, property_details)
+            property_details_confirmation(update, context)
+    elif current_user[update.effective_chat.id]['state'] == 'edit_featured_photo':
+        if 'cancel' in update.message.text or 'Cancel' in update.message.text:
+            other_edits(update, context)
+    elif current_user[update.effective_chat.id]['state'] == 'listing_description':
+        current_user[update.effective_chat.id]['current_listing']['description'] = update.message.text
+        listing_description_confirmation(update, context)
+    elif current_user[update.effective_chat.id]['state'] == 'upload_extra_photos':
+        if '**done' in update.message.text:
+            confirm_extra_photos(update, context)
+    elif current_user[update.effective_chat.id]['state'] == 'edit_listing_featured_photo':
+        if 'cancel' in update.message.text or 'Cancel' in update.message.text:
+            other_edits(update, context)
+    elif current_user[update.effective_chat.id]['state'] == 'edit_listing_extra_photos':
+        if '**done' in update.message.text:
+            confirm_edit_listing_extra_photos(update, context)
+    elif current_user[update.effective_chat.id]['state'] == 'edit_listing_description':
+        if '**cancel' in update.message.text:
+            other_edits(update, context)
+        else:
+            current_user[update.effective_chat.id]['current_listing']['description'] = update.message.text
+            confirm_edit_listing_description(update, context)
+    elif current_user[update.effective_chat.id]['state'] == 'add_mass_listings':
+        if 'cancel' in update.message.text or 'Cancel' in update.message.text:
+            other_edits(update, context)
+        else:
+            context.bot.send_message(chat_id=update.effective_chat.id,
+                                     text="Please input your listing details into the Excel file provided and send it back to me!\n\nOtherwise type 'Cancel' to cancel.")
+    elif current_user[update.effective_chat.id]['state'] == 'edit_listing_title':
+        if 'cancel' in update.message.text or 'Cancel' in update.message.text:
+            other_edits(update, context)
+        else:
+            current_user[update.effective]['current_listing']['title'] = update.message.text
+            confirm_edit_listing_title(update, context)
+    elif current_user[update.effective_chat.id]['state'] == 'edit_listing_property_details':
+        if 'cancel' in update.message.text or 'Cancel' in update.message.text:
+            other_edits(update, context)
+        else:
+            property_details = update.message.text
+            if len(property_details.split('\n')) != 9:
+                context.bot.send_message(chat_id=update.effective_chat.id,
+                                         text="Invalid input, please try again, or type '**cancel' to stop creating a listing")
+            elif '$' not in property_details.split('\n')[8]:
+                context.bot.send_message(chat_id=update.effective_chat.id,
+                                         text="Please ensure that a valid dollar amount is used for the price of the property. E.g. ($1,000,000) \nPlease re-enter property details for this listing.")
+            else:
+                listing_details(update, property_details)
+                confirm_edit_listing_property_details(update, context)
+    elif current_user[update.effective_chat.id]['state'] == 'add_about_me':
+        current_user[update.effective_chat.id]['agent_details']['about_me'] = update.message.text
+        confirm_about_me(update, context)
+    elif current_user[update.effective_chat.id]['state'] == 'add_contact_details':
+        if '**cancel' in update.message.text:
+            other_edits(update, context)
+        info = update.message.text.split('\n')
+        if len(info) < 3 or isNotValidNumber(info[1]) or isNotValidEmail(info[2]):
+            context.bot.send_message(chat_id=update.effective_chat.id,
+                                     text="Invalid input, please try again, or type '**cancel' to cancel.")
+        else:
+            current_user[update.effective_chat.id]['agent_details']['name'] = info[0]
+            current_user[update.effective_chat.id]['agent_details']['number'] = info[1]
+            current_user[update.effective_chat.id]['agent_details']['email'] = info[2]
+            confirm_contact_details(update, context)
+    elif current_user[update.effective_chat.id]['state'] == 'add_agent_quote':
+        if '**cancel' in update.message.text:
+            other_edits(update, context)
+        else:
+            current_user[update.effective_chat.id]['agent_details']['quote'] = update.message.text
+            confirm_agent_quote(update, context)
+    elif current_user[update.effective_chat.id]['state'] == "edit_service_title":
+        if '**cancel' in update.message.text:
+            other_edits(update, context)
+        else:
+            current_user[update.effective_chat.id]['current_service']['service_title'] = update.message.text
+            edit_service_title_confirmation(update, context)
+    elif current_user[update.effective_chat.id]['state'] == "edit_service_description":
+        if '**cancel' in update.message.text:
+            other_edits(update, context)
+        else:
+            current_user[update.effective_chat.id]['current_service']['service_description'] = update.message.text
+            edit_service_description_confirmation(update, context)
+    elif current_user[update.effective_chat.id]['state'] == "add_testimonial_photo":
+        if '**cancel' in update.message.text:
+            other_edits(update, context)
+        elif '**skip' in update.message.text:
+            current_user[update.effective_chat.id]['new_testimonial']['testimonial_photo_file_path'] = None
+            current_user[update.effective_chat.id]['new_testimonial']['testimonial_photo_file_id'] = None
+            add_testimonial_name(update, context)
+        else:
+            context.bot.send_message(chat_id=update.effective_chat.id,
+                                     text="Please send a photo for your testimonial, or type **cancel to cancel.")
+    elif current_user[update.effective_chat.id]['state'] == 'add_testimonial_name':
+        if '**cancel' in update.message.text:
+            other_edits(update, context)
+        else:
+            current_user[update.effective_chat.id]['new_testimonial']['testimonial_name'] = update.message.text
+            confirm_testimonial_name(update, context)
+    elif current_user[update.effective_chat.id]['state'] == 'add_testimonial_designation':
+        if '**cancel' in update.message.text:
+            other_edits(update, context)
+        else:
+            current_user[update.effective_chat.id]['new_testimonial']['testimonial_designation'] = update.message.text
+            confirm_testimonial_designation(update, context)
+    elif current_user[update.effective_chat.id]['state'] == 'add_testimonial_text':
+        if '**cancel' in update.message.text:
+            other_edits(update, context)
+        else:
+            current_user[update.effective_chat.id]['new_testimonial']['testimonial_text'] = update.message.text
+            confirm_testimonial_text(update, context)
+
+    else:
+        context.bot.send_message(chat_id=update.effective_chat.id,
+                                 text="I'm not sure what you're looking for.. please be more specific.")
+
+
+# Create and add command handlers
+start_handler = CommandHandler('start', start)
+dispatcher.add_handler(start_handler)
+
+create_website_handler = CommandHandler('create_website', create_url)
+dispatcher.add_handler(create_website_handler)
+
+restart_handler = CommandHandler('restart', restart)
+dispatcher.add_handler(restart_handler)
+
+help_handler = CommandHandler('help', help_me)
+dispatcher.add_handler(help_handler)
+
+manage_websites_handler = CommandHandler('manage_websites', manage_website)
+dispatcher.add_handler(manage_websites_handler)
+
+pre_checkout_handler = PreCheckoutQueryHandler(precheckout_callback)
+dispatcher.add_handler(pre_checkout_handler)
+
+successful_payment_handler = MessageHandler(Filters.successful_payment, successful_payment_callback)
+dispatcher.add_handler(successful_payment_handler)
+
+catchall_handler = MessageHandler(Filters.text, message_handler)
+dispatcher.add_handler(catchall_handler)
+
+photo_handler = MessageHandler(Filters.photo, photo_receiver)
+dispatcher.add_handler(photo_handler)
+
+query_handler = CallbackQueryHandler(inline_query)
+dispatcher.add_handler(query_handler)
+
+updater.dispatcher.add_handler(MessageHandler(Filters.document, file_downloader))
+
+updater.start_polling()
+updater.idle()
