@@ -2,12 +2,10 @@
 import time
 import pandas as pd
 import validators
+import np
 
 from urllib.request import urlopen
 
-# Use a hash to generate a file name.
-# df.index.name = 'ID'
-# df.to_excel('my_file.xlsx')
 
 # Open excel file and read
 def create_excel_template(num):
@@ -24,21 +22,24 @@ def create_excel_template(num):
                         'Total Area (sqft)': [3000],
                         'Floor': [6],
                         'Featured Photo': ["https://ibb.co/wSq1XPr"],
-                        'Other Photos': ["https://ibb.co/wSq1XPr"]})
+                        'Other Photos': ["https://ibb.co/wSq1XPr\nhttps://ibb.co/wSq1XPr\nhttps://ibb.co/wSq1XPr"]})
     df.to_excel(file_name)
     return file_name
 
 def validate_inputs(filename):
     workbook = pd.read_excel(filename, sheet_name="Sheet1")
+    template = pd.read_excel('template.xlsx')
+
+    if not np.array_equal(template.columns, workbook.columns):
+        return "Invalid Excel Sheet provided. Please do not edit the values in the first row (headers) and the second row (example input)."
     total_rows = len(workbook.index)
     curr_row = 1
     while curr_row < total_rows:
+
         if workbook['Listing Title'].iloc[curr_row] != workbook['Listing Title'].iloc[curr_row]:
             return "Invalid Title added in row " + str(curr_row + 2)
         elif workbook['Description'].iloc[curr_row] != workbook['Description'].iloc[curr_row]:
             return "Invalid Description added in row " + str(curr_row + 2)
-        elif workbook['Property Type'].iloc[curr_row] != workbook['Property Type'].iloc[curr_row]:
-            return "Invalid Property Type added in row " + str(curr_row + 2)
         elif workbook['Price ($)'].iloc[curr_row].item() != workbook['Price ($)'].iloc[curr_row].item() or not validate_num(workbook['Price ($)'].iloc[curr_row].item()):
             return "Invalid Price added in row " + str(curr_row + 2)
         elif workbook['Year Built'].iloc[curr_row].item() != workbook['Year Built'].iloc[curr_row].item() or not validate_year_built(workbook['Year Built'].iloc[curr_row].item()):
@@ -50,7 +51,7 @@ def validate_inputs(filename):
         elif workbook['Num. of Floors'].iloc[curr_row].item() != workbook['Num. of Floors'].iloc[curr_row].item() or not validate_num(workbook['Num. of Floors'].iloc[curr_row].item()):
             return "Invalid Num. of Floors added in row " + str(curr_row + 2)
         elif workbook['Floor'].iloc[curr_row].item() != workbook['Floor'].iloc[curr_row].item() or not validate_num(workbook['Floor'].iloc[curr_row].item()):
-            return "Invalid Floor added in row " + str(curr_row)
+            return "Invalid Floor added in row " + str(curr_row + 2)
         elif workbook['Featured Photo'].iloc[curr_row] != workbook['Featured Photo'].iloc[curr_row] or not validate_url_image(workbook['Featured Photo'].iloc[curr_row]):
             return "Invalid Featured Photo link added in row " + str(curr_row + 2)
         else:
@@ -67,13 +68,13 @@ def validate_inputs(filename):
     return "Valid"
 
 def validate_year_built(year):
-    print("Validating year...")
+    #print("Validating year...")
     if year <= 2050 and year >= 1900:
         return True
     return False
 
 def validate_num(num):
-    print("Validating num...")
+    #print("Validating num...")
     if isinstance(num, (int, float, complex)):
         return True
     if isinstance(num, str):
@@ -91,19 +92,18 @@ def check_url(url):
     return validators.url(url)
 
 def validate_url_image(url):
-    print("Validating url/image")
+    #print("Validating url/image")
     return check_url(url) and is_url_image(url)
 
 def parse_excel_file(file_name):
     workbook = pd.read_excel(file_name, sheet_name="Sheet1")
     total_rows = len(workbook.index)
-    total_rows -= 1
     listings = []
-    curr_row = 0
-    while curr_row + 1 < total_rows:
+    curr_row = 1
+    while curr_row < total_rows:
         print(workbook['Property Type'].iloc[curr_row])
         listings.append({})
-        new_listing = listings[curr_row]
+        new_listing = listings[curr_row - 1]
         new_listing['title'] = workbook['Listing Title'].iloc[curr_row]
         new_listing['content'] = workbook['Description'].iloc[curr_row]
         new_listing['property_type'] = workbook['Property Type'].iloc[curr_row]
@@ -124,6 +124,3 @@ def parse_excel_file(file_name):
         curr_row += 1
     return listings
 
-#create_excel_template(6)
-print(validate_inputs('1001.xlsx'))
-#parse_excel_file('6.xlsx')
