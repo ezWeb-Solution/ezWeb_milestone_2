@@ -550,6 +550,12 @@ def confirm_post(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="Done!")
     other_edits(update, context)
 
+def create_post_photo(update, context):
+    global current_user
+    current_user[update.effective_chat.id]['state'] = 'create_post_photo'
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text="Please upload a photo for your post if you'd like. Otherwise, type '**skip' to skip adding a photo.")
+    
 def delete_post(update, context):
     global current_user
     current_user[update.effective_chat.id]['posts'] = {}
