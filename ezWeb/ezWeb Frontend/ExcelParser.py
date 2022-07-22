@@ -82,7 +82,10 @@ def validate_num(num):
     return False
 
 def is_url_image(image_url):
-    return image_url.startswith("https://ibb.co/")
+    if "i.ibb.co/" in image_url:
+        if image_url.endswith(".png") or image_url.endswith(".jpg") or image_url.endswith(".jpeg") or image_url.endswith(".webp"):
+            return True
+    return False
 
 def check_url(url):
     return validators.url(url)
