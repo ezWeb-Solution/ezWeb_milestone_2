@@ -346,7 +346,13 @@ We intended to interview actual real estate agents to get more feedback on wheth
 3. Receive suggestions on what other key features real estate agents would like to have integrated.
 
 #### Feedback Received
-To be added...
+The feedback received during Milestone 2 will be reflected below.
+
+##### Suboptimal Responsiveness
+Manage websites command was clunky, and required quite a bit of time in between data retrievals, which damages user experience.
+
+##### Not User Friendly
+After each action, the bot required the user to request for website information again which takes quite a bit of time, and restarts the whole process of information retrieval each time an action is taken. A suggestion was made to allow users to take another action immediately after completing an action, instead of having to go back to square one.
 
 ## Milestone 3 - Extension - 25 Jul - Completed
 Task  | Description | Handled by | Date
@@ -368,7 +374,6 @@ Setup Excel Input Validation | Validation was set up to ensure that users were p
 Setup Excel Parser Unit Tests | Unit tests were set up to ensure that validation was working properly | Sean | 20 Jul
 Allow Bulk Listings via Excel Sheet | Tested and deployed successfully | Chengyue, Sean | 23 Jul
 Interview Real Estate Agents | Find out what the current pain points are, and what we have missed | Chengyue, Sean | 24 Jul
-
 
 # Software Engineering Practices
 During the process of implementing our solution, we have tried our best to ensure that good software engineering practices were being employed, so as to maximise what we have learnt during this process.
@@ -429,6 +434,9 @@ Create Listings | Tested separately to find out optimal prompt/response flow
 Delete Listings | Function could be tested separately from everything else via Telegram bot
 Add Agent Details | Tested separately to find out optimal prompt/response flow
 
+### Unit Testing - Automated
+Individual components that made up crucial parts of our Excel Parser was tested via unit tests set up through the unittest framework to ensure that the outputs generated for input validation were correct. Test Excel Files were created and used in these unit tests to ensure that incorrect user input was caught and the corresponding error message was returned.
+
 ### Integration Testing
 Objective | Expected Result
 ---- | ----
@@ -455,12 +463,12 @@ Uninstructed (Random) Tests | Edit Post functions was not retrieving the right l
 Create Website | Smooth outcome | 26 June
 Create Listing | Smooth outcome | 26 June
 Create Post | Smooth outcome | 26 June
-Uninstructed (Random) Tests | Edit Listing function not working (Intended, work in progress) | 26 June
-Uninstructed (Random) Tests | Edit description function was not being properly processed (Work in progress) | 26 June
+Uninstructed (Random) Tests | Edit Listing function not working (Fixed) | 26 June
+Uninstructed (Random) Tests | Edit description function was not being properly processed (Fixed) | 26 June
 Full Test Flow | Cache of website had to be cleared server-side before updates could be reflected| 29 June
-Full Test Flow | Suggestion was made to make menu consistently appear instead of user having to make new prompts each time (Work in progress)| 29 June
+Full Test Flow | Suggestion was made to make menu consistently appear instead of user having to make new prompts each time (Fixed)| 29 June
 Full Test Flow | Photo sizes that were too big did not appear properly in the website's listings | 29 June
-Full Test Flow | User email and phone numbers were not checked for validity | 3 July
+Full Test Flow | User email and phone numbers were not checked for validity (Fixed) | 3 July
 
 *We have put in place a test flow and are planning to invite five testers to test our product between the following dates 29 June 2022 - 6 July 2022. 
 Testers were invited to follow the following <a href="https://docs.google.com/document/d/1tOFN_HgKt18vInno4SUhX32b1R_6Hn2GOjgOjh1Qjpk/edit?usp=sharing">Test Flow</a>
