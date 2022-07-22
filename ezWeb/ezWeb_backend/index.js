@@ -1,5 +1,5 @@
 const express = require("express");
-const { json } = require("express/lib/response");
+const { json, send } = require("express/lib/response");
 const { google } = require("googleapis");
 const fetch = require('node-fetch');
 console.log(process.cwd());
@@ -10,7 +10,10 @@ const request = require('request');
 const fs = require("fs");
 let path = require("path");
 const fsExtra = require('fs-extra')
-
+const { 
+  v1: uuidv1,
+  v4: uuidv4,
+} = require('uuid');
 
 
 
@@ -108,7 +111,7 @@ app.post("/deletePost", async (req, res) => {
   the request body must contain both the post, spost id and the url of the website to be updated.
 */
 app.get("/retrievePost", async (req, res) => {
-  const response = await fetch(`https://${req.body.websiteName}.ezwebs.xyz/wp-json/wp/v2/posts`);
+  const response = await fetch(`https://${req.query.websiteName}.ezwebs.xyz/wp-json/wp/v2/posts`);
   const jsonObject = await response.json();
   console.log(jsonObject);
   const result = {};
@@ -159,8 +162,8 @@ app.post("/uploadImage", async (req, res) => {
 })
 
 
-app.post("/createListing", async (req, res) => {
-
+app.post("/updateListingTitle", async (req, res) => {
+  console.log(req.body);
   const response = await fetch(`https://${req.body.websiteName}.ezwebs.xyz/wp-json/wp/v2/listing`);
   const responseObject = await response.json();
   let duplicate = false;
@@ -173,9 +176,128 @@ app.post("/createListing", async (req, res) => {
     console.log(`duplicate found`);
     res.sendStatus(404); //if the same title already exists, do nothing and return 404 error code
   } else {
+    //create the listing with given information
+    console.log(await fetch(`https://${req.body.websiteName}.ezwebs.xyz/wp-json/wp/v2/listing/${req.body.id}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Basic ${Buffer.from("0wulike0@gmail.com:oTK5 KTLF U8lG EfpT C5vn qzlG", "utf-8").toString("base64")}`
+      },
+      body: JSON.stringify({
+        title : req.body.title
+      })
+    }));
+    res.send();
+  }
+});
 
-  
+
+app.post("/updateListingDescription", async (req, res) => {
+    console.log(req.body);
+    //create the listing with given information
+    console.log(await fetch(`https://${req.body.websiteName}.ezwebs.xyz/wp-json/wp/v2/listing/${req.body.id}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Basic ${Buffer.from("0wulike0@gmail.com:oTK5 KTLF U8lG EfpT C5vn qzlG", "utf-8").toString("base64")}`
+      },
+      body: JSON.stringify({
+        content : req.body.description
+      })
+    }));
+    res.send();
+  }
+);
+
+
+app.post("/updateListingPropertyDetails", async (req, res) => {
+  //create the listing with given information
+  console.log(await fetch(`https://${req.body.websiteName}.ezwebs.xyz/wp-json/wp/v2/listing/${req.body.id}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Basic ${Buffer.from("0wulike0@gmail.com:oTK5 KTLF U8lG EfpT C5vn qzlG", "utf-8").toString("base64")}`
+    },
+    body: JSON.stringify({
+      price: req.body.price,
+      property_type: req.body.property_type,
+      number_of_rooms: req.body.num_rooms,
+      total_area: req.body.total_area,
+      year_built: req.body.year_built,
+      level: req.body.number_of_storeys,
+      address: req.body.address,
+      tenure: req.body.tenure
+      })
+    }));
+    res.send();
+  }
+);
+
+
+app.post("/updateListingFeaturedImage", async (req, res) => {
     //download the featured pciture to local environment
+    const downloadFile = new Promise(async resolve => {
+      const imageSteram = await (request.get(`${req.body.featured_photo_file_path}`)
+      .on('error',function(err){
+      console.log(err);
+      })
+      .on('response',function(response){
+      if(response.statusCode == 200){
+      console.log("successfully retreived image from url");
+      }
+      }));
+      const b = fs.createWriteStream('pictures/' + `${req.body.featured_photo_file_id}.jpg`);
+      imageSteram.pipe(b); 
+      b.on('finish', resolve);
+    });
+    await downloadFile;
+    //upload the featured image to the site
+    const contents = fs.readFileSync(path.resolve(__dirname, `pictures/${req.body.featured_photo_file_id}.jpg`));
+    console.log(contents);
+    console.log(req.body);
+    const response = await fetch(`https://${req.body.websiteName}.ezwebs.xyz/wp-json/wp/v2/media`, {
+    method: 'POST',
+    headers: {
+        'cache-control': 'no-cache',
+        'content-type': 'image/jpg',
+        'content-disposition' : `attachment; filename="${req.body.featured_photo_file_id}.jpg"`,
+        "Accept": "application/json",
+        'authorization': `Basic ${Buffer.from("0wulike0@gmail.com:oTK5 KTLF U8lG EfpT C5vn qzlG", "utf-8").toString("base64")}`,
+    },
+    body: contents
+    });
+    const responseBody = await response.json();
+    const featuredImageId = responseBody.id;
+  //update the listing with the new featuredImage
+  console.log(await fetch(`https://${req.body.websiteName}.ezwebs.xyz/wp-json/wp/v2/listing/${req.body.id}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Basic ${Buffer.from("0wulike0@gmail.com:oTK5 KTLF U8lG EfpT C5vn qzlG", "utf-8").toString("base64")}`
+    },
+    body: JSON.stringify({
+      featured_media: featuredImageId
+      })
+    }));
+    res.send();
+  }
+);
+
+
+app.post("/createListing", async (req, res) => {
+
+  const response = await fetch(`https://${req.body.websiteName}/wp-json/wp/v2/listing`);
+  const responseObject = await response.json();
+  let duplicate = false;
+  for (let i in responseObject) {
+    if (responseObject[i].title.rendered == req.body.title) {
+      duplicate = true;
+    }
+  }
+  if (duplicate) {
+    console.log(`duplicate found`);
+    res.sendStatus(404); //if the same title already exists, do nothing and return 404 error code
+  } else {
     //download the featured pciture to local environment
     const downloadFile = new Promise(async resolve => {
       const imageSteram = await (request.get(`${req.body.featured_photo_file_path}`)
@@ -197,12 +319,12 @@ app.post("/createListing", async (req, res) => {
     const contents = fs.readFileSync(path.resolve(__dirname, `pictures/${req.body.featured_photo_file_id}.jpg`));
     console.log(contents);
     console.log(req.body);
-    const response = await fetch(`https://${req.body.websiteName}.ezwebs.xyz/wp-json/wp/v2/media`, {
+    const response = await fetch(`https://${req.body.websiteName}/wp-json/wp/v2/media`, {
     method: 'POST',
     headers: {
         'cache-control': 'no-cache',
         'content-type': 'image/jpg',
-        'content-disposition' : `attachment; filename="${req.body.featured_photo_file_id}.jpg"`,
+        'content-disposition' : `attachment; filename="${uuidv1()}.jpg"`,
         "Accept": "application/json",
         'authorization': `Basic ${Buffer.from("0wulike0@gmail.com:oTK5 KTLF U8lG EfpT C5vn qzlG", "utf-8").toString("base64")}`,
     },
@@ -220,7 +342,7 @@ app.post("/createListing", async (req, res) => {
     //download the extra_photos to local
     for (const i of extraPhotos) {
       let extraP = i['file_path'];
-      let extraId = i['file_id'];
+      let extraId = uuidv1(); 
       const downloadFile = new Promise(async resolve => {
         const imageStream2 = await (request.get(`${extraP}`)
         .on('error',function(err){
@@ -241,7 +363,7 @@ app.post("/createListing", async (req, res) => {
       //upload the extra_photos to wordpress
       const contents2 = fs.readFileSync(path.resolve(__dirname, `pictures/${extraId}.jpg`));
       console.log(contents2);
-      const response2 = await fetch(`https://${req.body.websiteName}.ezwebs.xyz/wp-json/wp/v2/media`, {
+      const response2 = await fetch(`https://${req.body.websiteName}/wp-json/wp/v2/media`, {
       method: 'POST',
       headers: {
           'cache-control': 'no-cache',
@@ -262,7 +384,7 @@ app.post("/createListing", async (req, res) => {
    
     //create the listing with given information
     console.log(featuredImageId);
-    const createdPost = await fetch(`https://${req.body.websiteName}.ezwebs.xyz/wp-json/wp/v2/listing`, {
+    const createdPost = await fetch(`https://${req.body.websiteName}/wp-json/wp/v2/listing`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -301,7 +423,7 @@ app.post("/createListing", async (req, res) => {
 });
 
 app.post("/deleteListing", async (req, res) => {
-  console.log(await fetch(`https://${req.body.websiteName}.ezwebs.xyz/wp-json/wp/v2/listing/${req.body.postId}`, {
+  console.log(await fetch(`https://${req.body.websiteName}/wp-json/wp/v2/listing/${req.body.listingId}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
@@ -317,21 +439,54 @@ app.post("/deleteListing", async (req, res) => {
   the request body must contain both the post, post id and the url of the website to be updated.
 */
 app.get("/retrieveListing", async (req, res) => {
-  const response = await fetch(`https://${req.body.websiteName}.ezwebs.xyz/wp-json/wp/v2/listing`);
+  const response = await fetch(`https://${req.query.websiteName}/wp-json/wp/v2/listing`);
   const jsonObject = await response.json();
-  const result = {};
+  //const result = {};
   for (let i in jsonObject) {
-    result[jsonObject[i].title.rendered] = jsonObject[i].id;
+    jsonObject[i].title = jsonObject[i].title.rendered;
   }
-  console.log(result);
+  console.log(jsonObject);
   res.send(jsonObject);
   }
 );
 /*---------------------------------------LISTING MANIPULATION----------------------------------------*/
 
 
+/*---------------------------------------TESTIMONIALS MANIPULATION----------------------------------------*/
+
+
+
+app.post("/addtestimonial", async (req, res) => {
+  console.log(req.body);
+  
+  const testimonialName = `siteSettingEndpoint_testimonial_name_${req.body.testimonialNumber}`;
+  const testimonialTitle = `siteSettingEndpoint_testimonial_title_${req.body.testimonialNumber}`;
+  const testimonialContent = `siteSettingEndpoint_testimonial_content_${req.body.testimonialNumber}`;
+
+  console.log(testimonialName + testimonialTitle + testimonialContent);
+
+  console.log(await fetch(`https://${req.body.websiteName}/wp-json/my-custom-route/v1/updateOpt/`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Basic ${Buffer.from("0wulike0@gmail.com:oTK5 KTLF U8lG EfpT C5vn qzlG", "utf-8").toString("base64")}`
+    },
+    body: JSON.stringify({
+      [testimonialName]: `${(req.body).name}`,
+      [testimonialTitle]: `${(req.body).title}`,
+      [testimonialContent]: `${(req.body).text}`
+    })
+  }));
+  res.send();
+});
+
+
+/*---------------------------------------TESTIMONIALS MANIPULATION----------------------------------------*/
+
+
+
 app.get("/retrieveSiteSetting", async (req, res) => {
-  const response = await fetch(`https://wefawoeifjawoeijfaweif.com.ezwebs.xyz/wp-json/my-custom-route/v1/Opt?option_name=siteSettingEndpoint_agentpicture2`, {
+  const response = await fetch(`https://${req.body.websiteName}.com.ezwebs.xyz/wp-json/my-custom-route/v1/Opt?option_name=siteSettingEndpoint_agentpicture2`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -343,6 +498,39 @@ app.get("/retrieveSiteSetting", async (req, res) => {
   res.send(jsonObject);
   }
 );
+
+app.post("/updateDescription", async (req, res) => {
+  console.log(await fetch(`https://${req.body.websiteName}.ezwebs.xyz/wp-json/wp/v2/settings`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Basic ${Buffer.from("0wulike0@gmail.com:oTK5 KTLF U8lG EfpT C5vn qzlG", "utf-8").toString("base64")}`
+    },
+    body: JSON.stringify({
+      title: `${req.body.text}`
+    })
+  }));
+  res.send();
+}
+);
+
+app.post("/editService", async (req, res) => {
+  console.log(req.body);
+  const serviceTitle = `siteSettingEndpoint_myservicestitle${req.body.serviceNumber}`;
+  const serviceBody = `siteSettingEndpoint_myservices${req.body.serviceNumber}`;
+  console.log(await fetch(`https://${req.body.websiteName}/wp-json/my-custom-route/v1/updateOpt/`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Basic ${Buffer.from("0wulike0@gmail.com:oTK5 KTLF U8lG EfpT C5vn qzlG", "utf-8").toString("base64")}`
+    },
+    body: JSON.stringify({
+      [serviceTitle]: `${(req.body).title}`,
+      [serviceBody]: `${(req.body).text}`
+    })
+  }));
+  res.send();
+});
 
 app.post("/updateSiteSetting", async (req, res) => {
   
@@ -437,13 +625,12 @@ app.post("/updateSiteSetting", async (req, res) => {
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Basic ${Buffer.from("0wulike0@gmail.com:oTK5 KTLF U8lG EfpT C5vn qzlG", "utf-8").toString("base64")}`
-
     },
       body: JSON.stringify (
         {
           //title : req.body.title,
-          siteSettingEndpoint_agentpicture1: featuredImageId1array,
-          'siteSettingEndpoint_agentpicture2': featuredImageId2array,
+          
+          'siteSettingEndpoint_whatsapp_number': `https://wa.me/65${req.body.agentNumber}`,
           'siteSettingEndpoint_agentnumber': req.body.agentNumber,
           'siteSettingEndpoint_agentname': req.body.agentName,
           'siteSettingEndpoint_agentemail': req.body.agentEmail,
@@ -452,13 +639,33 @@ app.post("/updateSiteSetting", async (req, res) => {
         }
       )
     });
-  //const jsonObject = await response.json();
-  console.log(response);
-  res.send(response);
-  }
-);
+    console.log(await fetch(`https://${req.body.websiteName}.ezwebs.xyz/wp-json/wp/v2/pages/504`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Basic ${Buffer.from("0wulike0@gmail.com:oTK5 KTLF U8lG EfpT C5vn qzlG", "utf-8").toString("base64")}`
+        },
+        body: JSON.stringify({
+          agentpicture1: featuredImageId1array,
+          agentpicture2: featuredImageId2array
+        })
+      }));
+    console.log(await fetch(`https://${req.body.websiteName}.ezwebs.xyz/wp-json/wp/v2/pages/824`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Basic ${Buffer.from("0wulike0@gmail.com:oTK5 KTLF U8lG EfpT C5vn qzlG", "utf-8").toString("base64")}`
+        },
+        body: JSON.stringify({
+          agentpicture1: featuredImageId1array,
+          agentpicture2: featuredImageId2array
+        })
+      }));
+    res.send();
+  });
 
 
+/*-------------------------Update site setting-----------------------------------*/
 
 
 
@@ -481,8 +688,18 @@ app.get("/checkURL", async (req, res) => {
   }
 });
 
+
+//waiting time counter in seconds
+let waitingTime = 0;
+
 //Generate a new website
 app.get("/generateSite", async (req, res) => {
+  
+  let waitingTime2 = waitingTime; 
+  waitingTime += 900; //add 900 seconds website creation time 
+  res.send(waitingTime + 900); //waiting time plus creation time
+  await new Promise(resolve => setTimeout(resolve, waitingTime2 * 1000)); //wait until the front tasks have been resolved
+  waitingTime2 = 0;
 
   const { request, name } = req.body;
 
@@ -686,7 +903,7 @@ app.get("/generateSite", async (req, res) => {
 
 
 
-  res.send(getRows.data.values); 
+  
 
 });
 
