@@ -361,7 +361,7 @@ Add Edit Listings Function | Allow users to edit listings | Chengyue, Sean | 6 J
 Price Display Bug Fix | Prices were incorrectly displayed | Chengyue, Sean | 7 Jul
 Multiple Users | Bot could now support multiple users | Sean | 8 Jul
 Improve Data Retrieval Logic | Data was now only requested for when necessary | Sean | 10 Jul
-Overhaul Bot Data Capture Logic | Data was being stored in a way that supports multiple users | 10 Jul
+Overhaul Bot Data Capture Logic | Data was being stored in a way that supports multiple users | Sean | 10 Jul
 Optimize Bot Speed | Data collection and storage was used to drastically improve user experience | Sean | 12 Jul
 Add Services Function | Allow users to edit Services section of their site | Chengyue, Sean | 14 Jul
 Site Animations Improved | Aesthetically pleasing site animations were added to enhance UX | Chengyue | 15 Jul
