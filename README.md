@@ -682,7 +682,6 @@ The following is an example of what a post may look like on the home page.
 ![Posts](https://user-images.githubusercontent.com/52826683/175799588-45a6cead-d4c1-4765-a765-73d0e95622df.jpg)
 Upon clicking into the post, the following is what visitors will see.
 ![Screenshot 2022-06-26 154718](https://user-images.githubusercontent.com/52826683/175804782-863dca83-21f7-4e03-a5bd-318b339f7ae1.jpg)
-Link to test-generated listing: https://wordpress-296143-2675827.cloudwaysapps.com/hello-world/
 <br />
 <br />
 ## Listings
@@ -703,5 +702,21 @@ After clicking into the listing, the user will be brought to the listing's page 
 ![Screenshot 2022-06-26 155204](https://user-images.githubusercontent.com/52826683/175804958-7df66aed-2a5f-45b0-b672-e01181000687.jpg)
 ![Screenshot 2022-06-26 155212](https://user-images.githubusercontent.com/52826683/175804960-03b8a8c2-139f-4e51-bffa-d467226068ba.jpg)
 Link to test-generated listing: https://wordpress-296143-2675827.cloudwaysapps.com/listing/gg/
+<br />
+<br />
+## Services
+
+Upon creating their site, users will have their My Services section auto-generated for them, which currently include Sales & Purchase Transactions, Rental/Tenancy Transactions, and Real Estate Wealth Planning. Through the Telegram bot, users can click on the 'Manage Services' option to edit the services displayed on the site.
+
+The following is how the 'My Services' section will looks like.
+![My Services](https://user-images.githubusercontent.com/52826683/180599611-4a0f8613-325c-4a77-8cfc-835f37e9598c.jpg)
+<br />
+<br />
+## Testimonials
+
+Upon creating their site, users will have their My Testimonials section auto-generated for them with three testimonials. Through the Telegram bot, users can click on the "Manage Testimonials" option to edit the testimonials displayed on the site.
+
+The following is how the 'My Testimonials' section will looks like.
+![Testimonials](https://user-images.githubusercontent.com/52826683/180599689-f35fc88c-b2a1-4e7e-8821-8c71568df1ff.jpg)
 
 
