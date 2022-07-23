@@ -465,13 +465,41 @@ Create Listing | Smooth outcome | 26 June
 Create Post | Smooth outcome | 26 June
 Uninstructed (Random) Tests | Edit Listing function not working (Fixed) | 26 June
 Uninstructed (Random) Tests | Edit description function was not being properly processed (Fixed) | 26 June
-Full Test Flow | Cache of website had to be cleared server-side before updates could be reflected| 29 June
+Full Test Flow | Cache of website had to be cleared server-side before updates could be reflected (Fixed) | 29 June
 Full Test Flow | Suggestion was made to make menu consistently appear instead of user having to make new prompts each time (Fixed)| 29 June
-Full Test Flow | Photo sizes that were too big did not appear properly in the website's listings | 29 June
 Full Test Flow | User email and phone numbers were not checked for validity (Fixed) | 3 July
+Bulk Listing | When adding bulk listings, certain fields did not show up (Fixed) | 23 July
+Edit Testimonials | Edit testimonials provided incorrect bot responses (Fixed) | 23 July
+Create Listing | When adding listing description, a KeyError occured (Fixed) | 23 July
+Edit Service | When creating service, a "Done" message was not sent to the user despite completion (Fixed) | 23 July
+Create Post | During creation of posts, post retrieval returned an error (Fixed) | 23 July
+Create Post | During creation of posts, current url was not stored properly (Fixed) | 23 July
+
 
 *We have put in place a test flow and are planning to invite five testers to test our product between the following dates 29 June 2022 - 6 July 2022. 
 Testers were invited to follow the following <a href="https://docs.google.com/document/d/1tOFN_HgKt18vInno4SUhX32b1R_6Hn2GOjgOjh1Qjpk/edit?usp=sharing">Test Flow</a>
+
+### Google Lighthouse Analytics Report
+Using Google's Lighthouse, an automated barrage of tests were run against our generated websites, and the inital results were abysmal.
+
+<strong>Before</strong>
+
+<kbd>
+  <img src="https://user-images.githubusercontent.com/52826683/180618519-6beefb32-7c56-454d-bd18-4c0e2f8a158d.jpg" width="420" height="230">
+</kbd>
+
+We decided to focus on fixing the immediate issues that were causing our site to perform badly. The main actions that we took were:
+1. Implement lazy load so that pictures not showing yet will not be preloaded which may slow down the site.
+2. Convert all exisitng png and jpeg to webp format amd compress to reduce file size needed to load for the web pages.
+3. Implement auto conversion and compression for user uploaded images.
+
+Following that, performance for our site improved tremendously, which is expected to create a much better user experience for site visitors.
+
+<strong>After</strong>
+
+<kbd>
+  <img src="https://user-images.githubusercontent.com/52826683/180618753-9d755a55-56c0-4e48-98e1-a48264791aa0.png" width="420" height="380">
+</kbd>
 
 # Working Prototype
 Our Telegram bot has been set up to receive website creation requests, and capture url/description data which is sent to our database. On the backend, we will be able to retrive this data and generate a simple website on the given url.
