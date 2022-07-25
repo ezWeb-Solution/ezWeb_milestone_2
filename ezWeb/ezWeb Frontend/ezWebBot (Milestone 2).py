@@ -1,4 +1,4 @@
-#Importing python-telegram-bot's library functions
+# Importing python-telegram-bot's library functions
 from telegram.ext import *
 from telegram import *
 import requests
@@ -8,7 +8,9 @@ from datetime import date
 # Setting up our logger
 import logging
 #import reopen
-from ExcelParser import *
+from ExcelParserTests.ExcelParser import *
+from listing_validator import validate_property_details
+import re
 
 bot_token = os.environ.get('ezWeb_bot_token')
 
@@ -1595,7 +1597,7 @@ def message_handler(update, context):
     elif current_user[update.effective_chat.id]['state'] == 'create_listing_title':
         current_user[update.effective_chat.id]['new_listing']['title'] = update.message.text
         listing_title_confirmation(update, context)
-    elif current_user[update.effective_chat.id]['state'] == 'create_property_details':
+   elif current_user[update.effective_chat.id]['state'] == 'create_property_details':
         property_details = update.message.text
         if '**cancel' in property_details:
             other_edits(update, context)
@@ -1603,8 +1605,13 @@ def message_handler(update, context):
             context.bot.send_message(chat_id=update.effective_chat.id,
                                      text="Invalid input, please try again, or type '**cancel' to stop creating a listing")
         else:
-            listing_details(update, property_details)
-            property_details_confirmation(update, context)
+            res = validate_property_details(property_details)
+            if res != "Valid":
+                context.bot.send_message(chat_id=update.effective_chat.id,
+                                         text=res)
+            else:
+                listing_details(update, property_details)
+                property_details_confirmation(update, context)
     elif current_user[update.effective_chat.id]['state'] == 'edit_featured_photo':
         if 'cancel' in update.message.text or 'Cancel' in update.message.text:
             other_edits(update, context)
