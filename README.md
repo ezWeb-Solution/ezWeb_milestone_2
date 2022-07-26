@@ -1,4 +1,5 @@
 # IMPORTANT!!! PLEASE PM @cylellll ON TELEGRAM IF YOU WISH TO TRY THE BOT, YOU WILL BE ABLE TO CREATE AND MANAGE THE REAL ESTATE AGENT SITE USING THE BOT IN REAL TIME :)
+New <a href="https://drive.google.com/file/d/1c28yh0wQdSnOE4GYFfRHgXssMXvAmbxq/view?usp=sharing">README</a>
 # Tech Stack
 ## Languages/Frameworks
 
